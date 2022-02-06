@@ -1,0 +1,31 @@
+{
+  "name": "ads-osn-portal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tevko/ads-osn-portal.git",
+  "author": "tevko <timevko@gmail.com>",
+  "license": "none",
+  "private": true,
+  "scripts": {
+    "start": "yarn parcel src/index.html",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "parcel": "^2.2.1",
+    "prettier": "2.5.1"
+  },
+  "dependencies": {
+    "@auth0/auth0-react": "^1.9.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/material": "^5.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

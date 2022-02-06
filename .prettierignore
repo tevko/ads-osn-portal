@@ -1,0 +1,9 @@
+# Ignore artifacts:
+.history
+.parcel-cache
+dist
+node_modules
+.gitignore
+package.json
+README.md
+yarn.lock
