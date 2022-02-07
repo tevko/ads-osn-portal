@@ -14,6 +14,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.2.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
     "parcel": "^2.2.1",
