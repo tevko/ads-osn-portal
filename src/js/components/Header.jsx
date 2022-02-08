@@ -1,12 +1,12 @@
 import React from "react";
+import logo_black from "../../css/images/logo_black.png";
+import header from "../../css/header.scss";
 
 export default function Header() {
   return (
     <header>
-      <img
-        src="../src/css/westreet-liquor-company-logo-black.png"
-        class="header_logo"
-      />
+      <img src={logo_black} className="header_logo" />
+      <h1>Test</h1>
     </header>
   );
 }
