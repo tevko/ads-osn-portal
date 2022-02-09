@@ -1,3 +1,15 @@
 html {
   font-family: "Roboto";
 }
+
+.header_logo {
+  width: 150px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 15px;
+}
