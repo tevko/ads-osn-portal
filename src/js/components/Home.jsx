@@ -1,12 +1,11 @@
 import React from "react";
-import Header from "./Header.jsx";
+import Header from "./Header";
 
 export default function Home() {
   // fetch from API and render
   return (
     <>
       <Header />
-      <h1>Home</h1>
     </>
   );
 }
