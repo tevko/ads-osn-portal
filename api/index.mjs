@@ -1,11 +1,19 @@
 import express from "express";
+import { auth } from "express-oauth2-jwt-bearer";
 import routes from "./routes/index.mjs";
+
+// const checkJwt = auth({
+//   audience: 'YOUR_API_IDENTIFIER',
+//   issuerBaseURL: `https://YOUR_DOMAIN/`,
+// });
 
 const app = express();
 
+// app.use(checkJwt);
+
 app.use(express.json());
 
-app.use(routes);
+routes(app);
 
 const PORT = 3000;
 

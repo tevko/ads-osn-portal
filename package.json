@@ -9,6 +9,8 @@
   "type": "module",
   "scripts": {
     "start": "yarn parcel src/index.html",
+    "build": "yarn parcel build/index.html",
+    "api": "nodemon ./api/index.mjs localhost 3000",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -28,6 +30,8 @@
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.4.0",
     "express": "^4.17.2",
+    "express-oauth2-jwt-bearer": "^1.1.0",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
