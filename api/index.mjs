@@ -7,6 +7,10 @@ import routes from "./routes/index.mjs";
 //   issuerBaseURL: `https://YOUR_DOMAIN/`,
 // });
 
+// https://auth0.com/docs/quickstart/backend/nodejs/01-authorization
+
+// need to extract user ID from JWT
+
 const app = express();
 
 // app.use(checkJwt);
