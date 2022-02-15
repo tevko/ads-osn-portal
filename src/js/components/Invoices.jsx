@@ -1,6 +1,11 @@
 import React from "react";
+import Header from "./Header";
 
 export default function Invoices() {
   // fetch from API and render
-  return <h1>Invoices</h1>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }

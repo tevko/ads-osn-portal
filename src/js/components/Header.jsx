@@ -1,5 +1,5 @@
-import React from "react";
-/* import logo_black from "../../css/images/logo_black.png"; */
+import React, { useState } from "react";
+import * as React from "react";
 import "../../css/main.scss";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
@@ -9,10 +9,19 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-
-import * as React from "react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function Header() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className="header">
       <Box
@@ -23,6 +32,10 @@ export default function Header() {
         <AppBar position="static">
           <Toolbar>
             <IconButton
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
               size="large"
               edge="start"
               color="inherit"
@@ -45,6 +58,21 @@ export default function Header() {
             <Button color="inherit">Logout</Button>
           </Toolbar>
         </AppBar>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={handleClose}>Home</MenuItem>
+          <MenuItem onClick={handleClose}>Invoices</MenuItem>
+          <MenuItem onClick={handleClose}>Purchase Orders</MenuItem>
+          <MenuItem onClick={handleClose}>Receipts</MenuItem>
+          <MenuItem onClick={handleClose}>Transfers</MenuItem>
+        </Menu>
       </Box>
     </div>
   );

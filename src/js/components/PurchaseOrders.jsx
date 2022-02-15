@@ -1,6 +1,11 @@
 import React from "react";
+import Header from "./Header";
 
 export default function PurchaseOrders() {
   // fetch from API and render
-  return <h1>PurchaseOrders</h1>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
