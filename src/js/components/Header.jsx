@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import * as React from "react";
 import "../../css/main.scss";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
@@ -12,14 +11,19 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-export default function Header() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export default function Header({ routeTo, getPageTitle }) {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const navigateAndClose = (path) => {
+    routeTo(path);
+    handleClose();
   };
 
   return (
@@ -53,7 +57,7 @@ export default function Header() {
                 flexGrow: 1,
               }}
             >
-              Home
+              {getPageTitle()}
             </Typography>
             <Button color="inherit">Logout</Button>
           </Toolbar>
@@ -67,11 +71,19 @@ export default function Header() {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={handleClose}>Home</MenuItem>
-          <MenuItem onClick={handleClose}>Invoices</MenuItem>
-          <MenuItem onClick={handleClose}>Purchase Orders</MenuItem>
-          <MenuItem onClick={handleClose}>Receipts</MenuItem>
-          <MenuItem onClick={handleClose}>Transfers</MenuItem>
+          <MenuItem onClick={() => navigateAndClose("/")}>Home</MenuItem>
+          <MenuItem onClick={() => navigateAndClose("/invoices")}>
+            Invoices
+          </MenuItem>
+          <MenuItem onClick={() => navigateAndClose("/purchase-orders")}>
+            Purchase Orders
+          </MenuItem>
+          <MenuItem onClick={() => navigateAndClose("/receipts")}>
+            Receipts
+          </MenuItem>
+          <MenuItem onClick={() => navigateAndClose("/transfers")}>
+            Transfers
+          </MenuItem>
         </Menu>
       </Box>
     </div>
