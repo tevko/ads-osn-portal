@@ -1,6 +1,7 @@
 import express from "express";
 import { auth } from "express-oauth2-jwt-bearer";
 import routes from "./routes/index.mjs";
+import cors from "cors";
 
 // const checkJwt = auth({
 //   audience: 'YOUR_API_IDENTIFIER',
@@ -12,6 +13,8 @@ import routes from "./routes/index.mjs";
 // need to extract user ID from JWT
 
 const app = express();
+
+app.use(cors({ credentials: true, origin: true }));
 
 // app.use(checkJwt);
 
