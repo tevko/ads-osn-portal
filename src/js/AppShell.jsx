@@ -8,6 +8,7 @@ import Receipts from "./components/Receipts";
 import Invoices from "./components/Invoices";
 import Transfers from "./components/Transfers";
 import Home from "./components/Home";
+import DenseTable from "./components/Tables";
 
 const routes = {
   "/purchase-orders": <PurchaseOrders />,
@@ -55,6 +56,7 @@ export default function AppShell(user, logout) {
       >
         Logout
       </Button> */}
+      <DenseTable />
     </Container>
   );
 }
