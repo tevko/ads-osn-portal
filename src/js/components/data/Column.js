@@ -1,6 +1,13 @@
 const columnsOne = [
   {
     title: "Customer",
+    cellStyle: {
+      backgroundColor: "#039be5",
+      color: "#FFF",
+    },
+    headerStyle: {
+      backgroundColor: "#039be5",
+    },
     field: "customer",
     filterPlaceholder: "Filter Customer",
   },

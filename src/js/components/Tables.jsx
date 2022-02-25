@@ -1,8 +1,6 @@
-import react from "react";
 import MaterialTable from "material-table";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
-
 export default function Example() {
   return (
     <div className="table_one">
@@ -11,11 +9,18 @@ export default function Example() {
         data={tableOne}
         options={{
           searchFieldVariant: "outlined",
-          filtering: "true",
           exportButton: true,
           exportallData: true,
+          headerStyle: {
+            backgroundColor: "#01579b",
+            color: "#FFF",
+          },
+          grouping: true,
+          columnsButton: true,
+          paging: true,
+          pageSizeOptions: [, 5, 10, 20, 50, 100, 10000],
           rowStyle: (data, index) =>
-            index % 2 === 0 ? { background: "#EEFBFB" } : null,
+            index % 2 === 0 ? { background: "#E8F6FD" } : null,
         }}
         title="Open Purchase Orders"
       />
