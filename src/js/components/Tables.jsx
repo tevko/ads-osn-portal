@@ -108,3 +108,5 @@ export default function Example() {
 }
 
 //remember different people see different things when they log on
+//expand pages
+//have previews and possible graphs on home page
