@@ -85,5 +85,3 @@ const columnsOne = [
     filterPlaceholder: "Filter Date",
   },
 ];
-
-export default { tableOne, columnsOne };
