@@ -32,6 +32,7 @@ const columnsOne = [
     title: "Due Date",
     field: "date",
     type: "date",
+    filtering: true,
     filterPlaceholder: "Filter Date",
   },
 ];
