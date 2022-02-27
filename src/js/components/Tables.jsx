@@ -1,12 +1,13 @@
-import MaterialTable from "material-table";
+import { DataGrid } from "@mui/x-data-grid";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 export default function Example() {
   return (
     <div className="table_one">
-      <MaterialTable
+      <DataGrid
         columns={columnsOne}
-        data={tableOne}
+        rows={tableOne}
+        autoHeight={true}
         options={{
           searchFieldVariant: "outlined",
           exportButton: true,

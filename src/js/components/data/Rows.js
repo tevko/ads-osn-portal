@@ -7,6 +7,7 @@ const tableOne = [
     quantity: "6841",
     uom: "EA",
     date: new Date(2022, 12, 1),
+    id: "1",
   },
   {
     customer: "Steve",
@@ -16,6 +17,7 @@ const tableOne = [
     quantity: "10000000",
     uom: "EA",
     date: new Date(2022, 5, 7),
+    id: "2",
   },
   {
     customer: "Jim",
@@ -25,6 +27,7 @@ const tableOne = [
     quantity: "5854",
     uom: "EA",
     date: new Date(2022, 8, 19),
+    id: "3",
   },
   {
     customer: "Vanessa",
@@ -34,6 +37,7 @@ const tableOne = [
     quantity: "6168",
     uom: "EA",
     date: new Date(2022, 11, 1),
+    id: "4",
   },
   {
     customer: "Steve",
@@ -43,6 +47,7 @@ const tableOne = [
     quantity: "6168",
     uom: "EA",
     date: new Date(2022, 4, 11),
+    id: "5",
   },
   {
     customer: "Leah",
@@ -52,6 +57,7 @@ const tableOne = [
     quantity: "6168",
     uom: "EA",
     date: new Date(2023, 1, 1),
+    id: "6",
   },
 ];
 
