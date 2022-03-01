@@ -1,10 +1,31 @@
-import MaterialTable from "material-table";
+import { DataGrid } from "@mui/x-data-grid";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
-export default function Example() {
+
+export default function Tables() {
   return (
-    <div className="table_one">
-      <MaterialTable
+    <>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={tableOne}
+          columns={columnsOne}
+          pageSize={5}
+          disableExtendRowFullWidth={false}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      </div>
+    </>
+  );
+}
+
+//remember different people see different things when they log on
+//expand pages
+//have previews and possible graphs on home page
+
+/*  <div className="table_one">
+      <DataGrid
         columns={columnsOne}
         data={tableOne}
         options={{
@@ -24,10 +45,4 @@ export default function Example() {
         }}
         title="Open Purchase Orders"
       />
-    </div>
-  );
-}
-
-//remember different people see different things when they log on
-//expand pages
-//have previews and possible graphs on home page
+    </div> */
