@@ -27,7 +27,8 @@ export default function Tables() {
 /*  <div className="table_one">
       <DataGrid
         columns={columnsOne}
-        data={tableOne}
+        rows={tableOne}
+        autoHeight={true}
         options={{
           searchFieldVariant: "outlined",
           exportButton: true,

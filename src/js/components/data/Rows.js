@@ -8,6 +8,7 @@ const tableOne = [
     quantity: "6841",
     uom: "EA",
     date: new Date(2022, 12, 1),
+    id: "1",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const tableOne = [
     quantity: "10000000",
     uom: "EA",
     date: new Date(2022, 5, 7),
+    id: "2",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const tableOne = [
     quantity: "5854",
     uom: "EA",
     date: new Date(2022, 8, 19),
+    id: "3",
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const tableOne = [
     quantity: "6168",
     uom: "EA",
     date: new Date(2022, 11, 1),
+    id: "4",
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ const tableOne = [
     quantity: "6168",
     uom: "EA",
     date: new Date(2022, 4, 11),
+    id: "5",
   },
   {
     id: 6,
@@ -118,6 +123,7 @@ const tableOne = [
     quantity: "6168",
     uom: "EA",
     date: new Date(2023, 1, 1),
+    id: "6",
   },
 ];
 
