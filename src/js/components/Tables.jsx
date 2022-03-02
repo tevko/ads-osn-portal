@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DataGridPro } from "@mui/x-data-grid-pro";
+import { DataGrid } from "@mui/x-data-grid";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 
@@ -7,7 +7,7 @@ export default function Tables() {
   return (
     <>
       <div style={{ height: 400, width: "100%" }}>
-        <DataGridPro
+        <DataGrid
           rows={tableOne}
           columns={columnsOne}
           pageSize={5}
