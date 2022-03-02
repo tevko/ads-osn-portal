@@ -1,4 +1,5 @@
-import { DataGrid } from "@mui/x-data-grid";
+import * as React from "react";
+import { DataGridPro } from "@mui/x-data-grid-pro";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 
@@ -6,7 +7,7 @@ export default function Tables() {
   return (
     <>
       <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
+        <DataGridPro
           rows={tableOne}
           columns={columnsOne}
           pageSize={5}
@@ -19,6 +20,9 @@ export default function Tables() {
     </>
   );
 }
+
+//add download as csv
+//add colummn resize
 
 //remember different people see different things when they log on
 //expand pages
