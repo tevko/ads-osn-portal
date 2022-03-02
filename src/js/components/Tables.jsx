@@ -4,6 +4,7 @@ import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 
 export default function Tables() {
+  const [pageSize, setPageSize] = React.useState(5);
   return (
     <>
       <div style={{ height: 400, width: "100%" }}>
@@ -16,6 +17,10 @@ export default function Tables() {
           checkboxSelection
           disableSelectionOnClick
           components={{ Toolbar: GridToolbar }}
+          pageSize={pageSize}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20]}
+          pagination
         />
       </div>
     </>
