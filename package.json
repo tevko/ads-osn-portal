@@ -1,7 +1,6 @@
 {
   "name": "ads-osn-portal",
   "version": "1.0.0",
-  "main": "src/index.html",
   "repository": "git@github.com:tevko/ads-osn-portal.git",
   "author": "tevko <timevko@gmail.com>",
   "license": "none",
