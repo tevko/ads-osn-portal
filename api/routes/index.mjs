@@ -1,14 +1,14 @@
 export default (app) => {
-  app.get("/api/purchase-orders", (req, res) => {
+  app.get("/purchase-orders", (req, res) => {
     return res.json({ message: "data for purchase from the API!" });
   });
-  app.get("/api/receipts", (req, res) => {
+  app.get("/receipts", (req, res) => {
     return res.json({ message: "data for receipts from the API!" });
   });
-  app.get("/api/invoices", (req, res) => {
+  app.get("/invoices", (req, res) => {
     return res.json({ message: "data for invoices from the API!" });
   });
-  app.get("/api/transfers", (req, res) => {
+  app.get("/transfers", (req, res) => {
     return res.json({ message: "data for transfers from the API!" });
   });
 };
