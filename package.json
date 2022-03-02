@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "start": "yarn parcel src/index.html",
-    "build": "yarn parcel build/index.html",
+    "build": "yarn parcel build src/index.html",
     "api": "nodemon ./api/index.mjs localhost 3000",
     "prepare": "husky install"
   },
