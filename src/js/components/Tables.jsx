@@ -1,34 +1,32 @@
-import { DataGrid } from "@mui/x-data-grid";
+import * as React from "react";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Typography } from "@mui/material";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
-export default function Example() {
+
+export default function Tables() {
+  const [pageSize, setPageSize] = React.useState(25);
   return (
-    <div className="table_one">
-      <DataGrid
-        columns={columnsOne}
-        rows={tableOne}
-        autoHeight={true}
-        options={{
-          searchFieldVariant: "outlined",
-          exportButton: true,
-          exportallData: true,
-          headerStyle: {
-            backgroundColor: "#01579b",
-            color: "#FFF",
-          },
-          grouping: true,
-          columnsButton: true,
-          paging: true,
-          pageSizeOptions: [, 5, 10, 20, 50, 100, 10000],
-          rowStyle: (data, index) =>
-            index % 2 === 0 ? { background: "#E8F6FD" } : null,
-        }}
-        title="Open Purchase Orders"
-      />
-    </div>
+    <>
+      <Typography variant="h5" style={{ color: "#383D41" }}>
+        Open Purchase Orders
+      </Typography>
+      <div style={{ height: 680, width: "100%" }}>
+        <DataGrid
+          autoheight
+          rows={tableOne}
+          columns={columnsOne}
+          disableExtendRowFullWidth={false}
+          checkboxSelection
+          disableSelectionOnClick
+          components={{ Toolbar: GridToolbar }}
+          pageSize={pageSize}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          rowsPerPageOptions={[25, 50, 100]}
+          pagination
+          scroll
+        />
+      </div>
+    </>
   );
 }
-
-//remember different people see different things when they log on
-//expand pages
-//have previews and possible graphs on home page

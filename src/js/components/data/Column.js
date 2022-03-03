@@ -1,40 +1,43 @@
 const columnsOne = [
   {
-    title: "Customer",
-    cellStyle: {
-      backgroundColor: "#039be5",
-      color: "#FFF",
-    },
-    headerStyle: {
-      backgroundColor: "#039be5",
-    },
-    field: "customer",
-    filterPlaceholder: "Filter Customer",
+    field: "vendor",
+    headerName: "Vendor",
+    flex: 1,
   },
-  { title: "Po Number", field: "poNumber", filterPlaceholder: "Filter PO" },
   {
-    title: "Item Number",
+    field: "poNumber",
+    headerName: "PO Number",
+    flex: 1,
+  },
+  {
     field: "itemNumber",
-    filterPlaceholder: "Filter Item",
+    headerName: "Item Number",
+    flex: 1,
   },
   {
-    title: "Description",
     field: "description",
-    filterPlaceholder: "Filter Description",
+    headerName: "Description",
+    flex: 1,
   },
   {
-    title: "Quantity",
     field: "quantity",
-    filterPlaceholder: "Filter Quantity",
+    headerName: "Quantity",
+    flex: 1,
   },
-  { title: "Unit of Measure", field: "uom", filterPlaceholder: "Filter UOM" },
   {
-    title: "Due Date",
+    field: "uom",
+    headerName: "UOM",
+    flex: 1,
+  },
+  {
     field: "date",
-    type: "date",
-    filtering: true,
-    filterPlaceholder: "Filter Date",
+    headerName: "Date",
+    flex: 1,
   },
 ];
 
 export default columnsOne;
+
+//backgroundColor: "#039be5",
+//backgroundColor: "#039be5",
+//    color: "#FFF",

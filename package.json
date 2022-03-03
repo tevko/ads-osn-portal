@@ -17,10 +17,12 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.2.1",
+    "buffer": "^6.0.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
     "parcel": "^2.2.1",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
@@ -31,6 +33,7 @@
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.4.0",
     "@mui/x-data-grid": "^5.5.1",
+    "@mui/x-data-grid-pro": "^5.5.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "express-oauth2-jwt-bearer": "^1.1.0",
