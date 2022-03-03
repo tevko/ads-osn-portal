@@ -4,7 +4,7 @@ import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 
 export default function Tables() {
-  const [pageSize, setPageSize] = React.useState(10);
+  const [pageSize, setPageSize] = React.useState(25);
   return (
     <>
       <div style={{ height: 680, width: "100%" }}>
@@ -12,15 +12,13 @@ export default function Tables() {
           autoheight
           rows={tableOne}
           columns={columnsOne}
-          pageSize={5}
           disableExtendRowFullWidth={false}
-          rowsPerPageOptions={[5]}
           checkboxSelection
           disableSelectionOnClick
           components={{ Toolbar: GridToolbar }}
           pageSize={pageSize}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 20]}
+          rowsPerPageOptions={[25, 50, 100]}
           pagination
           scroll
         />
