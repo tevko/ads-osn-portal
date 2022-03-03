@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import { ThemeProvider } from "@material-ui/core";
 
 import Header from "./components/Header";
 import PurchaseOrders from "./components/PurchaseOrders";
@@ -9,6 +10,7 @@ import Invoices from "./components/Invoices";
 import Transfers from "./components/Transfers";
 import Home from "./components/Home";
 import Tables from "./components/Tables";
+import theme from "./components/theme";
 
 const routes = {
   "/purchase-orders": <PurchaseOrders />,
@@ -47,16 +49,18 @@ export default function AppShell(user, logout) {
   };
   return (
     <Container maxWidth="lg">
-      <Header routeTo={routeTo} getPageTitle={getPageTitle} />
-      {currentComponent || <p>404 page not found</p>}
-      {/* Include header nav and footer components https://mui.com/components/app-bar/ */}
-      {/* <Button
+      <ThemeProvider theme={theme}>
+        <Header routeTo={routeTo} getPageTitle={getPageTitle} />
+        {currentComponent || <p>404 page not found</p>}
+        {/* Include header nav and footer components https://mui.com/components/app-bar/ */}
+        {/* <Button
         variant="contained"
         onClick={() => logout({ returnTo: window.location.origin })}
       >
         Logout
       </Button> */}
-      <Tables />
+        <Tables />
+      </ThemeProvider>
     </Container>
   );
 }

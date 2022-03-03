@@ -41,7 +41,7 @@ export default function Header({ routeTo, getPageTitle }) {
               onClick={handleClick}
               size="large"
               edge="start"
-              color="inherit"
+              color="primary"
               aria-label="menu"
               sx={{
                 mr: 2,
