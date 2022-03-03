@@ -4,11 +4,12 @@ import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 
 export default function Tables() {
-  const [pageSize, setPageSize] = React.useState(5);
+  const [pageSize, setPageSize] = React.useState(10);
   return (
     <>
-      <div style={{ height: 400, width: "100%" }}>
+      <div style={{ height: 680, width: "100%" }}>
         <DataGrid
+          autoheight
           rows={tableOne}
           columns={columnsOne}
           pageSize={5}
@@ -21,18 +22,9 @@ export default function Tables() {
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           rowsPerPageOptions={[5, 10, 20]}
           pagination
+          scroll
         />
       </div>
     </>
   );
 }
-
-//data grid filters show without hovering
-//add tool bar
-//style tables
-//add download as csv
-//add colummn resize
-
-//remember different people see different things when they log on
-//expand pages
-//have previews and possible graphs on home page
