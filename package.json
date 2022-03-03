@@ -35,8 +35,10 @@
     "@mui/x-data-grid": "^5.5.1",
     "@mui/x-data-grid-pro": "^5.5.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-oauth2-jwt-bearer": "^1.1.0",
+    "mssql": "^8.0.2",
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

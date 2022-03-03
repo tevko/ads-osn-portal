@@ -1,14 +1,36 @@
+import getData from "../services";
+
 export default (app) => {
-  app.get("/purchase-orders", (req, res) => {
-    return res.json({ message: "data for purchase from the API!" });
+  app.get("/purchase-orders", async (req, res) => {
+    const data = await getData({
+      scope: "purchase-orders",
+      queryParam: req.query,
+      pool: app.locals.db,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
   });
-  app.get("/receipts", (req, res) => {
-    return res.json({ message: "data for receipts from the API!" });
+  app.get("/receipts", async (req, res) => {
+    const data = await getData({
+      scope: "receipts",
+      queryParam: req.query,
+      pool: app.locals.db,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
   });
-  app.get("/invoices", (req, res) => {
-    return res.json({ message: "data for invoices from the API!" });
+  app.get("/invoices", async (req, res) => {
+    const data = await getData({
+      scope: "invoices",
+      queryParam: req.query,
+      pool: app.locals.db,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
   });
-  app.get("/transfers", (req, res) => {
-    return res.json({ message: "data for transfers from the API!" });
+  app.get("/transfers", async (req, res) => {
+    const data = await getData({
+      scope: "transfers",
+      queryParam: req.query,
+      pool: app.locals.db,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
   });
 };
