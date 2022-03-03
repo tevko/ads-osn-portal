@@ -1,4 +1,4 @@
-import getData from "../services";
+import getData from "../services/index.mjs";
 
 export default (app) => {
   app.get("/purchase-orders", async (req, res) => {
