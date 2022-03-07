@@ -6,6 +6,7 @@ import tableOne from "./data/Rows";
 
 export default function Tables() {
   const [pageSize, setPageSize] = React.useState(25);
+
   return (
     <>
       <Typography variant="h5" style={{ color: "#383D41" }}>
