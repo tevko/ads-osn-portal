@@ -1,4 +1,4 @@
-const tableOne = [
+const rowsOne = [
   {
     id: 1,
     vendor: "Paul",
@@ -127,4 +127,4 @@ const tableOne = [
   },
 ];
 
-export default tableOne;
+export default rowsOne;

@@ -1,11 +1,14 @@
 import * as React from "react";
+import React, { useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
 import columnsOne from "./data/Column";
-import tableOne from "./data/Rows";
+import rowsOne from "./data/Rows";
 
 export default function Tables() {
   const [pageSize, setPageSize] = React.useState(25);
+  const [rows, setRows] = useState(rowsOne);
+  const [columns, setColumns] = useState(columnsOne);
   return (
     <>
       <Typography variant="h5" style={{ color: "#383D41" }}>
@@ -14,8 +17,8 @@ export default function Tables() {
       <div style={{ height: 680, width: "100%" }}>
         <DataGrid
           autoheight
-          rows={tableOne}
-          columns={columnsOne}
+          rows={rows}
+          columns={columns}
           disableExtendRowFullWidth={false}
           checkboxSelection
           disableSelectionOnClick
