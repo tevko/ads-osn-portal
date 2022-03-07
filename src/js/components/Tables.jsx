@@ -9,6 +9,7 @@ export default function Tables() {
   const [pageSize, setPageSize] = React.useState(25);
   const [rows, setRows] = useState(rowsOne);
   const [columns, setColumns] = useState(columnsOne);
+
   return (
     <>
       <Typography variant="h5" style={{ color: "#383D41" }}>
