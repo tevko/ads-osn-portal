@@ -9,11 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Tables from "./Tables";
-import columnsOne from "./data/Column";
-import rowsOne from "./data/Rows";
-import columnsTwo from "./data/ColumnTwo";
-import rowsTwo from "./data/RowsTwo";
 
 export default function Header({ routeTo, getPageTitle }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,17 +23,6 @@ export default function Header({ routeTo, getPageTitle }) {
   const navigateAndClose = (path) => {
     routeTo(path);
     handleClose();
-  };
-
-  const [gridTitle, setGridTitle] = useState("Open Purchase Orders");
-
-  const [rows, setRows] = useState(rowsOne);
-  const [columns, setColumns] = useState(columnsOne);
-
-  const titleChange = () => {
-    setGridTitle("Items Transferred to Pulley Stock");
-    setColumns(columnsTwo);
-    setRows(rowsTwo);
   };
 
   return (
@@ -100,22 +84,11 @@ export default function Header({ routeTo, getPageTitle }) {
           <MenuItem onClick={() => navigateAndClose("/receipts")}>
             Receipts
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              navigateAndClose("/transfers");
-              titleChange();
-            }}
-          >
+          <MenuItem onClick={() => navigateAndClose("/transfers")}>
             Transfers
           </MenuItem>
         </Menu>
       </Box>
-      <Tables
-        gridTitle={gridTitle}
-        setGridTitle={setGridTitle}
-        columns={columns}
-        rows={rows}
-      />
     </div>
   );
 }
