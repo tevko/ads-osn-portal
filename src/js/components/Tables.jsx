@@ -3,17 +3,14 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 //import { Typography } from "@mui/material";
 
-export default function Tables() {
+export default function Tables({ rowsData, columnsData, gridTitle }) {
   const [pageSize, setPageSize] = React.useState(10);
-
-  const [columnsData, setColumnsData] = useState(columnsOne);
-  const [rowsData, setRowsData] = useState(rowsOne);
 
   return (
     <>
-      {/* <Typography variant="h5" style={{ color: "#383D41" }}>
+      <Typography variant="h5" style={{ color: "#383D41" }}>
         {gridTitle}
-      </Typography> */}
+      </Typography>
       <div style={{ height: 600, width: "100%" }}>
         <DataGrid
           autoheight
