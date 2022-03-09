@@ -29,3 +29,7 @@ export default function Tables({ gridTitle, rows, columns }) {
     </>
   );
 }
+
+//need resizable columns -- dataGridPro -- monthly fee
+//style table
+//add homepage dashboard UI
