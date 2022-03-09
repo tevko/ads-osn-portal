@@ -37,8 +37,8 @@ export default function Header({ routeTo, getPageTitle }) {
 
   const titleChange = () => {
     setGridTitle("Items Transferred to Pulley Stock");
-    setRows(rowsTwo);
     setColumns(columnsTwo);
+    setRows(rowsTwo);
   };
 
   return (
