@@ -4,13 +4,13 @@ const getTableName = (scope) => {
   // table names will probably need to be changed
   switch (scope) {
     case "purchase-orders":
-      return "PurchaseOrders";
+      return "[ZZZTST].[dbo].[View_PORTAL_5A_PAYMENTS]";
     case "receipts":
-      return "Receipts";
+      return "[ZZZTST].[dbo].[View_PORTAL__2_PORECEIPTS]";
     case "invoices":
-      return "Invoices";
+      return "[ZZZTST].[dbo].[View_PORTAL_4A_POINVOICES]";
     case "transfers":
-      return "Transfers";
+      return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
     default:
       return null;
   }
@@ -20,7 +20,7 @@ const getTableName = (scope) => {
 const buildQuery = (scope, queryParam) => {
   let query = `SELECT * FROM ${getTableName(scope)}`;
   if (queryParam.id) {
-    query += ` WHERE id = ${queryParam.id}`;
+    query += ` WHERE VDCODE = '${queryParam.id}'`;
   }
   // more clauses will be added here including pagination
   return query;
