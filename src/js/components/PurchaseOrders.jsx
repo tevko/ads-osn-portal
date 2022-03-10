@@ -6,7 +6,7 @@ import rowsOne from "./data/Rows";
 
 export default function PurchaseOrders() {
   const { data, error, loading } = useFetch(
-    `${window.API_BASE_URL}/purchase-orders`
+    `${window.API_BASE_URL}/purchase-orders?id=BUN01`
   );
   if (loading) return <p>Loading...</p>;
   if (data) return;
