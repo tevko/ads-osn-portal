@@ -11,7 +11,7 @@ export default function Invoices() {
   return (
     <Tables
       title="Purchase Orders"
-      rows={[
+      columns={[
         {
           field: "PONUMBER",
           headerName: "PO Number",
@@ -63,7 +63,7 @@ export default function Invoices() {
           flex: 1,
         },
       ]}
-      columns={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
+      rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
     />
   );
 }
