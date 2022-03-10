@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-
-//import { Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 export default function Tables({ rowsData, columnsData, gridTitle }) {
   const [pageSize, setPageSize] = React.useState(10);
