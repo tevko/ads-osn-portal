@@ -63,7 +63,7 @@ export default function Invoices() {
           flex: 1,
         },
       ]}
-      columns={data.map((obj) => ({ ...obj, id: obj.PONUMBER }))}
+      columns={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
     />
   );
 }
