@@ -13,7 +13,7 @@ export default function PurchaseOrders() {
   <Tables
     columnsData={columnsOne}
     rowsData={rowsOne}
-    gridTitle="Open Purchase Orders"
+    gridTitle="Purchase Orders"
   />;
 
   if (error) return <p>Error: {error.message}</p>;
