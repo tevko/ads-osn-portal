@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import columnsOne from "./data/Column";
 import tableOne from "./data/Rows";
 
-export default function Tables({ title, rows, columns }) {
+export default function Tables({ title, rows = [], columns = [] }) {
   const [pageSize, setPageSize] = React.useState(25);
   return (
     <>
