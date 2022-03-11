@@ -49,12 +49,12 @@ export default function AppShell(user, logout) {
       <Header routeTo={routeTo} getPageTitle={getPageTitle} />
       {currentComponent || <p>404 page not found</p>}
       {/* Include header nav and footer components https://mui.com/components/app-bar/ */}
-      {/* <Button
+      <Button
         variant="contained"
         onClick={() => logout({ returnTo: window.location.origin })}
       >
         Logout
-      </Button> */}
+      </Button>
     </Container>
   );
 }

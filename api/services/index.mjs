@@ -4,11 +4,11 @@ const getTableName = (scope) => {
   // table names will probably need to be changed
   switch (scope) {
     case "purchase-orders":
-      return "[ZZZTST].[dbo].[View_PORTAL_5A_PAYMENTS]";
+      return "[ZZZTST].[dbo].[View_PORTAL_1_POVIEW]";
     case "receipts":
       return "[ZZZTST].[dbo].[View_PORTAL__2_PORECEIPTS]";
     case "invoices":
-      return "[ZZZTST].[dbo].[View_PORTAL_4A_POINVOICES]";
+      return "[ZZZTST].[dbo].[View_4_POTRANS_INVOICE_STATUS]";
     case "transfers":
       return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
     default:
