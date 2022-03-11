@@ -28,7 +28,7 @@ const getPageTitle = () => {
   return PageTitles[window.location.pathname] || "Home";
 };
 
-export default function AppShell(user, logout) {
+export default function AppShell({ user, logout }) {
   const [currentComponent, setCurrentComponent] = useState(
     routes[window.location.pathname]
   );
