@@ -2,19 +2,18 @@ import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
 
-export default function Tables({ rowsData, columnsData, gridTitle }) {
+export default function Tables({ title, rows = [], columns = [] }) {
   const [pageSize, setPageSize] = React.useState(10);
-
   return (
     <>
       <Typography variant="h5" style={{ color: "#383D41" }}>
-        {gridTitle}
+        {title}
       </Typography>
       <div style={{ height: 600, width: "100%" }}>
         <DataGrid
           autoheight
-          rows={rowsData}
-          columns={columnsData}
+          rows={rows}
+          columns={columns}
           disableExtendRowFullWidth={false}
           checkboxSelection
           disableSelectionOnClick
