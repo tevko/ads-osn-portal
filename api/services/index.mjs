@@ -19,10 +19,8 @@ const getTableName = (scope) => {
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam) => {
   let query = `SELECT * FROM ${getTableName(scope)}`;
-  if (queryParam.id && scope !== "purchase-orders") {
-    query += ` WHERE VDCODE = '${queryParam.id}'`;
-  } else if (scope === "purchase-orders") {
-    query += ` WHERE Expr2 = '${queryParam.id}'`;
+  if (queryParam.id) {
+    //query += ` WHERE VDCODE = '${queryParam.id}'`;
   }
   // more clauses will be added here including pagination
   return query;
