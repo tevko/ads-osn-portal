@@ -58,7 +58,12 @@ export default function Header({ routeTo, getPageTitle }) {
             >
               {getPageTitle()}
             </Typography>
-            <Button color="inherit">Logout</Button>
+            <Button
+              color="inherit"
+              onClick={() => logout({ returnTo: window.location.origin })}
+            >
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
         <Menu
