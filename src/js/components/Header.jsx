@@ -74,7 +74,11 @@ export default function Header({ routeTo, getPageTitle }) {
           <MenuItem onClick={() => navigateAndClose("/invoices")}>
             Invoices
           </MenuItem>
-          <MenuItem onClick={() => navigateAndClose("/purchase-orders")}>
+          <MenuItem
+            onClick={() => {
+              navigateAndClose("/purchase-orders");
+            }}
+          >
             Purchase Orders
           </MenuItem>
           <MenuItem onClick={() => navigateAndClose("/receipts")}>

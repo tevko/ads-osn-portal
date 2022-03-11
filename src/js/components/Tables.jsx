@@ -1,17 +1,15 @@
 import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
-import columnsOne from "./data/Column";
-import tableOne from "./data/Rows";
 
 export default function Tables({ title, rows = [], columns = [] }) {
-  const [pageSize, setPageSize] = React.useState(25);
+  const [pageSize, setPageSize] = React.useState(10);
   return (
     <>
       <Typography variant="h5" style={{ color: "#383D41" }}>
         {title}
       </Typography>
-      <div style={{ height: 680, width: "100%" }}>
+      <div style={{ height: 600, width: "100%" }}>
         <DataGrid
           autoheight
           rows={rows}
@@ -22,7 +20,7 @@ export default function Tables({ title, rows = [], columns = [] }) {
           components={{ Toolbar: GridToolbar }}
           pageSize={pageSize}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[25, 50, 100]}
+          rowsPerPageOptions={[10, 15, 20]}
           pagination
           scroll
         />
@@ -30,3 +28,7 @@ export default function Tables({ title, rows = [], columns = [] }) {
     </>
   );
 }
+
+//need resizable columns -- dataGridPro -- monthly fee
+//style table
+//add homepage dashboard UI
