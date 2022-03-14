@@ -3,8 +3,11 @@ import express from "express";
 import { auth } from "express-oauth2-jwt-bearer";
 import sql from "mssql";
 import cors from "cors";
+import jwt from "express-jwt";
+import jwks from "jwks-rsa";
 
 import routes from "./routes/index.mjs";
+import { validateJwt } from "./services/jwtValidator";
 
 const config = {
   user: process.env.DB_USER,
@@ -25,20 +28,25 @@ const config = {
 
 const appPool = new sql.ConnectionPool(config);
 
-// const checkJwt = auth({
-//   audience: 'YOUR_API_IDENTIFIER',
-//   issuerBaseURL: `https://YOUR_DOMAIN/`,
-// });
-
-// https://auth0.com/docs/quickstart/backend/nodejs/01-authorization
-
-// need to extract user ID from JWT
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: "https://dev-u68d-m8y.us.auth0.com/.well-known/jwks.json",
+  }),
+  audience: "https://mzfweb2.adssglobal.net/api/",
+  issuer: "https://dev-u68d-m8y.us.auth0.com/",
+  algorithms: ["RS256"],
+});
 
 const app = express();
 
-app.use(cors({ credentials: true, origin: true }));
+app.use(jwtCheck);
 
-// app.use(checkJwt);
+app.use(validateJwt);
+
+app.use(cors({ credentials: true, origin: true }));
 
 app.use(express.json());
 
