@@ -3,5 +3,23 @@ html {
 }
 
 body {
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(24, 23, 22);
+}
+
+.login_bar {
+  width: 1200px;
+}
+
+.logo {
+  width: 500px;
+}
+
+.login_header {
+  max-width: 1000px;
+  height: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  flex-direction: column;
 }
