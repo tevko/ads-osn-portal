@@ -7,7 +7,6 @@ import jwt from "express-jwt";
 import jwks from "jwks-rsa";
 
 import routes from "./routes/index.mjs";
-import { validateJwt } from "./services/jwtValidator";
 
 const config = {
   user: process.env.DB_USER,
@@ -43,8 +42,6 @@ const jwtCheck = jwt({
 const app = express();
 
 app.use(jwtCheck);
-
-app.use(validateJwt);
 
 app.use(cors({ credentials: true, origin: true }));
 
