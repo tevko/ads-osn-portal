@@ -23,3 +23,14 @@ body {
   margin: auto;
   flex-direction: column;
 }
+
+.login_heading {
+  color: #e9e8e8;
+  font-family: "Roboto Slab", serif;
+  font-size: 30pt;
+}
+
+.login_btn:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}

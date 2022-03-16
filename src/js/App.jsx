@@ -24,9 +24,11 @@ const App = () => {
         style={{ background: "#FF3E00", width: "100px" }}
         variant="contained"
         onClick={() => loginWithRedirect()}
+        className="login_btn"
       >
         Log In
       </Button>
+      <h1 className="login_heading">Vendor Portal</h1>
     </div>
   );
 };
