@@ -32,7 +32,7 @@ export default function Header({ routeTo, getPageTitle, logout }) {
           flexGrow: 1,
         }}
       >
-        <AppBar position="static">
+        <AppBar position="static" color="primary">
           <Toolbar>
             <IconButton
               aria-controls={open ? "basic-menu" : undefined}

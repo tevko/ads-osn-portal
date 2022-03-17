@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: rgb(24, 23, 22);
+  background-color: #303030;
 }
 
 .login_bar {
@@ -11,12 +11,14 @@ body {
 }
 
 .logo {
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .login_header {
   max-width: 1000px;
-  height: 600px;
+  height: 100vh;
+  min-height: 400px;
   display: flex;
   justify-content: space-around;
   align-items: center;
