@@ -9,7 +9,7 @@ const getTableName = (scope) => {
     case "receipts":
       return "[ZZZTST].[dbo].[View_PORTAL__2_PORECEIPTS]";
     case "invoices":
-      return "[ZZZTST].[dbo].[View_4_POTRANS_INVOICE_STATUS]";
+      return "[ZZZTST].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]";
     case "transfers":
       return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
     default:
@@ -19,6 +19,7 @@ const getTableName = (scope) => {
 
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam, role) => {
+  console.log(role);
   let query = `SELECT * FROM ${getTableName(scope)}`;
   if (role !== "admin") {
     //query += ` WHERE VDCODE = '${role}'`;
