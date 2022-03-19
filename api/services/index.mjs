@@ -40,6 +40,8 @@ const buildQuery = (scope, queryParam, role) => {
     }
   }
 
+  console.log({ msg: "the query is", query });
+
   return query;
 };
 
