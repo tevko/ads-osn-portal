@@ -19,7 +19,6 @@ const getTableName = (scope) => {
 
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam, role) => {
-  console.log(role);
   let query = `SELECT * FROM ${getTableName(scope)}`;
   if (role !== "admin") {
     //query += ` WHERE VDCODE = '${role}'`;
@@ -48,7 +47,7 @@ const buildQuery = (scope, queryParam, role) => {
 export default async ({ scope, queryParam, pool, auth }) => {
   try {
     const { role } = await getRoleFromJwt(auth);
-    const result = await pool.query(buildQuery(scope, queryParam, role));
+    const result = await pool.query(buildQuery(scope, queryParam, role[0]));
     return result.recordset;
   } catch (error) {
     console.log(error);
