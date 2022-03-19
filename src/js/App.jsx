@@ -25,7 +25,7 @@ const App = () => {
       }
     };
     f();
-  }, []);
+  }, [isAuthenticated]);
 
   if (isLoading) {
     return <div>Loading ...</div>;
