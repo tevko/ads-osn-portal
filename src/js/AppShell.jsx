@@ -29,13 +29,13 @@ const themeOptions = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#ff4c0d",
+      main: "#ff5414",
     },
     secondary: {
       main: "#f50057",
     },
     background: {
-      default: "#ff4c0d",
+      default: "#ff5414",
       paper: "#33353e",
     },
     text: {

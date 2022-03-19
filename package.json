@@ -34,6 +34,8 @@
     "@mui/material": "^5.4.0",
     "@mui/x-data-grid": "^5.5.1",
     "@mui/x-data-grid-pro": "^5.5.1",
+    "@nivo/bar": "^0.79.1",
+    "@nivo/core": "^0.79.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
