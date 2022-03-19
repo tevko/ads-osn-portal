@@ -1,5 +1,5 @@
 import sql from "mssql";
-import { getRoleFromJwt } from "./jwtValidator";
+import { getRoleFromJwt } from "./jwtValidator.mjs";
 
 const getTableName = (scope) => {
   // table names will probably need to be changed
