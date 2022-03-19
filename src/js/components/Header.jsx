@@ -60,7 +60,10 @@ export default function Header({ routeTo, getPageTitle, logout }) {
             </Typography>
             <Button
               color="inherit"
-              onClick={() => logout({ returnTo: window.location.origin })}
+              onClick={() => {
+                window.localStorage.removeItem("_A_C_T_");
+                logout({ returnTo: window.location.origin });
+              }}
             >
               Logout
             </Button>

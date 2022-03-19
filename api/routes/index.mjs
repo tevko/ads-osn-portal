@@ -6,6 +6,7 @@ export default (app) => {
       scope: "purchase-orders",
       queryParam: req.query,
       pool: app.locals.db,
+      auth: req.headers.authorization,
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
@@ -14,6 +15,7 @@ export default (app) => {
       scope: "receipts",
       queryParam: req.query,
       pool: app.locals.db,
+      auth: req.headers.authorization,
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
@@ -22,6 +24,7 @@ export default (app) => {
       scope: "invoices",
       queryParam: req.query,
       pool: app.locals.db,
+      auth: req.headers.authorization,
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
@@ -30,6 +33,7 @@ export default (app) => {
       scope: "transfers",
       queryParam: req.query,
       pool: app.locals.db,
+      auth: req.headers.authorization,
     });
     return res.status(data.error ? 500 : 200).json(data);
   });

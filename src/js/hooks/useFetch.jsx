@@ -8,7 +8,14 @@ const useFetch = (url, options) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await fetch(url, { credentials: "include", ...options });
+        // fetch with authorization header
+        const result = await fetch(url, {
+          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+          },
+          ...options,
+        });
         const json = await result.json();
         setData(json);
       } catch (err) {
