@@ -20,7 +20,7 @@ const getTableName = (scope) => {
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam, role) => {
   let query = `SELECT * FROM ${getTableName(scope)}`;
-  if (role !== "admin") {
+  if (role !== "Admin") {
     //query += ` WHERE VDCODE = '${role}'`;
     switch (scope) {
       case "purchase-orders":
