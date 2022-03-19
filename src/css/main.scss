@@ -3,5 +3,36 @@ html {
 }
 
 body {
-  background-color: rgb(235, 235, 235);
+  background-color: #2b2f37;
+}
+
+.login_bar {
+  width: 1200px;
+}
+
+.logo {
+  max-width: 500px;
+  width: 100%;
+}
+
+.login_header {
+  max-width: 1000px;
+  height: 100vh;
+  min-height: 400px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  flex-direction: column;
+}
+
+.login_heading {
+  color: #e9e8e8;
+  font-family: "Roboto Slab", serif;
+  font-size: 30pt;
+}
+
+.login_btn:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Container from "@mui/material/Container";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import Header from "./components/Header";
 import PurchaseOrders from "./components/PurchaseOrders";
@@ -24,6 +25,26 @@ const PageTitles = {
   "/": "Home",
 };
 
+const themeOptions = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#ff5414",
+    },
+    secondary: {
+      main: "#f50057",
+    },
+    background: {
+      default: "#ff5414",
+      paper: "#33353e",
+    },
+    text: {
+      primary: "#fff",
+      secondary: "#ccc",
+    },
+  },
+});
+
 const getPageTitle = () => {
   return PageTitles[window.location.pathname] || "Home";
 };
@@ -44,10 +65,12 @@ export default function AppShell({ user, logout }) {
     }
   };
   return (
-    <Container maxWidth="lg">
-      <Header routeTo={routeTo} getPageTitle={getPageTitle} logout={logout} />
-      {currentComponent || <p>404 page not found</p>}
-      {/* Include header nav and footer components https://mui.com/components/app-bar/ */}
-    </Container>
+    <ThemeProvider theme={themeOptions}>
+      <Container maxWidth="lg">
+        <Header routeTo={routeTo} getPageTitle={getPageTitle} logout={logout} />
+        {currentComponent || <p>404 page not found</p>}
+        {/* Include header nav and footer components https://mui.com/components/app-bar/ */}
+      </Container>
+    </ThemeProvider>
   );
 }

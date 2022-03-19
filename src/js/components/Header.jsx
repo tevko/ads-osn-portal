@@ -32,7 +32,7 @@ export default function Header({ routeTo, getPageTitle, logout }) {
           flexGrow: 1,
         }}
       >
-        <AppBar position="static">
+        <AppBar position="static" color="default">
           <Toolbar>
             <IconButton
               aria-controls={open ? "basic-menu" : undefined}
@@ -41,8 +41,8 @@ export default function Header({ routeTo, getPageTitle, logout }) {
               onClick={handleClick}
               size="large"
               edge="start"
-              color="inherit"
               aria-label="menu"
+              color="primary"
               sx={{
                 mr: 2,
               }}

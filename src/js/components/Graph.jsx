@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
-export default function Home() {
+export default function Graph() {
   const data = [
     {
       day: "Monday",
@@ -35,7 +35,6 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Bar</h1>
       <ResponsiveBar
         data={data}
         keys={["degress"]}
@@ -43,6 +42,7 @@ export default function Home() {
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.4}
         valueScale={{ type: "linear" }}
+        colors="#3182CE"
         animate={true}
         enableLabel={false}
         axisTop={null}
