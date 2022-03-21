@@ -8,14 +8,14 @@ import { Typography } from "@mui/material";
 export default function Home() {
   return (
     <div className="dash_page">
-      <Typography variant="h4" color="#fff">
+      <Typography variant="h5" color="#fff">
         Relevant Data
       </Typography>
       <div className="pie_charts">
         <Chart data={ChartData} />
         <Chart data={ChartData} />
       </div>
-      <Typography variant="h4" color="#fff">
+      <Typography variant="h5" color="#fff">
         More Data
       </Typography>
       <div className="bar_chart">

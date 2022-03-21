@@ -40,7 +40,7 @@ const themeOptions = createTheme({
     },
     background: {
       default: "#ff5414",
-      paper: "#33353e",
+      paper: "rgba(52, 55, 68, 0.8)",
     },
     text: {
       primary: "#fff",
