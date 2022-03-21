@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Container from "@mui/material/Container";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import {
+  ThemeProvider,
+  createTheme,
+  TypographyVariants,
+} from "@mui/material/styles";
 
 import Header from "./components/Header";
 import PurchaseOrders from "./components/PurchaseOrders";
