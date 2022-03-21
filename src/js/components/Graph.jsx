@@ -11,7 +11,7 @@ export default function Graph({ data }) {
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.4}
         valueScale={{ type: "linear" }}
-        colors="#3182CE"
+        colors="#12E1DE"
         animate={true}
         enableLabel={false}
         axisTop={null}
