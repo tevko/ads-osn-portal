@@ -41,7 +41,19 @@ body {
   transition: 0.2s;
 }
 
-.graph {
-  border: solid #e9e8e8 1px;
-  border-radius: 20px;
+.bar_chart {
+  background: #33353e;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dash_page {
+  margin-top: 50px;
+}
+
+.pie_charts {
+  margin-bottom: 100px;
+  display: flex;
+  background: #33353e;
+  justify-content: center;
 }
