@@ -12,6 +12,8 @@ const getTableName = (scope) => {
       return "[ZZZTST].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]";
     case "transfers":
       return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
+    case "user-types":
+      return "[ZZZTST].[dbo].[View_PORTAL_View_5_USERS]"; // this will change
     default:
       return null;
   }
@@ -20,8 +22,7 @@ const getTableName = (scope) => {
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam, role) => {
   let query = `SELECT * FROM ${getTableName(scope)}`;
-  if (role !== "Admin") {
-    //query += ` WHERE VDCODE = '${role}'`;
+  if (role !== "Admin" && scope !== "user-types") {
     switch (scope) {
       case "purchase-orders":
         query += ` WHERE VENDNAME = '${role}'`;
