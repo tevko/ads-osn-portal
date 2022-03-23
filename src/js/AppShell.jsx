@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Container from "@mui/material/Container";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import {
+  ThemeProvider,
+  createTheme,
+  TypographyVariants,
+} from "@mui/material/styles";
 
 import Header from "./components/Header";
 import PurchaseOrders from "./components/PurchaseOrders";
@@ -36,7 +40,7 @@ const themeOptions = createTheme({
     },
     background: {
       default: "#ff5414",
-      paper: "#33353e",
+      paper: "rgba(52, 55, 68, 0.8)",
     },
     text: {
       primary: "#fff",

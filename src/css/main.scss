@@ -40,3 +40,22 @@ body {
   transform: scale(1.1);
   transition: 0.2s;
 }
+
+.bar_chart {
+  background: #33353e;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 1px 3px 5px rgb(29, 28, 28);
+}
+
+.dash_page {
+  margin-top: 50px;
+}
+
+.pie_charts {
+  margin-bottom: 100px;
+  display: flex;
+  background: #33353e;
+  justify-content: center;
+  box-shadow: 1px 3px 5px rgb(29, 28, 28);
+}
