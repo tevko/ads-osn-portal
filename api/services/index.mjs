@@ -13,7 +13,7 @@ const getTableName = (scope) => {
     case "transfers":
       return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
     case "user-types":
-      return "[ZZZTST].[dbo].[View_PORTAL_View_5_USERS]"; // this will change
+      return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]"; // this will change
     default:
       return null;
   }

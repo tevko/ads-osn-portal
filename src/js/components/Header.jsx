@@ -10,7 +10,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-export default function Header({ routeTo, getPageTitle, logout }) {
+export default function Header({ routeTo, getPageTitle, logout, user }) {
+  const role = user["https://mzfweb2.adssglobal.net/api/roles"][0];
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -95,6 +96,11 @@ export default function Header({ routeTo, getPageTitle, logout }) {
           <MenuItem onClick={() => navigateAndClose("/transfers")}>
             Transfers
           </MenuItem>
+          {role === "Admin" && (
+            <MenuItem onClick={() => navigateAndClose("/admin")}>
+              Admin
+            </MenuItem>
+          )}
         </Menu>
       </Box>
     </div>
