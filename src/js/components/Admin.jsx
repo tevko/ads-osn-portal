@@ -58,7 +58,7 @@ export default function Admin(props) {
 
   return (
     <div className="admin_page">
-      <Typography variant="h4" className="new_user_heading" color="secondary">
+      <Typography variant="h4" className="new_user_heading" color="primary">
         Create User
       </Typography>
 
