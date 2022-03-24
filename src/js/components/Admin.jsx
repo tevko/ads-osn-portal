@@ -73,7 +73,7 @@ export default function Admin(props) {
           ))}
         </select> */}
 
-        <div style={{ width: "210px" }}>
+        <Box sx={{ width: 300 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">User Type</InputLabel>
             <Select
@@ -92,7 +92,7 @@ export default function Admin(props) {
               ))}
             </Select>
           </FormControl>
-        </div>
+        </Box>
         <TextField
           required
           type="email"
@@ -100,6 +100,7 @@ export default function Admin(props) {
           onChange={(e) => setEmail(e.target.value)}
           label="Email Address"
           variant="outlined"
+          style={{ width: "100%" }}
         />
         <TextField
           required
@@ -108,9 +109,11 @@ export default function Admin(props) {
           onChange={(e) => setPassword(e.target.value)}
           label="Password"
           variant="outlined"
+          style={{ width: "100%" }}
         />
         <Button
           color="primary"
+          style={{ width: "100%" }}
           size="large"
           variant="outlined"
           disabled={
@@ -122,7 +125,7 @@ export default function Admin(props) {
           }
           type="submit"
         >
-          Add User Type
+          CREATE USER
         </Button>
       </form>
     </div>
