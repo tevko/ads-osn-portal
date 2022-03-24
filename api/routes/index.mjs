@@ -59,14 +59,13 @@ export default (app) => {
   // });
   // });
   // get available user types based on DB data
-  // app.get("/user-types", async (req, res) => {
-  // returns all user names, presents a dropdown in admin dashboard, new user created there will have a role that matches the name returned here
-  //   const data = await getData({
-  //     scope: "user-types",
-  //     queryParam: req.query,
-  //     pool: app.locals.db,
-  //     auth: req.headers.authorization,
-  //   });
-  //   return res.status(data.error ? 500 : 200).json(data);
-  // });
+  app.get("/user-types", async (req, res) => {
+    const data = await getData({
+      scope: "user-types",
+      queryParam: req.query,
+      pool: app.locals.db,
+      auth: req.headers.authorization,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
+  });
 };

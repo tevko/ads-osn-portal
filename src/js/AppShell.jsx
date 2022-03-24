@@ -12,13 +12,15 @@ import Receipts from "./components/Receipts";
 import Invoices from "./components/Invoices";
 import Transfers from "./components/Transfers";
 import Home from "./components/Home";
+import Admin from "./components/Admin";
 
 const routes = {
-  "/purchase-orders": <PurchaseOrders />,
-  "/receipts": <Receipts />,
-  "/invoices": <Invoices />,
-  "/transfers": <Transfers />,
-  "/": <Home />,
+  "/purchase-orders": (props) => <PurchaseOrders {...props} />,
+  "/receipts": (props) => <Receipts {...props} />,
+  "/invoices": (props) => <Invoices {...props} />,
+  "/transfers": (props) => <Transfers {...props} />,
+  "/": (props) => <Home {...props} />,
+  "/admin": (props) => <Admin {...props} />,
 };
 
 const PageTitles = {
@@ -27,6 +29,7 @@ const PageTitles = {
   "/invoices": "Invoices",
   "/transfers": "Transfers",
   "/": "Home",
+  "/admin": "Admin",
 };
 
 const themeOptions = createTheme({
@@ -55,25 +58,29 @@ const getPageTitle = () => {
 
 export default function AppShell({ user, logout }) {
   const [currentComponent, setCurrentComponent] = useState(
-    routes[window.location.pathname]
+    routes[window.location.pathname](user)
   );
   const routeTo = (path) => {
     if (path !== window.location.pathname) {
       window.history.pushState(path, null, path);
-      setCurrentComponent(routes[path]);
+      setCurrentComponent(routes[path](user));
     }
   };
   window.onpopstate = (event) => {
     if (currentComponent !== routes[window.location.pathname]) {
-      setCurrentComponent(routes[event.state]);
+      setCurrentComponent(routes[event.state](user));
     }
   };
   return (
     <ThemeProvider theme={themeOptions}>
       <Container maxWidth="lg">
-        <Header routeTo={routeTo} getPageTitle={getPageTitle} logout={logout} />
+        <Header
+          routeTo={routeTo}
+          getPageTitle={getPageTitle}
+          logout={logout}
+          user={user}
+        />
         {currentComponent || <p>404 page not found</p>}
-        {/* Include header nav and footer components https://mui.com/components/app-bar/ */}
       </Container>
     </ThemeProvider>
   );
