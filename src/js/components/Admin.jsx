@@ -63,16 +63,6 @@ export default function Admin(props) {
       </Typography>
 
       <form onSubmit={createUser} className="user_types_form">
-        {/*   <select onChange={(e) => setSelectedUserType(e.target.value)}>
-          <option value="">Select a user type</option>
-          <option value="Admin">Admin</option>
-          {(userTypesData || []).map((userType) => (
-            <option key={userType.VENDORID} value={userType.VENDNAME}>
-              {userType.VENDNAME}
-            </option>
-          ))}
-        </select> */}
-
         <Box sx={{ width: 300 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">User Type</InputLabel>
