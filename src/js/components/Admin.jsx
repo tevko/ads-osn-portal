@@ -115,7 +115,7 @@ export default function Admin(props) {
           }
           type="submit"
         >
-          CREATE USER
+          ADD USER
         </Button>
       </form>
     </div>

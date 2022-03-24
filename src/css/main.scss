@@ -70,13 +70,16 @@ body {
   padding: 20px;
   width: 500px;
   margin: 50px auto 0 auto;
-  height: 400px;
+  height: 500px;
   box-shadow: 1px 3px 5px rgb(29, 28, 28);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .user_types_form {
   height: 300px;
-  margin: auto;
   display: flex;
   flex-direction: column;
   width: 300px;
