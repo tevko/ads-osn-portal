@@ -39,7 +39,7 @@ const themeOptions = createTheme({
       main: "#ff5414",
     },
     secondary: {
-      main: "#f50057",
+      main: "#1789FC",
     },
     background: {
       default: "#ff5414",

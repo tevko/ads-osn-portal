@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+import "../../css/main.scss";
 
 export default function Admin(props) {
   const [selectedUserType, setSelectedUserType] = useState(null);
@@ -47,11 +57,13 @@ export default function Admin(props) {
   if (userTypeserror) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h1>Admin</h1>
-      <h2>User Types</h2>
-      <form onSubmit={createUser}>
-        <select onChange={(e) => setSelectedUserType(e.target.value)}>
+    <div className="admin_page">
+      <Typography variant="h4" className="new_user_heading" color="secondary">
+        Create User
+      </Typography>
+
+      <form onSubmit={createUser} className="user_types_form">
+        {/*   <select onChange={(e) => setSelectedUserType(e.target.value)}>
           <option value="">Select a user type</option>
           <option value="Admin">Admin</option>
           {(userTypesData || []).map((userType) => (
@@ -59,20 +71,48 @@ export default function Admin(props) {
               {userType.VENDNAME}
             </option>
           ))}
-        </select>
-        <input
+        </select> */}
+
+        <div style={{ width: "210px" }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">User Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedUserType}
+              label="User Type"
+              onChange={(e) => setSelectedUserType(e.target.value)}
+            >
+              <MenuItem value="">Select a user</MenuItem>
+              <MenuItem value="Admin">Admin</MenuItem>
+              {(userTypesData || []).map((userType) => (
+                <MenuItem key={userType.VENDORID} value={userType.VENDNAME}>
+                  {userType.VENDNAME}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <TextField
           required
           type="email"
+          size="large"
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email Address"
+          label="Email Address"
+          variant="outlined"
         />
-        <input
+        <TextField
           required
           type="password"
+          size="large"
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          label="Password"
+          variant="outlined"
         />
-        <button
+        <Button
+          color="primary"
+          size="large"
+          variant="outlined"
           disabled={
             createUserLoading ||
             !selectedUserType ||
@@ -83,7 +123,7 @@ export default function Admin(props) {
           type="submit"
         >
           Add User Type
-        </button>
+        </Button>
       </form>
     </div>
   );

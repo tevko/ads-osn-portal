@@ -59,3 +59,27 @@ body {
   justify-content: center;
   box-shadow: 1px 3px 5px rgb(29, 28, 28);
 }
+
+.new_user_heading {
+  display: inline-block;
+}
+
+.admin_page {
+  border-radius: 30px;
+  background-color: #33353e;
+  padding: 20px;
+  width: 500px;
+  margin: 50px auto 0 auto;
+  height: 400px;
+}
+
+.user_types_form {
+  height: 300px;
+  margin-bottom: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: flex-start;
+  justify-content: space-around;
+}
