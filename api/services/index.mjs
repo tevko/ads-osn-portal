@@ -77,25 +77,30 @@ export const createUser = async (body) => {
     }
   );
   const { access_token } = await tokenCall.json();
-  const user = await fetch(`https://dev-u68d-m8y.us.auth0.com/api/v2/users`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      connection: "Username-Password-Authentication",
-      email: body.email,
-      password: body.password,
-      app_metadata: {
-        authorization: {
-          groups: [],
-          roles: [body.role],
-          permissions: [],
-        },
+  console.log("Creating user with body:" + body.email);
+  const userCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
       },
-    }),
-  });
+      body: JSON.stringify({
+        connection: "Username-Password-Authentication",
+        email: body.email,
+        password: body.password,
+        app_metadata: {
+          authorization: {
+            groups: [],
+            roles: [body.role],
+            permissions: [],
+          },
+        },
+      }),
+    }
+  );
+  const user = await userCall.json();
   return user;
 };
 
