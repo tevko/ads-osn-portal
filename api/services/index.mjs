@@ -76,7 +76,7 @@ export const createUser = async (body) => {
       }),
     }
   );
-  const { access_token } = await token.json();
+  const { access_token } = await tokenCall.json();
   const user = await fetch(`https://dev-u68d-m8y.us.auth0.com/api/v2/users`, {
     method: "POST",
     headers: {
@@ -115,7 +115,7 @@ export const getAllUsers = async () => {
       }),
     }
   );
-  const { access_token } = await token.json();
+  const { access_token } = await tokenCall.json();
   const users = await fetch(`https://dev-u68d-m8y.us.auth0.com/api/v2/users`, {
     method: "GET",
     headers: {
