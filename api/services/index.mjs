@@ -61,7 +61,8 @@ export const getData = async ({ scope, queryParam, pool, auth }) => {
 };
 
 export const createUser = async (body) => {
-  const details = JSON.parse(body);
+  const details = body;
+  console.log({ msg: "the details are", details });
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
     {
