@@ -116,12 +116,16 @@ export const getAllUsers = async () => {
     }
   );
   const { access_token } = await tokenCall.json();
-  const users = await fetch(`https://dev-u68d-m8y.us.auth0.com/api/v2/users`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-      "Content-Type": "application/json",
-    },
-  });
+  const usersData = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const users = await usersData.json();
   return users;
 };

@@ -16,6 +16,7 @@ export default function Admin(props) {
           Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
         },
       })
+      .then((res) => res.json())
       .then((data) => {
         setUsers(data);
       });
@@ -24,9 +25,7 @@ export default function Admin(props) {
   const role = props["https://mzfweb2.adssglobal.net/api/roles"];
   if (role[0] !== "Admin") return <h1>Access Denied</h1>;
 
-  const { userTypesData, userTypeserror, userTypesloading } = useFetch(
-    `${window.API_BASE_URL}/user-types`
-  );
+  const userTypes = useFetch(`${window.API_BASE_URL}/user-types`);
 
   const createUser = (e) => {
     e.preventDefault();
@@ -68,8 +67,8 @@ export default function Admin(props) {
     getAllUsers();
   }, []);
 
-  if (userTypesloading) return <p>Loading...</p>;
-  if (userTypeserror) return <p>Error: {error.message}</p>;
+  if (userTypes.loading) return <p>Loading...</p>;
+  if (userTypes.error) return <p>Error: {error.message}</p>;
 
   console.log(users);
 
@@ -81,7 +80,7 @@ export default function Admin(props) {
         <select onChange={(e) => setSelectedUserType(e.target.value)}>
           <option value="">Select a user type</option>
           <option value="Admin">Admin</option>
-          {(userTypesData || []).map((userType) => (
+          {(userTypes?.data || []).map((userType) => (
             <option key={userType.VENDORID} value={userType.VENDNAME}>
               {userType.VENDNAME}
             </option>
