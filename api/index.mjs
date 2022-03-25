@@ -5,7 +5,6 @@ import sql from "mssql";
 import cors from "cors";
 import jwt from "express-jwt";
 import jwks from "jwks-rsa";
-//bodyparser
 import bodyParser from "body-parser";
 
 import routes from "./routes/index.mjs";
@@ -44,6 +43,8 @@ const jwtCheck = jwt({
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(jwtCheck);
 
