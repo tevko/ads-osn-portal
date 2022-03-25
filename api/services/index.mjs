@@ -62,7 +62,6 @@ export const getData = async ({ scope, queryParam, pool, auth }) => {
 
 export const createUser = async (body) => {
   const details = body;
-  console.log({ msg: "the details are", details });
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
     {
@@ -79,7 +78,6 @@ export const createUser = async (body) => {
     }
   );
   const { access_token } = await tokenCall.json();
-  console.log("Creating user with body:" + body.email);
   const userCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/api/v2/users`,
     {
@@ -95,7 +93,7 @@ export const createUser = async (body) => {
         app_metadata: {
           authorization: {
             groups: [],
-            roles: [details.role],
+            roles: [details.userRole],
             permissions: [],
           },
         },
