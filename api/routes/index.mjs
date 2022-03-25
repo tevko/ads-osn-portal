@@ -41,7 +41,7 @@ export default (app) => {
     const users = await getAllUsers();
     return res.status(200).json(users);
   });
-  app.post("/users", async (req, res) => {
+  app.post("/create-user", async (req, res) => {
     const response = await createUser(req.body);
     return res.status(response.error ? 500 : 200).json(response);
   });
