@@ -1,4 +1,6 @@
 import sql from "mssql";
+import fetch from "node-fetch";
+
 import { getRoleFromJwt } from "./jwtValidator.mjs";
 
 const getTableName = (scope) => {
@@ -47,7 +49,7 @@ const buildQuery = (scope, queryParam, role) => {
 };
 
 // returns data from SQL Server
-export default async ({ scope, queryParam, pool, auth }) => {
+export const getData = async ({ scope, queryParam, pool, auth }) => {
   try {
     const { role } = await getRoleFromJwt(auth);
     const result = await pool.query(buildQuery(scope, queryParam, role[0]));
@@ -56,4 +58,70 @@ export default async ({ scope, queryParam, pool, auth }) => {
     console.log(error);
     return { error: "There was a problem getting data" };
   }
+};
+
+export const createUser = async (body) => {
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "pQjk80MhH5hScZOH8wKR6Xxvyf9MQjp6",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await token.json();
+  const user = await fetch(`https://dev-u68d-m8y.us.auth0.com/api/v2/users`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      connection: "Username-Password-Authentication",
+      email: body.email,
+      password: body.password,
+      app_metadata: {
+        authorization: {
+          groups: [],
+          roles: [body.role],
+          permissions: [],
+        },
+      },
+    }),
+  });
+  return user;
+};
+//get all users from auth0 management api
+export const getAllUsers = async () => {
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "pQjk80MhH5hScZOH8wKR6Xxvyf9MQjp6",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await token.json();
+  const users = await fetch(`https://dev-u68d-m8y.us.auth0.com/api/v2/users`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return users;
 };

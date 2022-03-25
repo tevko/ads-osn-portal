@@ -1,4 +1,4 @@
-import getData from "../services/index.mjs";
+import { getData, createUser, getAllUsers } from "../services/index.mjs";
 
 export default (app) => {
   app.get("/purchase-orders", async (req, res) => {
@@ -37,28 +37,14 @@ export default (app) => {
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
-  // get current users from auth0
-  // app.get("/users", async (req, res) => {
-  //   const auth0 = app.locals.auth0;
-  //   const data = await auth0.getUser({
-  //     access_token: req.headers.authorization,
-
-  // });
-  // create user in auth0
-  // app.post("/users", async (req, res) => {
-  // get auth0 management API
-  // const auth0 = app.locals.auth0;
-  // create user in auth0
-  // const data = await auth0.users.create({
-  //   connection: "Username-Password-Authentication",
-  //   email: req.body.email,
-  //   password: req.body.password,
-  //   user_metadata: {
-  //     role: req.body.role,
-  //   },
-  // });
-  // });
-  // get available user types based on DB data
+  app.get("/users", async (req, res) => {
+    const users = await getAllUsers();
+    return res.status(200).json(users);
+  });
+  app.post("/users", async (req, res) => {
+    const response = await createUser(req.body);
+    return res.status(response.error ? 500 : 200).json(response);
+  });
   app.get("/user-types", async (req, res) => {
     const data = await getData({
       scope: "user-types",

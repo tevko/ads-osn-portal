@@ -6,6 +6,13 @@ export default function Admin(props) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [createUserLoading, setCreateUserLoading] = useState(false);
+  const [users, setUsers] = useState([]);
+
+  const getAllUsers = () => {
+    window.fetcher(`${window.API_BASE_URL}/users`).then((data) => {
+      setUsers(data);
+    });
+  };
 
   const role = props["https://mzfweb2.adssglobal.net/api/roles"];
   if (role[0] !== "Admin") return <h1>Access Denied</h1>;
@@ -39,12 +46,25 @@ export default function Admin(props) {
         alert("There was a problem creating the user. Please try again.");
       })
       .finally(() => {
+        // clear form fields
+        setEmail(null);
+        setPassword(null);
+        setSelectedUserType(null);
+        // stop loading
         setCreateUserLoading(false);
+        // refresh users
+        getAllUsers();
       });
   };
 
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
   if (userTypesloading) return <p>Loading...</p>;
   if (userTypeserror) return <p>Error: {error.message}</p>;
+
+  console.log(users);
 
   return (
     <div>
