@@ -61,6 +61,7 @@ export const getData = async ({ scope, queryParam, pool, auth }) => {
 };
 
 export const createUser = async (body) => {
+  const details = JSON.parse(body);
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
     {
@@ -69,7 +70,7 @@ export const createUser = async (body) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        client_id: "pQjk80MhH5hScZOH8wKR6Xxvyf9MQjp6",
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
         client_secret: process.env.AUTH0_CLIENT_SECRET,
         audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
         grant_type: "client_credentials",
@@ -88,12 +89,12 @@ export const createUser = async (body) => {
       },
       body: JSON.stringify({
         connection: "Username-Password-Authentication",
-        email: body.email,
-        password: body.password,
+        email: details.email,
+        password: details.password,
         app_metadata: {
           authorization: {
             groups: [],
-            roles: [body.role],
+            roles: [details.role],
             permissions: [],
           },
         },
@@ -113,7 +114,7 @@ export const getAllUsers = async () => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        client_id: "pQjk80MhH5hScZOH8wKR6Xxvyf9MQjp6",
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
         client_secret: process.env.AUTH0_CLIENT_SECRET,
         audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
         grant_type: "client_credentials",
