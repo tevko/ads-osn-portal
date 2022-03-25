@@ -35,6 +35,7 @@ export default function Admin(props) {
         credentials: "include",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+          "Content-Type": "application/json",
         },
         method: "POST",
         body: JSON.stringify({
