@@ -9,7 +9,7 @@ export default function Admin(props) {
   const [users, setUsers] = useState([]);
 
   const getAllUsers = () => {
-    window.fetcher(`${window.API_BASE_URL}/users`).then((data) => {
+    window.fetch(`${window.API_BASE_URL}/users`).then((data) => {
       setUsers(data);
     });
   };
