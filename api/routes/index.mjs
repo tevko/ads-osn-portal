@@ -42,7 +42,7 @@ export default (app) => {
     return res.status(200).json(users);
   });
   app.post("/create-user", async (req, res) => {
-    console.log("Creating user with body:" + JSON.stringify(req));
+    console.log(req);
     const response = await createUser(req.body);
     return res.status(response.error ? 500 : 200).json(response);
   });
