@@ -98,7 +98,7 @@ export const createUser = async (body) => {
   });
   return user;
 };
-//get all users from auth0 management api
+
 export const getAllUsers = async () => {
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
