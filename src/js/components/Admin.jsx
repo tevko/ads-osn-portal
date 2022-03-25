@@ -9,9 +9,16 @@ export default function Admin(props) {
   const [users, setUsers] = useState([]);
 
   const getAllUsers = () => {
-    window.fetch(`${window.API_BASE_URL}/users`).then((data) => {
-      setUsers(data);
-    });
+    window
+      .fetch(`${window.API_BASE_URL}/users`, {
+        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+        },
+      })
+      .then((data) => {
+        setUsers(data);
+      });
   };
 
   const role = props["https://mzfweb2.adssglobal.net/api/roles"];
