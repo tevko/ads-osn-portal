@@ -58,7 +58,7 @@ export default function Admin(props) {
   if (userTypeserror) return <p>Error: {error.message}</p>;
 
   const Users = [
-    { label: "Select a User", value: "" },
+    { label: "Example", value: "" },
     { label: "Admin", value: "Admin" },
   ];
 
@@ -74,7 +74,7 @@ export default function Admin(props) {
           size="small"
           options={userTypesData || Users}
           sx={{ width: 250 }}
-          renderInput={(params) => <TextField {...params} label="Users" />}
+          renderInput={(params) => <TextField {...params} label="User Type" />}
         />
 
         <TextField
@@ -115,7 +115,76 @@ export default function Admin(props) {
       <Typography variant="h4" color="#fff">
         Existing Users
       </Typography>
-      <Tables rows={RowsOne} columns={ColumnsOne} />
+      <Tables
+        rows={[
+          {
+            id: 1,
+            email: "timevko@gmail.com",
+            name: "Tim Evko",
+            roles: "admin",
+            last_login: "2022-03-15T03:12:07.895Z",
+            email_verified: true,
+            user_id: "google-oauth2|108904416211598514133",
+            login_count: 11,
+            created_at: "2022-02-07T01:36:24.380Z",
+          },
+          {
+            id: 2,
+            email: "ryland.kieffer@outlawsnax.com",
+            name: "ryland.kieffer@outlawsnax.com",
+            roles: "admin",
+            last_login: "2022-03-21T18:55:25.961Z",
+            email_verified: false,
+            user_id: "google-oauth2|108904416211598514133",
+            login_count: 5,
+            created_at: "2022-03-14T18:05:40.770Z",
+          },
+        ]}
+        columns={[
+          {
+            field: "email",
+            headerName: "Email",
+            flex: 1,
+          },
+          {
+            field: "name",
+            headerName: "Name",
+            flex: 1,
+          },
+          {
+            field: "roles",
+            headerName: "User Type",
+            flex: 1,
+          },
+          {
+            field: "last_login",
+            headerName: "Last Login",
+            flex: 1,
+          },
+          {
+            field: "email_verified",
+            headerName: "Email Verified",
+            flex: 1,
+          },
+          {
+            field: "user_id",
+            headerName: "User ID",
+            flex: 1,
+          },
+          {
+            field: "login_count",
+            headerName: "Login Count",
+            flex: 1,
+          },
+          {
+            field: "created_at",
+            headerName: "Created",
+            flex: 1,
+          },
+        ]}
+      />
     </div>
   );
 }
+
+/* "timevko+test1@gmail.com" */
