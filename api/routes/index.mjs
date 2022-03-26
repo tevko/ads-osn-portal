@@ -54,4 +54,43 @@ export default (app) => {
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
+  app.get("/dashboard", async (req, res) => {
+    const data = await Promise.all([
+      getData({
+        scope: "po-dashboard",
+        queryParam: req.query,
+        pool: app.locals.db,
+        auth: req.headers.authorization,
+      }),
+      getData({
+        scope: "receipt-dashboard",
+        queryParam: req.query,
+        pool: app.locals.db,
+        auth: req.headers.authorization,
+      }),
+      getData({
+        scope: "transfer-dashboard",
+        queryParam: req.query,
+        pool: app.locals.db,
+        auth: req.headers.authorization,
+      }),
+      getData({
+        scope: "invoice-dashboard",
+        queryParam: req.query,
+        pool: app.locals.db,
+        auth: req.headers.authorization,
+      }),
+    ]);
+    const [po, receipt, transfer, invoice] = data;
+    return res.status(200).json({
+      po,
+      receipt,
+      transfer,
+      invoice,
+    });
+  });
 };
+
+receipt - dashboard;
+transfer - dashboard;
+invoice - dashboard;

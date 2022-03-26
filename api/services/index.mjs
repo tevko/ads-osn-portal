@@ -15,7 +15,15 @@ const getTableName = (scope) => {
     case "transfers":
       return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
     case "user-types":
-      return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]"; // this will change
+      return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]";
+    case "po-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POVIEW]";
+    case "receipt-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_PORECEIPTS]";
+    case "transfer-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POTRANSFERS]";
+    case "invoice-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_INVOICESTATUS]";
     default:
       return null;
   }
