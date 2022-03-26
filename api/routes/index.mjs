@@ -90,7 +90,3 @@ export default (app) => {
     });
   });
 };
-
-receipt - dashboard;
-transfer - dashboard;
-invoice - dashboard;
