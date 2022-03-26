@@ -9,13 +9,11 @@ import { Typography } from "@mui/material";
 export default function Home() {
   const [dashboardData, setDashboardData] = useState({});
 
-  useEffect(() => {
-    const { data } = useFetch(`${window.API_BASE_URL}/dashboard`);
-    if (data) {
-      console.log(data);
-      setDashboardData(data);
-    }
-  }, []);
+  const { data } = useFetch(`${window.API_BASE_URL}/dashboard`);
+  if (data) {
+    console.log(data);
+    setDashboardData(data);
+  }
 
   return (
     <div className="dash_page">
