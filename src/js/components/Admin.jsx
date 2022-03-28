@@ -72,6 +72,7 @@ export default function Admin(props) {
           disablePortal
           id="combo-box-demo"
           size="small"
+          onChange={(e, { value }) => setSelectedUserType(value)}
           options={userTypesData || Users}
           sx={{ width: 250 }}
           renderInput={(params) => <TextField {...params} label="User Type" />}
