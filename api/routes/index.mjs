@@ -3,6 +3,7 @@ import {
   createUser,
   getAllUsers,
   deleteUser,
+  changeUserEmail,
 } from "../services/index.mjs";
 
 export default (app) => {
@@ -52,6 +53,17 @@ export default (app) => {
   });
   app.delete("/delete-user/:id", async (req, res) => {
     const response = await deleteUser(req.params.id, req.headers.authorization);
+    return res.status(response.error ? 500 : 200).json(response);
+  });
+  app.put("/update-user-email/:id", async (req, res) => {
+    if (!req.body.email || !req.body.id) {
+      return res.status(400).json({ error: "Missing params" });
+    }
+    const response = await changeUserEmail(
+      req.params.id,
+      req.body.email,
+      req.headers.authorization
+    );
     return res.status(response.error ? 500 : 200).json(response);
   });
   app.get("/user-types", async (req, res) => {

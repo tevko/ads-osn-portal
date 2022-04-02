@@ -71,7 +71,7 @@ export const getData = async ({ scope, queryParam, pool, auth }) => {
 export const createUser = async (body, auth) => {
   const { role } = await getRoleFromJwt(auth);
   if (role[0] !== "Admin") {
-    return { error: "Permission denied." };
+    return { status: 401, error: "Permission denied." };
   }
   const details = body;
   const tokenCall = await fetch(
@@ -119,7 +119,7 @@ export const createUser = async (body, auth) => {
 export const getAllUsers = async (auth) => {
   const { role } = await getRoleFromJwt(auth);
   if (role[0] !== "Admin") {
-    return { error: "Permission denied." };
+    return { status: 401, error: "Permission denied." };
   }
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
@@ -154,7 +154,7 @@ export const getAllUsers = async (auth) => {
 export const deleteUser = async (id, auth) => {
   const { role } = await getRoleFromJwt(auth);
   if (role[0] !== "Admin") {
-    return { error: "Permission denied." };
+    return { status: 401, error: "Permission denied." };
   }
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
@@ -189,4 +189,42 @@ export const deleteUser = async (id, auth) => {
         ? "There was an error deleting this user, please try again."
         : null,
   };
+};
+
+export const changeUserEmail = async (id, email, auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { status: 401, error: "Permission denied." };
+  }
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const userCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    }
+  );
+  const user = await userCall.json();
+  return user;
 };

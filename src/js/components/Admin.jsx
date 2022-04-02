@@ -91,6 +91,41 @@ export default function Admin(props) {
     }
   };
 
+  const changeUserEmail = (id, email) => {
+    if (window.confirm("Are you sure you want to change this user's email?")) {
+      setCreateUserLoading(true);
+      window
+        .fetch(`${window.API_BASE_URL}/update-user-email/${id}`, {
+          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+            "Content-Type": "application/json",
+          },
+          method: "PUT",
+          body: JSON.stringify({
+            email,
+          }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            alert(
+              "There was a problem changing the user's email. Please try again."
+            );
+          }
+        })
+        .catch((err) => {
+          alert(
+            "There was a problem changing the user's email. Please try again."
+          );
+        })
+        .finally(() => {
+          // refresh users
+          getAllUsers();
+        });
+    }
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
