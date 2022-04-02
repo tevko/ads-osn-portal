@@ -68,7 +68,11 @@ export const getData = async ({ scope, queryParam, pool, auth }) => {
   }
 };
 
-export const createUser = async (body) => {
+export const createUser = async (body, auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { error: "Permission denied." };
+  }
   const details = body;
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
@@ -112,7 +116,11 @@ export const createUser = async (body) => {
   return user;
 };
 
-export const getAllUsers = async () => {
+export const getAllUsers = async (auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { error: "Permission denied." };
+  }
   const tokenCall = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
     {
@@ -141,4 +149,44 @@ export const getAllUsers = async () => {
   );
   const users = await usersData.json();
   return users;
+};
+
+export const deleteUser = async (id, auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { error: "Permission denied." };
+  }
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const userCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return {
+    status: userCall.status,
+    error:
+      userCall.status > 204
+        ? "There was an error deleting this user, please try again."
+        : null,
+  };
 };

@@ -1,4 +1,9 @@
-import { getData, createUser, getAllUsers } from "../services/index.mjs";
+import {
+  getData,
+  createUser,
+  getAllUsers,
+  deleteUser,
+} from "../services/index.mjs";
 
 export default (app) => {
   app.get("/purchase-orders", async (req, res) => {
@@ -38,11 +43,15 @@ export default (app) => {
     return res.status(data.error ? 500 : 200).json(data);
   });
   app.get("/users", async (req, res) => {
-    const users = await getAllUsers();
+    const users = await getAllUsers(req.headers.authorization);
     return res.status(200).json(users);
   });
   app.post("/create-user", async (req, res) => {
-    const response = await createUser(req.body);
+    const response = await createUser(req.body, req.headers.authorization);
+    return res.status(response.error ? 500 : 200).json(response);
+  });
+  app.delete("/delete-user/:id", async (req, res) => {
+    const response = await deleteUser(req.params.id, req.headers.authorization);
     return res.status(response.error ? 500 : 200).json(response);
   });
   app.get("/user-types", async (req, res) => {

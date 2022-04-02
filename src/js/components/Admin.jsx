@@ -64,6 +64,31 @@ export default function Admin(props) {
       });
   };
 
+  const deleteUser = (id) => {
+    setCreateUserLoading(true);
+    window
+      .fetch(`${window.API_BASE_URL}/delete-user/${id}`, {
+        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error)
+          alert("There was a problem deleting the user. Please try again.");
+      })
+      .catch((err) => {
+        alert("There was a problem deleteing the user. Please try again.");
+      })
+      .finally(() => {
+        // refresh users
+        getAllUsers();
+      });
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
