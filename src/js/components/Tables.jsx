@@ -6,7 +6,7 @@ export default function Tables({ title, rows = [], columns = [] }) {
   const [pageSize, setPageSize] = React.useState(10);
   return (
     <>
-      <Typography variant="h5" style={{ color: "#383D41" }}>
+      <Typography variant="h5" style={{ color: "#FFF" }}>
         {title}
       </Typography>
       <div style={{ height: 600, width: "100%" }}>

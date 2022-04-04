@@ -8,8 +8,6 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 import Tables from "./Tables";
-import ColumnsOne from "./data/Columns";
-import RowsOne from "./data/Rows";
 import "../../css/main.scss";
 
 export default function Admin(props) {
@@ -52,6 +50,10 @@ export default function Admin(props) {
       .finally(() => {
         setCreateUserLoading(false);
       });
+
+    setSelectedUserType("");
+    setEmail("");
+    setPassword("");
   };
 
   if (userTypesloading) return <p>Loading...</p>;
