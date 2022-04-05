@@ -2,7 +2,12 @@ import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
 
-export default function Tables({ title, rows = [], columns = [] }) {
+export default function Tables({
+  title,
+  rows = [],
+  columns = [],
+  getRowId = (row) => row.id,
+}) {
   const [pageSize, setPageSize] = React.useState(10);
   return (
     <>
@@ -12,6 +17,7 @@ export default function Tables({ title, rows = [], columns = [] }) {
       <div style={{ height: 600, width: "100%" }}>
         <DataGrid
           autoheight
+          getRowId={getRowId}
           rows={rows}
           columns={columns}
           disableExtendRowFullWidth={false}
