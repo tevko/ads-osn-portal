@@ -207,6 +207,7 @@ export default function Admin(props) {
       </Typography>
       <Tables
         rows={users}
+        getRowId={(row) => row.user_id}
         columns={[
           {
             field: "email",
