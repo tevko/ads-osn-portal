@@ -206,7 +206,10 @@ export default function Admin(props) {
         Existing Users
       </Typography>
       <Tables
-        rows={users}
+        rows={users.map((user) => ({
+          roles: user.app_metadata.authorization.roles[0],
+          ...user,
+        }))}
         getRowId={(row) => row.user_id}
         columns={[
           {
