@@ -70,11 +70,11 @@ export default function Admin(props) {
         setCreateUserLoading(false);
         // refresh users
         getAllUsers();
+        // clear inputs
+        setSelectedUserType("");
+        setEmail("");
+        setPassword("");
       });
-
-    setSelectedUserType("");
-    setEmail("");
-    setPassword("");
   };
 
   const deleteUser = (id) => {
@@ -144,14 +144,9 @@ export default function Admin(props) {
   }, []);
 
   if (userTypes.loading) return <p>Loading...</p>;
-  if (userTypes.error) return <p>Error: {error.message}</p>;
+  if (userTypes.error) return <p>Error: {userTypes.error.message}</p>;
 
   console.log(users);
-
-  const Users = [
-    { label: "Example", value: "" },
-    { label: "Admin", value: "Admin" },
-  ];
 
   return (
     <div className="admin_page">
@@ -164,7 +159,10 @@ export default function Admin(props) {
           id="combo-box-demo"
           size="small"
           onChange={(e, { value }) => setSelectedUserType(value)}
-          options={userTypesData || Users}
+          options={(userTypes?.data || []).map((userType) => ({
+            label: userType.VENDNAME,
+            value: userType.VENDNAME,
+          }))}
           sx={{ width: 250 }}
           renderInput={(params) => <TextField {...params} label="User Type" />}
         />
@@ -208,30 +206,7 @@ export default function Admin(props) {
         Existing Users
       </Typography>
       <Tables
-        rows={[
-          {
-            id: 1,
-            email: "timevko@gmail.com",
-            name: "Tim Evko",
-            roles: "admin",
-            last_login: "2022-03-15T03:12:07.895Z",
-            email_verified: true,
-            user_id: "google-oauth2|108904416211598514133",
-            login_count: 11,
-            created_at: "2022-02-07T01:36:24.380Z",
-          },
-          {
-            id: 2,
-            email: "ryland.kieffer@outlawsnax.com",
-            name: "ryland.kieffer@outlawsnax.com",
-            roles: "admin",
-            last_login: "2022-03-21T18:55:25.961Z",
-            email_verified: false,
-            user_id: "google-oauth2|108904416211598514133",
-            login_count: 5,
-            created_at: "2022-03-14T18:05:40.770Z",
-          },
-        ]}
+        rows={users}
         columns={[
           {
             field: "email",
