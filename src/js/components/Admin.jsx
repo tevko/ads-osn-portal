@@ -258,8 +258,8 @@ export default function Admin(props) {
             headerName: "Manage User",
             flex: 1,
             sortable: false,
-            renderCell: (row) => (
-              <button onClick={() => deleteUser(row.user_id)}>
+            renderCell: (i) => (
+              <button onClick={() => deleteUser(i.row.user_id)}>
                 DELETE USER
               </button>
             ),
