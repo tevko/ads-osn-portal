@@ -1,4 +1,6 @@
 import sql from "mssql";
+import fetch from "node-fetch";
+
 import { getRoleFromJwt } from "./jwtValidator.mjs";
 
 const getTableName = (scope) => {
@@ -13,7 +15,15 @@ const getTableName = (scope) => {
     case "transfers":
       return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
     case "user-types":
-      return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]"; // this will change
+      return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]";
+    case "po-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POVIEW]";
+    case "receipt-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_PORECEIPTS]";
+    case "transfer-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POTRANSFERS]";
+    case "invoice-dashboard":
+      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_INVOICESTATUS]";
     default:
       return null;
   }
@@ -47,7 +57,7 @@ const buildQuery = (scope, queryParam, role) => {
 };
 
 // returns data from SQL Server
-export default async ({ scope, queryParam, pool, auth }) => {
+export const getData = async ({ scope, queryParam, pool, auth }) => {
   try {
     const { role } = await getRoleFromJwt(auth);
     const result = await pool.query(buildQuery(scope, queryParam, role[0]));
@@ -56,4 +66,165 @@ export default async ({ scope, queryParam, pool, auth }) => {
     console.log(error);
     return { error: "There was a problem getting data" };
   }
+};
+
+export const createUser = async (body, auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { status: 401, error: "Permission denied." };
+  }
+  const details = body;
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const userCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        connection: "Username-Password-Authentication",
+        email: details.email,
+        password: details.password,
+        app_metadata: {
+          authorization: {
+            groups: [],
+            roles: [details.userRole],
+            permissions: [],
+          },
+        },
+      }),
+    }
+  );
+  const user = await userCall.json();
+  return user;
+};
+
+export const getAllUsers = async (auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { status: 401, error: "Permission denied." };
+  }
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const usersData = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const users = await usersData.json();
+  return users;
+};
+
+export const deleteUser = async (id, auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { status: 401, error: "Permission denied." };
+  }
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const userCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return {
+    status: userCall.status,
+    error:
+      userCall.status > 204
+        ? "There was an error deleting this user, please try again."
+        : null,
+  };
+};
+
+export const changeUserEmail = async (id, email, auth) => {
+  const { role } = await getRoleFromJwt(auth);
+  if (role[0] !== "Admin") {
+    return { status: 401, error: "Permission denied." };
+  }
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const userCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    }
+  );
+  const user = await userCall.json();
+  return user;
 };
