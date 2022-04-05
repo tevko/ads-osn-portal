@@ -209,11 +209,6 @@ export default function Admin(props) {
         rows={users.map((user) => ({
           roles: user.app_metadata.authorization.roles[0],
           ...user,
-          deleteUser: (
-            <button onClick={() => deleteUser(user.user_id)}>
-              DELETE USER
-            </button>
-          ),
         }))}
         getRowId={(row) => row.user_id}
         columns={[
@@ -262,6 +257,12 @@ export default function Admin(props) {
             field: "deleteUser",
             headerName: "Manage User",
             flex: 1,
+            sortable: false,
+            renderCell: (row) => (
+              <button onClick={() => deleteUser(row.user_id)}>
+                DELETE USER
+              </button>
+            ),
           },
         ]}
       />
