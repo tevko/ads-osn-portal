@@ -59,3 +59,17 @@ body {
   justify-content: center;
   box-shadow: 1px 3px 5px rgb(29, 28, 28);
 }
+
+.admin_page {
+  background-color: #33353e;
+  padding: 20px;
+  margin: 50px auto 0 auto;
+}
+
+.user_types_form {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
