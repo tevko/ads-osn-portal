@@ -218,33 +218,13 @@ export default function Admin(props) {
             flex: 1,
           },
           {
-            field: "name",
-            headerName: "Name",
-            flex: 1,
-          },
-          {
             field: "roles",
             headerName: "User Type",
             flex: 1,
           },
           {
-            field: "last_login",
-            headerName: "Last Login",
-            flex: 1,
-          },
-          {
             field: "email_verified",
             headerName: "Email Verified",
-            flex: 1,
-          },
-          {
-            field: "user_id",
-            headerName: "User ID",
-            flex: 1,
-          },
-          {
-            field: "login_count",
-            headerName: "Login Count",
             flex: 1,
           },
           {
