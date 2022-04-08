@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 import Tables from "./Tables";
 import "../../css/main.scss";
@@ -242,12 +244,16 @@ export default function Admin(props) {
             sortable: false,
             renderCell: (i) => (
               <>
-                <button onClick={() => deleteUser(i.row.user_id)}>
-                  DELETE USER
-                </button>
-                <button onClick={() => setEmailModalVisible({ user: i.row })}>
-                  CHANGE EMAIL
-                </button>
+                <DeleteIcon
+                  onClick={() => deleteUser(i.row.user_id)}
+                  color="#FF3E00"
+                  fontSize="medium"
+                />
+                <EditIcon
+                  onClick={() => setEmailModalVisible({ user: i.row })}
+                  color="#FF3E00"
+                  fontSize="medium"
+                />
               </>
             ),
           },
