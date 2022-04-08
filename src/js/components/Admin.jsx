@@ -272,12 +272,22 @@ export default function Admin(props) {
                 setNewEmail(null);
               }}
             >
-              <input
+              <TextField
                 required
+                label="New Email"
+                variant="outlined"
+                style={{ width: 250 }}
                 type="email"
                 onChange={(e) => setNewEmail(e.target.value)}
               />
-              <button>Change Email</button>
+              <Button
+                color="primary"
+                sx={{ width: "100" }}
+                size="large"
+                variant="contained"
+              >
+                Change Email
+              </Button>
             </form>
           </div>
         </div>
