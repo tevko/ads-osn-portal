@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import CloseIcon from "@mui/icons-material/Close";
 
 import Tables from "./Tables";
 import "../../css/main.scss";
@@ -290,6 +291,12 @@ export default function Admin(props) {
               </Button>
             </form>
           </div>
+          <CloseIcon
+            className="close_modal"
+            onClick={() => setEmailModalVisible(false)}
+            fontSize="large"
+            color="#fff"
+          ></CloseIcon>
         </div>
       )}
     </div>
