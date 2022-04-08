@@ -150,7 +150,7 @@ export default function Admin(props) {
   }, []);
 
   if (userTypes.loading) return <p>Loading...</p>;
-  // if (userTypes.error) return <p>Error: {userTypes.error.message}</p>;
+  if (userTypes.error) return <p>Error: {userTypes.error.message}</p>;
 
   return (
     <div className="admin_page">
@@ -163,10 +163,13 @@ export default function Admin(props) {
           id="combo-box-demo"
           size="small"
           onChange={(e, { value }) => setSelectedUserType(value)}
-          options={(userTypes?.data || []).map((userType) => ({
-            label: userType.VENDNAME,
-            value: userType.VENDNAME,
-          }))}
+          options={[
+            { label: "Admin", value: "Admin" },
+            ...(userTypes?.data || []).map((userType) => ({
+              label: userType.VENDNAME,
+              value: userType.VENDNAME,
+            })),
+          ]}
           sx={{ width: 250 }}
           renderInput={(params) => <TextField {...params} label="User Type" />}
         />
