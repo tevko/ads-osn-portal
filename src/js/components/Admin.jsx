@@ -16,6 +16,8 @@ export default function Admin(props) {
   const [password, setPassword] = useState(null);
   const [createUserLoading, setCreateUserLoading] = useState(false);
   const [users, setUsers] = useState([]);
+  const [emailModalVisible, setEmailModalVisible] = useState(false);
+  const [newEmail, setNewEmail] = useState(null);
 
   const getAllUsers = () => {
     window
@@ -125,6 +127,8 @@ export default function Admin(props) {
             alert(
               "There was a problem changing the user's email. Please try again."
             );
+          } else {
+            alert("User's email successfully changed.");
           }
         })
         .catch((err) => {
@@ -144,9 +148,7 @@ export default function Admin(props) {
   }, []);
 
   if (userTypes.loading) return <p>Loading...</p>;
-  if (userTypes.error) return <p>Error: {userTypes.error.message}</p>;
-
-  console.log(users);
+  // if (userTypes.error) return <p>Error: {userTypes.error.message}</p>;
 
   return (
     <div className="admin_page">
@@ -259,13 +261,41 @@ export default function Admin(props) {
             flex: 1,
             sortable: false,
             renderCell: (i) => (
-              <button onClick={() => deleteUser(i.row.user_id)}>
-                DELETE USER
-              </button>
+              <>
+                <button onClick={() => deleteUser(i.row.user_id)}>
+                  DELETE USER
+                </button>
+                <button onClick={() => setEmailModalVisible({ user: i.row })}>
+                  CHANGE EMAIL
+                </button>
+              </>
             ),
           },
         ]}
       />
+      {emailModalVisible && (
+        <div className="full_screen_modal">
+          <div className="full_screen_modal_inner">
+            <h3>
+              Enter new email address for {emailModalVisible.user?.nickname}
+            </h3>
+            <form
+              onSubmit={() => {
+                changeUserEmail(emailModalVisible.user?.user_id, newEmail);
+                setEmailModalVisible(false);
+                setNewEmail(null);
+              }}
+            >
+              <input
+                required
+                type="email"
+                onChange={(e) => setNewEmail(e.target.value)}
+              />
+              <button>Change Email</button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
