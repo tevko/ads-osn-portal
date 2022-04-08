@@ -56,7 +56,7 @@ export default (app) => {
     return res.status(response.error ? 500 : 200).json(response);
   });
   app.put("/update-user-email/:id", async (req, res) => {
-    if (!req.body.email || !req.body.id) {
+    if (!req.body.email || !req.params.id) {
       return res.status(400).json({ error: "Missing params" });
     }
     const response = await changeUserEmail(
