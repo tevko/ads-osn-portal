@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import CloseIcon from "@mui/icons-material/Close";
 
 import Tables from "./Tables";
 import "../../css/main.scss";
@@ -275,14 +276,30 @@ export default function Admin(props) {
                 setNewEmail(null);
               }}
             >
-              <input
+              <TextField
                 required
+                label="New Email"
+                variant="outlined"
+                style={{ width: 250 }}
                 type="email"
                 onChange={(e) => setNewEmail(e.target.value)}
               />
-              <button>Change Email</button>
+              <Button
+                color="primary"
+                sx={{ width: "100" }}
+                size="large"
+                variant="contained"
+              >
+                Change Email
+              </Button>
             </form>
           </div>
+          <CloseIcon
+            className="close_modal"
+            onClick={() => setEmailModalVisible(false)}
+            fontSize="large"
+            color="#fff"
+          ></CloseIcon>
         </div>
       )}
     </div>
