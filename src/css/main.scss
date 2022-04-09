@@ -83,8 +83,18 @@ body {
   left: 0;
   align-items: center;
   justify-content: center;
-  background-color: #000000d4;
+  background-color: #000000e0;
   color: white;
+  z-index: 9999;
+
+  &_inner {
+    min-width: 440px;
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+  }
 
   button {
     cursor: pointer;
