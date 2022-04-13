@@ -16,7 +16,7 @@ export default function Home() {
         Relevant Data
       </Typography>
       <div className="pie_charts">
-        <Chart data={ChartData} />
+        {/*  This is the one I'm trying to map right now <Chart data={data.map((obj) => (  ))} /> */}
         <Chart data={ChartData} />
       </div>
       <Typography variant="h5" color="#fff">
@@ -28,3 +28,5 @@ export default function Home() {
     </div>
   );
 }
+
+/* rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))} */
