@@ -65,6 +65,7 @@ export default function Invoices() {
           flex: 1,
           minWidth: 150,
         },
+        /* add lot number */
         {
           field: "RQOUTSTAND",
           headerName: "Quantity Outstanding",
