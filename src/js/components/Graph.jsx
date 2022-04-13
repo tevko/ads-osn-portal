@@ -3,11 +3,11 @@ import { ResponsiveBar } from "@nivo/bar";
 
 export default function Graph({ data }) {
   return (
-    <div className="graph" style={{ width: "100%", height: "400px" }}>
+    <div className="graph" style={{ width: "100%", height: "600px" }}>
       <ResponsiveBar
         data={data}
-        keys={["degress"]}
-        indexBy="day"
+        keys={["total"]}
+        indexBy="id"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.4}
         valueScale={{ type: "linear" }}
@@ -20,7 +20,7 @@ export default function Graph({ data }) {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "degrees",
+          legend: "Total",
           legendPosition: "middle",
           legendOffset: -40,
         }}

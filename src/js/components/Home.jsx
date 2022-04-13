@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import Graph from "./Graph";
 import Data from "./data/Data";
-import ChartData from "./data/ChartData";
-import Chart from "./Chart";
 import { Typography } from "@mui/material";
 
 export default function Home() {
