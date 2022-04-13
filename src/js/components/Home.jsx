@@ -13,18 +13,18 @@ export default function Home() {
   return (
     <div className="dash_page">
       <Typography variant="h5" color="#fff">
-        Relevant Data
+        Totals
       </Typography>
       <div className="pie_charts">
         {/*  This is the one I'm trying to map right now <Chart data={data.map((obj) => (  ))} /> */}
         <Chart data={ChartData} />
       </div>
-      <Typography variant="h5" color="#fff">
+      {/* <Typography variant="h5" color="#fff">
         More Data
       </Typography>
       <div className="bar_chart">
         <Graph data={Data} />
-      </div>
+      </div> */}
     </div>
   );
 }
