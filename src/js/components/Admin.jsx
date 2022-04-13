@@ -194,6 +194,7 @@ export default function Admin(props) {
           label="Password"
           variant="outlined"
           style={{ width: 250 }}
+          hintText="Passwords must have at least 8 characters and contain at least one uppercase letter and one number"
         />
         <Button
           color="primary"
