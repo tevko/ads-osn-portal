@@ -180,6 +180,7 @@ export default function Admin(props) {
           type="email"
           size="small"
           onChange={(e) => setEmail(e.target.value)}
+          value={setEmail}
           label="Email Address"
           variant="outlined"
           style={{ width: 250 }}
@@ -189,6 +190,7 @@ export default function Admin(props) {
           type="password"
           size="small"
           onChange={(e) => setPassword(e.target.value)}
+          value={setPassword}
           label="Password"
           variant="outlined"
           style={{ width: 250 }}
@@ -240,7 +242,6 @@ export default function Admin(props) {
             headerName: "Created",
             flex: 1,
           },
-          // delete user
           {
             field: "deleteUser",
             headerName: "Manage User",
@@ -252,11 +253,13 @@ export default function Admin(props) {
                   onClick={() => deleteUser(i.row.user_id)}
                   color="#FF3E00"
                   fontSize="medium"
+                  className="edit_icon"
                 />
                 <EditIcon
                   onClick={() => setEmailModalVisible({ user: i.row })}
                   color="#FF3E00"
                   fontSize="medium"
+                  className="edit_icon"
                 />
               </>
             ),
