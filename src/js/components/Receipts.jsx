@@ -12,6 +12,12 @@ export default function Receipts() {
       title="Receipts"
       columns={[
         {
+          field: "LOCATION",
+          headerName: "Location",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "PONUMBER",
           headerName: "PO Number",
           flex: 1,
@@ -30,43 +36,43 @@ export default function Receipts() {
           minWidth: 150,
         },
         {
-          field: "VDCODE",
+          field: "VENDOR",
           headerName: "Vendor Code",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "VDNAME",
+          field: "NAME",
           headerName: "Vendor Name",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "ITEMNO",
+          field: "ITEM",
           headerName: "Item Number",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "ITEMDESC",
+          field: "DESCRIPTION",
           headerName: "Item Description",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "OQORDERED",
+          field: "QTYORD",
           headerName: "Quantity Ordered",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "RQRECEIVED",
+          field: "QTYREC",
           headerName: "Quantity Received",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "RQOUTSTAND",
+          field: "QTYOS",
           headerName: "Quantity Outstanding",
           flex: 1,
           minWidth: 150,
@@ -84,14 +90,14 @@ export default function Receipts() {
           minWidth: 150,
         },
         {
-          field: "LOTNUMF",
+          field: "LOTNUM",
           headerName: "Lot Number",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "QTY",
-          headerName: "Quantity",
+          field: "LOTQTY",
+          headerName: "Lot Quantity",
           flex: 1,
           minWidth: 150,
         },

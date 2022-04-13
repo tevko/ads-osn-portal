@@ -12,7 +12,13 @@ export default function Invoices() {
       title="Invoices"
       columns={[
         {
-          field: "VENDNAME",
+          field: "VENDOR",
+          headerName: "Vendor Code",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "NAME",
           headerName: "Vendor Name",
           flex: 1,
           minWidth: 150,
@@ -42,13 +48,13 @@ export default function Invoices() {
           minWidth: 150,
         },
         {
-          field: "OQORDERED",
+          field: "QTYORD",
           headerName: "Quantity Ordered",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "ORDERUNIT",
+          field: "UNIT",
           headerName: "Order Unit",
           flex: 1,
           minWidth: 150,
@@ -67,37 +73,7 @@ export default function Invoices() {
         },
         /* add lot number */
         {
-          field: "RQOUTSTAND",
-          headerName: "Quantity Outstanding",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "RCPNUMBER",
-          headerName: "Receipt Number",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "RECQTY",
-          headerName: "Receipt Quantity",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "RECUNITCOST",
-          headerName: "Receipt Unit Cost",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "RECEXTEND",
-          headerName: "Receipt Extended",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "LOTNUMF",
+          field: "LOTNUM",
           headerName: "Lot Number",
           flex: 1,
           minWidth: 150,
@@ -109,32 +85,20 @@ export default function Invoices() {
           minWidth: 150,
         },
         {
-          field: "TRANSUNIT",
-          headerName: "Transferred Unit",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "Expr1",
-          headerName: "Expr1",
+          field: "TOTALTRANSCOST",
+          headerName: "Total Transfer Cost",
           flex: 1,
           minWidth: 150,
         },
         {
           field: "INVNUMBER",
-          headerName: "Invoice Number",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "INVUNITCOST",
-          headerName: "Invoice Unit Cost",
+          headerName: "Inventory Number",
           flex: 1,
           minWidth: 150,
         },
         {
           field: "INVEXT",
-          headerName: "Invoice Extended",
+          headerName: "Receipt Extended",
           flex: 1,
           minWidth: 150,
         },
