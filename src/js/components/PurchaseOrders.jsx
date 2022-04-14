@@ -14,69 +14,88 @@ export default function PurchaseOrders() {
       title="Purchase Orders"
       columns={[
         {
-          field: "VENDNAME",
+          field: "VENDOR",
+          headerName: "Vendor Code",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "NAME",
           headerName: "Vendor Name",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "PONUMBER",
           headerName: "PO Number",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "DATE",
           headerName: "Date",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "ITEMNO",
           headerName: "Item Number",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "ITEMDESC",
           headerName: "Item Description",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "LOCATION",
           headerName: "Location",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "ORDERUNIT",
+          field: "UNIT",
           headerName: "Order Unit",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "OQORDERED",
+          field: "QTYORD",
           headerName: "Quantity Ordered",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "OQRECEIVED",
+          field: "QTYREC",
           headerName: "Quantity Received",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "OQCANCELED",
+          field: "QTYCXL",
           headerName: "Quantity Canceled",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "OQOUTSTAND",
+          field: "QTY OS",
           headerName: "Quantity Outstanding",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "UNITCOST",
           headerName: "Unit Cost",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "EXTENDED",
           headerName: "Extended",
           flex: 1,
+          minWidth: 150,
         },
       ]}
       rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}

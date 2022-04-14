@@ -3,7 +3,7 @@ import { ResponsivePie } from "@nivo/pie";
 
 export default function Chart({ data }) {
   return (
-    <div className="chart" style={{ width: "50%", height: "300px" }}>
+    <div className="chart" style={{ width: "50%", height: "600px" }}>
       <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -44,13 +44,20 @@ export default function Chart({ data }) {
             lineWidth: 6,
             spacing: 10,
           },
+          {
+            id: "fill",
+            type: "patternLines",
+            background: "inherit",
+            color: "rgba(255, 255, 255,)",
+            rotation: -45,
+          },
         ]}
         fill={[
           {
             match: {
-              id: "ruby",
+              id: "reciept",
             },
-            id: "dots",
+            id: "lines",
           },
           {
             match: {
@@ -60,9 +67,9 @@ export default function Chart({ data }) {
           },
           {
             match: {
-              id: "go",
+              id: "java",
             },
-            id: "dots",
+            id: "fill",
           },
           {
             match: {
@@ -70,56 +77,32 @@ export default function Chart({ data }) {
             },
             id: "dots",
           },
+        ]}
+        legends={[
           {
-            match: {
-              id: "scala",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "lisp",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "elixir",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "javascript",
-            },
-            id: "lines",
+            anchor: "bottom",
+            direction: "row",
+            justify: false,
+            translateX: 0,
+            translateY: 56,
+            itemsSpacing: 0,
+            itemWidth: 100,
+            itemHeight: 18,
+            itemTextColor: "#999",
+            itemDirection: "left-to-right",
+            itemOpacity: 1,
+            symbolSize: 18,
+            symbolShape: "circle",
+            effects: [
+              {
+                on: "hover",
+                style: {
+                  itemTextColor: "#000",
+                },
+              },
+            ],
           },
         ]}
-        /*  legends={[
-            {
-                anchor: 'bottom',
-                direction: 'row',
-                justify: false,
-                translateX: 0,
-                translateY: 56,
-                itemsSpacing: 0,
-                itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#999',
-                itemDirection: 'left-to-right',
-                itemOpacity: 1,
-                symbolSize: 18,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
-        ]} */
       />
     </div>
   );

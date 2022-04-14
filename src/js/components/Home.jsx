@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import Graph from "./Graph";
 import Data from "./data/Data";
-import ChartData from "./data/ChartData";
-import Chart from "./Chart";
 import { Typography } from "@mui/material";
 
 export default function Home() {
@@ -13,14 +11,7 @@ export default function Home() {
   return (
     <div className="dash_page">
       <Typography variant="h5" color="#fff">
-        Relevant Data
-      </Typography>
-      <div className="pie_charts">
-        <Chart data={ChartData} />
-        <Chart data={ChartData} />
-      </div>
-      <Typography variant="h5" color="#fff">
-        More Data
+        Totals
       </Typography>
       <div className="bar_chart">
         <Graph data={Data} />
@@ -28,3 +19,5 @@ export default function Home() {
     </div>
   );
 }
+
+/* rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))} */

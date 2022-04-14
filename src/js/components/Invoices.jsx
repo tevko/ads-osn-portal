@@ -12,119 +12,107 @@ export default function Invoices() {
       title="Invoices"
       columns={[
         {
-          field: "VENDNAME",
+          field: "VENDOR",
+          headerName: "Vendor Code",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "NAME",
           headerName: "Vendor Name",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "PONUMBER",
           headerName: "PO Number",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "PODATE",
           headerName: "PO Date",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "ITEMNO",
           headerName: "Item Number",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "ITEMDESC",
           headerName: "Item Description",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "OQORDERED",
+          field: "QTYORD",
           headerName: "Quantity Ordered",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "ORDERUNIT",
+          field: "UNIT",
           headerName: "Order Unit",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "UNITCOST",
           headerName: "Unit Cost",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "EXTENDED",
           headerName: "Extended",
           flex: 1,
+          minWidth: 150,
         },
+        /* add lot number */
         {
-          field: "RQOUTSTAND",
-          headerName: "Quantity Outstanding",
-          flex: 1,
-        },
-        {
-          field: "RCPNUMBER",
-          headerName: "Receipt Number",
-          flex: 1,
-        },
-        {
-          field: "RECQTY",
-          headerName: "Receipt Quantity",
-          flex: 1,
-        },
-        {
-          field: "RECUNITCOST",
-          headerName: "Receipt Unit Cost",
-          flex: 1,
-        },
-        {
-          field: "RECEXTEND",
-          headerName: "Receipt Extended",
-          flex: 1,
-        },
-        {
-          field: "LOTNUMF",
+          field: "LOTNUM",
           headerName: "Lot Number",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "QTYTRANS",
           headerName: "Quantity Transferred",
           flex: 1,
+          minWidth: 150,
         },
         {
-          field: "TRANSUNIT",
-          headerName: "Transferred Unit",
+          field: "TOTALTRANSCOST",
+          headerName: "Total Transfer Cost",
           flex: 1,
-        },
-        {
-          field: "Expr1",
-          headerName: "Expr1",
-          flex: 1,
+          minWidth: 150,
         },
         {
           field: "INVNUMBER",
-          headerName: "Invoice Number",
+          headerName: "Inventory Number",
           flex: 1,
-        },
-        {
-          field: "INVUNITCOST",
-          headerName: "Invoice Unit Cost",
-          flex: 1,
+          minWidth: 150,
         },
         {
           field: "INVEXT",
-          headerName: "Invoice Extended",
+          headerName: "Receipt Extended",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "DOCNBR",
           headerName: "Document Number",
           flex: 1,
+          minWidth: 150,
         },
         {
           field: "PYMTAMNT",
           headerName: "Payment Amount",
           flex: 1,
+          minWidth: 150,
         },
       ]}
       rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
