@@ -24,7 +24,7 @@ export default function Transfers() {
           minWidth: 150,
         },
         {
-          field: "Name",
+          field: "NAME",
           headerName: "Vendor Name",
           flex: 1,
           minWidth: 150,
