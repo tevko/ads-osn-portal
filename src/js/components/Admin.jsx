@@ -79,6 +79,7 @@ export default function Admin(props) {
         setSelectedUserType("");
         setEmail("");
         setPassword("");
+        document.querySelector("form").reset();
       });
   };
 
@@ -180,7 +181,7 @@ export default function Admin(props) {
           type="email"
           size="small"
           onChange={(e) => setEmail(e.target.value)}
-          value={setEmail}
+          value={email}
           label="Email Address"
           variant="outlined"
           style={{ width: 250 }}
@@ -190,7 +191,7 @@ export default function Admin(props) {
           type="password"
           size="small"
           onChange={(e) => setPassword(e.target.value)}
-          value={setPassword}
+          value={password}
           label="Password"
           variant="outlined"
           style={{ width: 250 }}
