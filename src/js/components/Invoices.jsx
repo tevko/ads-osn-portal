@@ -71,7 +71,6 @@ export default function Invoices() {
           flex: 1,
           minWidth: 150,
         },
-        /* add lot number */
         {
           field: "LOTNUM",
           headerName: "Lot Number",

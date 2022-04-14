@@ -66,13 +66,13 @@ export default function Receipts() {
           minWidth: 150,
         },
         {
-          field: "QTYREC",
+          field: "QTREC",
           headerName: "Quantity Received",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "QTYOS",
+          field: "QTY OS",
           headerName: "Quantity Outstanding",
           flex: 1,
           minWidth: 150,
