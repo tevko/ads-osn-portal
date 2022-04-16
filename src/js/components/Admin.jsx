@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
 
 import Tables from "./Tables";
 import "../../css/main.scss";
@@ -80,7 +81,6 @@ export default function Admin(props) {
         setSelectedUserType("");
         setEmail("");
         setPassword("");
-        document.querySelector("form").reset();
       });
   };
 
@@ -200,7 +200,6 @@ export default function Admin(props) {
             label="Password"
             variant="outlined"
             style={{ width: 250 }}
-            helperText="Passwords must have at least 8 characters and contain at least one uppercase letter and one number"
           />
         </Tooltip>
         <Button
