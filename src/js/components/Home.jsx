@@ -14,7 +14,13 @@ export default function Home() {
         Totals
       </Typography>
       <div className="bar_chart">
-        <Graph data={Data} />
+        <Graph
+          data={data.map((obj) => ({
+            ...obj,
+            id: obj.invoice,
+            value: obj.length,
+          }))}
+        />
       </div>
     </div>
   );
