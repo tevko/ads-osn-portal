@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import Graph from "./Graph";
-import Data from "./data/Data";
 import { Typography } from "@mui/material";
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
         <Graph
           data={data.map((obj) => ({
             ...obj,
-            id: obj.invoice,
+            id: obj.invoice + obj.po + obj.receipt + obj.transfer,
             value: obj.length,
           }))}
         />
