@@ -148,6 +148,45 @@ export default function Admin(props) {
     }
   };
 
+  const changeUserPassword = (id, password) => {
+    if (
+      window.confirm("Are you sure you want to change this user's password?")
+    ) {
+      setCreateUserLoading(true);
+      window
+        .fetch(`${window.API_BASE_URL}/update-user-password/${id}`, {
+          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+            "Content-Type": "application/json",
+          },
+          method: "PUT",
+          body: JSON.stringify({
+            password,
+          }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            alert(
+              "There was a problem changing the user's password. Please try again."
+            );
+          } else {
+            alert("User's password successfully changed.");
+          }
+        })
+        .catch((err) => {
+          alert(
+            "There was a problem changing the user's password. Please try again."
+          );
+        })
+        .finally(() => {
+          // refresh users
+          getAllUsers();
+        });
+    }
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -166,6 +205,7 @@ export default function Admin(props) {
       <form onSubmit={createUser} className="user_types_form">
         <Autocomplete
           disablePortal
+          required
           id="combo-box-demo"
           size="small"
           onChange={(e, { value }) => setSelectedUserType(value)}
