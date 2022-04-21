@@ -91,7 +91,7 @@ export default function Invoices() {
         },
         {
           field: "INVNUMBER",
-          headerName: "Inventory Number",
+          headerName: "Invoice Number",
           flex: 1,
           minWidth: 150,
         },
