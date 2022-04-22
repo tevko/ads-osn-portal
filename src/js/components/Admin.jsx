@@ -310,15 +310,18 @@ export default function Admin(props) {
                   fontSize="medium"
                   className="edit_icon"
                 />
-                <Button
-                  color="primary"
-                  sx={{ width: "100" }}
-                  size="large"
-                  variant="contained"
-                  onClick={() => setPasswordModalVisible({ user: i.row })}
-                >
-                  Change Password
-                </Button>
+                {i.row.identities[0].connection ===
+                  "Username-Password-Authentication" && (
+                  <Button
+                    color="primary"
+                    sx={{ width: "100" }}
+                    size="large"
+                    variant="contained"
+                    onClick={() => setPasswordModalVisible({ user: i.row })}
+                  >
+                    Change Password
+                  </Button>
+                )}
               </>
             ),
           },
