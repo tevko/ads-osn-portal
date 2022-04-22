@@ -315,7 +315,7 @@ export default function Admin(props) {
                   sx={{ width: "100" }}
                   size="large"
                   variant="contained"
-                  onCanPlay={() => setPasswordModalVisible({ user: i.row })}
+                  onClick={() => setPasswordModalVisible({ user: i.row })}
                 >
                   Change Password
                 </Button>
