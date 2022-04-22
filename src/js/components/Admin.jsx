@@ -23,6 +23,8 @@ export default function Admin(props) {
   const [users, setUsers] = useState([]);
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [newEmail, setNewEmail] = useState(null);
+  const [passwordModalVisible, setPasswordModalVisible] = useState(false);
+  const [newPassword, setNewPassword] = useState(null);
 
   const getAllUsers = () => {
     window
@@ -308,6 +310,15 @@ export default function Admin(props) {
                   fontSize="medium"
                   className="edit_icon"
                 />
+                <Button
+                  color="primary"
+                  sx={{ width: "100" }}
+                  size="large"
+                  variant="contained"
+                  onCanPlay={() => setPasswordModalVisible({ user: i.row })}
+                >
+                  Change Password
+                </Button>
               </>
             ),
           },
@@ -347,6 +358,52 @@ export default function Admin(props) {
           <CloseIcon
             className="close_modal"
             onClick={() => setEmailModalVisible(false)}
+            fontSize="large"
+            color="#fff"
+          ></CloseIcon>
+        </div>
+      )}
+      {passwordModalVisible && (
+        <div className="full_screen_modal">
+          <div className="full_screen_modal_inner">
+            <h3>
+              Enter new password for {passwordModalVisible.user?.nickname}
+            </h3>
+            <form
+              onSubmit={() => {
+                changeUserPassword(
+                  passwordModalVisible.user?.user_id,
+                  newPassword
+                );
+                setPasswordModalVisible(false);
+                setNewPassword(null);
+              }}
+            >
+              <Tooltip title={passReq} arrow>
+                <TextField
+                  required
+                  type="password"
+                  size="small"
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  value={newPassword}
+                  label="Password"
+                  variant="outlined"
+                  style={{ width: 250 }}
+                />
+              </Tooltip>
+              <Button
+                color="primary"
+                sx={{ width: "100" }}
+                size="large"
+                variant="contained"
+              >
+                Change Password
+              </Button>
+            </form>
+          </div>
+          <CloseIcon
+            className="close_modal"
+            onClick={() => setPasswordModalVisible(false)}
             fontSize="large"
             color="#fff"
           ></CloseIcon>
