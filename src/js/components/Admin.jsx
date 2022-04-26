@@ -200,6 +200,10 @@ export default function Admin(props) {
   const passReq =
     "Passwords must have at least 8 characters and contain at least one uppercase letter and one number.";
 
+  const dltUsr = "Delete User";
+  const edUsr = "Change Email";
+  const rstPass = "Reset Password";
+
   return (
     <div className="admin_page">
       <Typography variant="h4" className="new_user_heading" color="#fff">
@@ -296,29 +300,37 @@ export default function Admin(props) {
             field: "deleteUser",
             headerName: "Manage User",
             flex: 1,
+            align: "center",
             sortable: false,
             renderCell: (i) => (
               <>
-                <DeleteIcon
-                  onClick={() => deleteUser(i.row.user_id)}
-                  color="#FF3E00"
-                  fontSize="medium"
-                  className="edit_icon"
-                />
-                <EditIcon
-                  onClick={() => setEmailModalVisible({ user: i.row })}
-                  color="#FF3E00"
-                  fontSize="medium"
-                  className="edit_icon"
-                  title="Change Email"
-                />
+                <Tooltip title={dltUsr} arrow>
+                  <DeleteIcon
+                    onClick={() => deleteUser(i.row.user_id)}
+                    color="#FF3E00"
+                    fontSize="medium"
+                    className="delete_icon"
+                  />
+                </Tooltip>
+                <Tooltip title={edUsr} arrow>
+                  <EditIcon
+                    onClick={() => setEmailModalVisible({ user: i.row })}
+                    color="#FF3E00"
+                    fontSize="medium"
+                    className="edit_icon"
+                    title="Change Email"
+                  />
+                </Tooltip>
                 {i.row.identities[0].connection ===
                   "Username-Password-Authentication" && (
-                  <LockResetIcon
-                    title="Change password"
-                    fontSize="medium"
-                    onClick={() => setPasswordModalVisible({ user: i.row })}
-                  />
+                  <Tooltip title={rstPass} arrow>
+                    <LockResetIcon
+                      className="pass_icon"
+                      title="Change password"
+                      fontSize="medium"
+                      onClick={() => setPasswordModalVisible({ user: i.row })}
+                    />
+                  </Tooltip>
                 )}
               </>
             ),
