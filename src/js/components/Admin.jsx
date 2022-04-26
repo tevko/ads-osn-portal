@@ -315,7 +315,7 @@ export default function Admin(props) {
                   <Button
                     color="primary"
                     sx={{ width: "100" }}
-                    size="large"
+                    size="small"
                     variant="contained"
                     onClick={() => setPasswordModalVisible({ user: i.row })}
                   >
