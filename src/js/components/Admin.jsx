@@ -11,6 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
+import LockResetIcon from "@mui/icons-material/LockReset";
 
 import Tables from "./Tables";
 import "../../css/main.scss";
@@ -309,18 +310,15 @@ export default function Admin(props) {
                   color="#FF3E00"
                   fontSize="medium"
                   className="edit_icon"
+                  title="Change Email"
                 />
                 {i.row.identities[0].connection ===
                   "Username-Password-Authentication" && (
-                  <Button
-                    color="primary"
-                    sx={{ width: "100" }}
-                    size="small"
-                    variant="contained"
+                  <LockResetIcon
+                    title="Change password"
+                    fontSize="medium"
                     onClick={() => setPasswordModalVisible({ user: i.row })}
-                  >
-                    Change Password
-                  </Button>
+                  />
                 )}
               </>
             ),
