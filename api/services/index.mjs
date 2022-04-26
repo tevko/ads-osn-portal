@@ -13,7 +13,7 @@ const getTableName = (scope) => {
     case "invoices":
       return "[ZZZTST].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]";
     case "transfers":
-      return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS]";
+      return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS_NEW]";
     case "user-types":
       return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]";
     case "po-dashboard":
@@ -113,6 +113,28 @@ export const createUser = async (body, auth) => {
     }
   );
   const user = await userCall.json();
+  if (user.user_id) {
+    const userUpdate = await fetch(
+      `https://dev-u68d-m8y.us.auth0.com/api/v2/users/${user.user_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          app_metadata: {
+            authorization: {
+              groups: [],
+              roles: [details.userRole],
+              permissions: [],
+            },
+          },
+        }),
+      }
+    );
+    return userUpdate.json();
+  }
   return user;
 };
 
