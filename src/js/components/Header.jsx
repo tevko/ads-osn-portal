@@ -80,9 +80,6 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
           }}
         >
           <MenuItem onClick={() => navigateAndClose("/")}>Home</MenuItem>
-          <MenuItem onClick={() => navigateAndClose("/invoices")}>
-            Invoices
-          </MenuItem>
           <MenuItem
             onClick={() => {
               navigateAndClose("/purchase-orders");
@@ -95,6 +92,9 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
           </MenuItem>
           <MenuItem onClick={() => navigateAndClose("/transfers")}>
             Transfers
+          </MenuItem>
+          <MenuItem onClick={() => navigateAndClose("/invoices")}>
+            Invoices
           </MenuItem>
           {role === "Admin" && (
             <MenuItem onClick={() => navigateAndClose("/admin")}>
