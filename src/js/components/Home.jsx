@@ -5,8 +5,10 @@ import Data from "./data/Data";
 import { Typography } from "@mui/material";
 
 export default function Home() {
-  const { data } = useFetch(`${window.API_BASE_URL}/dashboard`);
-  console.log(data);
+  const { po, receipt, transfer, invoice } = useFetch(
+    `${window.API_BASE_URL}/dashboard`
+  );
+  console.log(po, receipt, transfer, invoice);
 
   return (
     <div className="dash_page">

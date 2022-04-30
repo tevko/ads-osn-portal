@@ -2,6 +2,7 @@ import {
   getData,
   createUser,
   getAllUsers,
+  getUser,
   deleteUser,
   changeUserEmail,
   changeUserPassword,
@@ -122,5 +123,12 @@ export default (app) => {
       transfer,
       invoice,
     });
+  });
+  app.get("/user/:email", async (req, res) => {
+    if (!req.params.email) {
+      return res.status(400).json({ error: "Missing params" });
+    }
+    const user = await getUser(req.headers.authorization, req.params.email);
+    return res.status(200).json(user);
   });
 };

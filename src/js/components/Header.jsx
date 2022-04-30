@@ -96,9 +96,13 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
           <MenuItem onClick={() => navigateAndClose("/invoices")}>
             Invoices
           </MenuItem>
-          {role === "Admin" && (
+          {role === "Admin" ? (
             <MenuItem onClick={() => navigateAndClose("/admin")}>
               Admin
+            </MenuItem>
+          ) : (
+            <MenuItem onClick={() => navigateAndClose("/manage")}>
+              Manage
             </MenuItem>
           )}
         </Menu>

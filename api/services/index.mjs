@@ -151,6 +151,46 @@ export const getAllUsers = async (auth) => {
   return users;
 };
 
+export const getUser = async (auth, email) => {
+  const { role } = await getRoleFromJwt(auth);
+  const tokenCall = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/oauth/token`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "82IZBvXseWGlLdlskzJOLqFgkYTXKOWb",
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: "https://dev-u68d-m8y.us.auth0.com/api/v2/",
+        grant_type: "client_credentials",
+      }),
+    }
+  );
+  const { access_token } = await tokenCall.json();
+  const usersData = await fetch(
+    `https://dev-u68d-m8y.us.auth0.com/api/v2/users-by-email?email=${encodeURIComponent(
+      email
+    )}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const users = await usersData.json();
+  if (
+    users.find((user) => user.app_metadata?.authorization?.roles[0] === role[0])
+  ) {
+    return users;
+  } else {
+    return { status: 401, error: "Permission denied." };
+  }
+};
+
 export const deleteUser = async (id, auth) => {
   const { role } = await getRoleFromJwt(auth);
   if (role[0] !== "Admin") {

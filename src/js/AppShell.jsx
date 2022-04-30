@@ -13,6 +13,7 @@ import Invoices from "./components/Invoices";
 import Transfers from "./components/Transfers";
 import Home from "./components/Home";
 import Admin from "./components/Admin";
+import Manage from "./components/Manage";
 
 const routes = {
   "/purchase-orders": (props) => <PurchaseOrders {...props} />,
@@ -21,6 +22,7 @@ const routes = {
   "/transfers": (props) => <Transfers {...props} />,
   "/": (props) => <Home {...props} />,
   "/admin": (props) => <Admin {...props} />,
+  "/manage": (props) => <Manage {...props} />,
 };
 
 const PageTitles = {
@@ -30,6 +32,7 @@ const PageTitles = {
   "/transfers": "Transfers",
   "/": "Home",
   "/admin": "Admin",
+  "/manage": "Manage",
 };
 
 const themeOptions = createTheme({
