@@ -125,6 +125,8 @@ export default (app) => {
     });
   });
   app.get("/user/:email", async (req, res) => {
+    // get full url with email and log to console
+    console.log(req.url);
     if (!req.params.email) {
       return res.status(400).json({ error: "Missing params" });
     }
