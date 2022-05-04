@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 
+import Tables from "./Tables";
 import "../../css/main.scss";
 
 export default function Manage(props) {
