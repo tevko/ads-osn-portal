@@ -14,9 +14,7 @@ export default function Manage(props) {
   const [user, setUser] = useState([]);
 
   const changeUserPassword = (id, password) => {
-    if (
-      window.confirm("Are you sure you want to change this user's password?")
-    ) {
+    if (window.confirm("Are you sure you want to change your password?")) {
       setCreateUserLoading(true);
       window
         .fetch(`${window.API_BASE_URL}/update-user-password/${id}`, {

@@ -269,9 +269,14 @@ export const changeUserEmail = async (id, email, auth) => {
   return user;
 };
 
-export const changeUserPassword = async (id, password, auth) => {
+export const changeUserPassword = async (id, password, auth, email) => {
+  const [requestingUser] = await getUser(auth, email);
   const { role } = await getRoleFromJwt(auth);
-  if (role[0] !== "Admin") {
+  if (
+    role[0] !== "Admin" ||
+    requestingUser.app_metadata.authorization.roles[0] !== role[0]
+  ) {
+    // user must be admin OR requesting to change their own password
     return { status: 401, error: "Permission denied." };
   }
   const tokenCall = await fetch(
