@@ -1,5 +1,6 @@
 import sql from "mssql";
 import fetch from "node-fetch";
+import atob from "atob";
 
 import { getRoleFromJwt } from "./jwtValidator.mjs";
 
@@ -171,7 +172,7 @@ export const getUser = async (auth, email) => {
   const { access_token } = await tokenCall.json();
   const usersData = await fetch(
     `https://dev-u68d-m8y.us.auth0.com/api/v2/users-by-email?email=${encodeURIComponent(
-      email
+      atob(email)
     )}`,
     {
       method: "GET",

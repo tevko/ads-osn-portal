@@ -52,7 +52,7 @@ export default function Manage(props) {
   };
   const getUser = () => {
     window
-      .fetch(`${window.API_BASE_URL}/user/${encodeURIComponent(props.email)}`, {
+      .fetch(`${window.API_BASE_URL}/user/${btoa(props.email)}`, {
         credentials: "include",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
