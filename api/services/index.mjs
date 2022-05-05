@@ -273,6 +273,7 @@ export const changeUserEmail = async (id, email, auth) => {
 export const changeUserPassword = async (id, password, auth, email) => {
   const [requestingUser] = email ? await getUser(auth, email) : [undefined];
   const { role } = await getRoleFromJwt(auth);
+  console.log(requestingUser, role[0]);
   if (
     role[0] !== "Admin" ||
     (requestingUser &&
