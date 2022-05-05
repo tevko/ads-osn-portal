@@ -271,11 +271,12 @@ export const changeUserEmail = async (id, email, auth) => {
 };
 
 export const changeUserPassword = async (id, password, auth, email) => {
-  const [requestingUser] = await getUser(auth, email);
+  const [requestingUser] = email ? await getUser(auth, email) : [undefined];
   const { role } = await getRoleFromJwt(auth);
   if (
     role[0] !== "Admin" ||
-    requestingUser.app_metadata.authorization.roles[0] !== role[0]
+    (requestingUser &&
+      requestingUser.app_metadata.authorization.roles[0] !== role[0])
   ) {
     // user must be admin OR requesting to change their own password
     console.log("not admin or requesting user");

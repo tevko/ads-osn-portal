@@ -69,14 +69,15 @@ export default (app) => {
     return res.status(response.error ? 500 : 200).json(response);
   });
   // put change password
-  app.put("/update-user-password/:id", async (req, res) => {
+  app.put("/update-user-password/:id/:email", async (req, res) => {
     if (!req.body.password || !req.params.id) {
       return res.status(400).json({ error: "Missing params" });
     }
     const response = await changeUserPassword(
       req.params.id,
       req.body.password,
-      req.headers.authorization
+      req.headers.authorization,
+      req.params.email
     );
     return res.status(response.error ? 500 : 200).json(response);
   });
