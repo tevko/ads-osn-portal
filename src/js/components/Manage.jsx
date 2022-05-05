@@ -15,7 +15,7 @@ export default function Manage(props) {
   const [newPassword, setNewPassword] = useState(null);
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
   const [user, setUser] = useState([]);
-  const [setCreateUserLoading, setCreateUserLoading] = useState(false);
+  const [createUserLoading, setCreateUserLoading] = useState(false);
 
   const changeUserPassword = (id, password) => {
     if (window.confirm("Are you sure you want to change your password?")) {
@@ -165,6 +165,7 @@ export default function Manage(props) {
                 sx={{ width: 100 }}
                 size="large"
                 variant="contained"
+                disabled={!newPassword || createUserLoading}
               >
                 Change Password
               </Button>
