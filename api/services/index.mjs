@@ -278,6 +278,7 @@ export const changeUserPassword = async (id, password, auth, email) => {
     requestingUser.app_metadata.authorization.roles[0] !== role[0]
   ) {
     // user must be admin OR requesting to change their own password
+    console.log("not admin or requesting user");
     return { status: 401, error: "Permission denied." };
   }
   const tokenCall = await fetch(
