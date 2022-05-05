@@ -157,17 +157,22 @@ export default function Admin(props) {
     ) {
       setCreateUserLoading(true);
       window
-        .fetch(`${window.API_BASE_URL}/update-user-password/${id}`, {
-          credentials: "include",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
-            "Content-Type": "application/json",
-          },
-          method: "PUT",
-          body: JSON.stringify({
-            password,
-          }),
-        })
+        .fetch(
+          `${window.API_BASE_URL}/update-user-password/${id}/${btoa(
+            props.email
+          )}`,
+          {
+            credentials: "include",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+              "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify({
+              password,
+            }),
+          }
+        )
         .then((res) => res.json())
         .then((data) => {
           if (data.error) {
