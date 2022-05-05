@@ -139,13 +139,8 @@ export default function Manage(props) {
               Enter new password for {passwordModalVisible.user?.nickname}
             </h3>
             <form
-              onSubmit={() => {
-                changeUserPassword(
-                  passwordModalVisible.user?.user_id,
-                  newPassword
-                );
-                setPasswordModalVisible(false);
-                setNewPassword(null);
+              onSubmit={(e) => {
+                e.preventDefault();
               }}
             >
               <Tooltip title={passReq} arrow>
@@ -166,6 +161,14 @@ export default function Manage(props) {
                 size="large"
                 variant="contained"
                 disabled={!newPassword || createUserLoading}
+                onClick={() => {
+                  changeUserPassword(
+                    passwordModalVisible.user?.user_id,
+                    newPassword
+                  );
+                  setPasswordModalVisible(false);
+                  setNewPassword(null);
+                }}
               >
                 Change Password
               </Button>
