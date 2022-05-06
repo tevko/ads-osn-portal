@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 export default function Home() {
   const { data, loading } = useFetch(`${window.API_BASE_URL}/dashboard`);
 
-  if (data.po && data.receipt && data.transfer && data.invoice) {
+  if (data && data.po && data.receipt && data.transfer && data.invoice) {
     data.po.total = data.po.length;
     data.po.id = "Purchase Orders";
     data.receipt.total = data.receipt.length;
