@@ -7,14 +7,17 @@ export default function Home() {
   const { po, receipt, transfer, invoice, loading } = useFetch(
     `${window.API_BASE_URL}/dashboard`
   );
-  po.total = po.length;
-  po.id = "Purchase Orders";
-  receipt.total = receipt.length;
-  receipt.id = "Receipts";
-  transfer.total = transfer.length;
-  transfer.id = "Transfers";
-  invoice.total = invoice.length;
-  invoice.id = "Invoices";
+
+  if (po && receipt && transfer && invoice) {
+    po.total = po.length;
+    po.id = "Purchase Orders";
+    receipt.total = receipt.length;
+    receipt.id = "Receipts";
+    transfer.total = transfer.length;
+    transfer.id = "Transfers";
+    invoice.total = invoice.length;
+    invoice.id = "Invoices";
+  }
 
   return loading ? (
     "...loading"
