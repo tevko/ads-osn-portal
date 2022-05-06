@@ -411,7 +411,7 @@ export default function Admin(props) {
               </Tooltip>
               <Button
                 color="primary"
-                sx={{ width: "125" }}
+                sx={{ width: "200" }}
                 size="large"
                 variant="contained"
               >
