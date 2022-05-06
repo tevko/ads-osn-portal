@@ -14,6 +14,7 @@ import Transfers from "./components/Transfers";
 import Home from "./components/Home";
 import Admin from "./components/Admin";
 import Manage from "./components/Manage";
+import VMIInventory from "./components/VMIInventory";
 
 const routes = {
   "/purchase-orders": (props) => <PurchaseOrders {...props} />,
@@ -23,6 +24,7 @@ const routes = {
   "/": (props) => <Home {...props} />,
   "/admin": (props) => <Admin {...props} />,
   "/manage": (props) => <Manage {...props} />,
+  "/vmi-inventory": (props) => <VMIInventory {...props} />,
 };
 
 const PageTitles = {
@@ -33,6 +35,7 @@ const PageTitles = {
   "/": "Home",
   "/admin": "Admin",
   "/manage": "Manage",
+  "/vmi-inventory": "VMI Inventory",
 };
 
 const themeOptions = createTheme({

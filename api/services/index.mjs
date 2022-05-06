@@ -25,6 +25,8 @@ const getTableName = (scope) => {
       return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POTRANSFERS]";
     case "invoice-dashboard":
       return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_INVOICESTATUS]";
+    case "vmi-inventory":
+      return "[ZZZTST].[dbo].[View_PORTAL_5_QTYINVMI]";
     default:
       return null;
   }
@@ -47,6 +49,8 @@ const buildQuery = (scope, queryParam, role) => {
       case "transfers":
         query += ` WHERE VDNAME = '${role}'`;
         break;
+      case "vmi-inventory":
+        query += ` WHERE [VENDOR NAME] = '${role}'`;
       default:
         break;
     }
