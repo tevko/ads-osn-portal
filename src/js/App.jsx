@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../css/main.scss";
 import * as React from "react";
@@ -17,21 +17,24 @@ const App = () => {
     getAccessTokenSilently,
   } = useAuth0();
 
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
     const f = async () => {
       if (isAuthenticated) {
         const token = await getAccessTokenSilently();
         window.localStorage.setItem("_A_C_T_", token);
+        setToken(token);
       }
     };
     f();
   }, [isAuthenticated]);
 
-  if (isLoading) {
+  if (isLoading || !token) {
     return <div>Loading ...</div>;
   }
 
-  return isAuthenticated ? (
+  return isAuthenticated && token ? (
     <AppShell user={user} logout={logout} />
   ) : (
     <div className="login_header">
