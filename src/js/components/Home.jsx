@@ -15,20 +15,22 @@ export default function Home() {
     data.transfer.id = "Transfers";
     data.invoice.total = data.invoice.length;
     data.invoice.id = "Invoices";
+
+    return (
+      <div className="dash_page">
+        <Typography variant="h5" color="#fff">
+          Totals
+        </Typography>
+        <div className="bar_chart">
+          <Graph data={[data.po, data.receipt, data.transfer, data.invoice]} />
+        </div>
+      </div>
+    );
   }
 
   return loading ? (
     "...loading"
   ) : (
-    <div className="dash_page">
-      <Typography variant="h5" color="#fff">
-        Totals
-      </Typography>
-      <div className="bar_chart">
-        <Graph data={[data.po, data.receipt, data.transfer, data.invoice]} />
-      </div>
-    </div>
+    <h1>Something went wrong, please refresh the page.</h1>
   );
 }
-
-/* rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))} */
