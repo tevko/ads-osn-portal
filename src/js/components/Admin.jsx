@@ -217,6 +217,7 @@ export default function Admin(props) {
       <form onSubmit={createUser} className="user_types_form">
         <Autocomplete
           disablePortal
+          value={selectedUserType}
           required
           id="combo-box-demo"
           size="small"
