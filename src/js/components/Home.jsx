@@ -3,15 +3,8 @@ import useFetch from "../hooks/useFetch";
 import Graph from "./Graph";
 import { Typography } from "@mui/material";
 
-export default function Home(user) {
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const { data, loading } = useFetch(`${window.API_BASE_URL}/dashboard`);
-    setData(data);
-    setLoading(loading);
-  }, [...user]);
+export default function Home() {
+  const { data, loading } = useFetch(`${window.API_BASE_URL}/dashboard`);
 
   if (data && data.po && data.receipt && data.transfer && data.invoice) {
     data.po.total = data.po.length;
