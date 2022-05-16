@@ -30,7 +30,7 @@ const App = () => {
     f();
   }, [isAuthenticated]);
 
-  if (isLoading || !token) {
+  if (isLoading) {
     return <div>Loading ...</div>;
   }
 
