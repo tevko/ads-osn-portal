@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const useFetch = (url, options) => {
+  if (!localStorage.getItem("_A_C_T_"))
+    return { data: null, error: new Error("No token found"), loading: false };
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
