@@ -8,23 +8,23 @@ const getTableName = (scope) => {
   // table names will probably need to be changed
   switch (scope) {
     case "purchase-orders":
-      return "[ZZZTST].[dbo].[View_PORTAL_1_POVIEW]";
+      return "[PSSCOM].[dbo].[View_PORTAL_1_POVIEW]";
     case "receipts":
-      return "[ZZZTST].[dbo].[View_PORTAL__2_PORECEIPTS]";
+      return "[PSSCOM].[dbo].[View_PORTAL__2_PORECEIPTS]";
     case "invoices":
-      return "[ZZZTST].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]";
+      return "[PSSCOM].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]";
     case "transfers":
-      return "[ZZZTST].[dbo].[View_PORTAL__3_POTRANSFERS_NEW]";
+      return "[PSSCOM].[dbo].[View_PORTAL__3_POTRANSFERS_NEW]";
     case "user-types":
-      return "[ZZZTST].[dbo].[View_PORTAL_VENDORS]";
+      return "[PSSCOM].[dbo].[View_PORTAL_VENDORS]";
     case "po-dashboard":
-      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POVIEW]";
+      return "[PSSCOM].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POVIEW]";
     case "receipt-dashboard":
-      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_PORECEIPTS]";
+      return "[PSSCOM].[dbo].[View_PORTAL_DASHBOARD_ADMIN_PORECEIPTS]";
     case "transfer-dashboard":
-      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POTRANSFERS]";
+      return "[PSSCOM].[dbo].[View_PORTAL_DASHBOARD_ADMIN_POTRANSFERS]";
     case "invoice-dashboard":
-      return "[ZZZTST].[dbo].[View_PORTAL_DASHBOARD_ADMIN_INVOICESTATUS]";
+      return "[PSSCOM].[dbo].[View_PORTAL_DASHBOARD_ADMIN_INVOICESTATUS]";
     case "vmi-inventory":
       return "[ZZZTST].[dbo].[View_PORTAL_5_QTYINVMI]";
     default:
