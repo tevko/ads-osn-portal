@@ -7,7 +7,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "yarn parcel src/index.html",
+    "start": "concurrently \"yarn parcel src/index.html\" \"nodemon ./api/index.mjs localhost 3000\"",
     "build": "yarn parcel build src/index.html",
     "api": "nodemon ./api/index.mjs localhost 3000",
     "prepare": "husky install"
