@@ -7,7 +7,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "concurrently \"yarn parcel src/index.html\" \"nodemon ./api/index.mjs localhost 3000\"",
+    "start": "./node_modules/.bin/concurrently \"yarn parcel src/index.html\" \"nodemon ./api/index.mjs localhost 3000\"",
     "build": "yarn parcel build src/index.html",
     "api": "nodemon ./api/index.mjs localhost 3000",
     "prepare": "husky install"
@@ -39,6 +39,7 @@
     "@nivo/pie": "^0.79.1",
     "atob": "^2.1.2",
     "body-parser": "^1.19.2",
+    "concurrently": "^7.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
