@@ -38,13 +38,13 @@ const buildQuery = (scope, queryParam, role) => {
   if (role !== "Admin" && scope !== "user-types") {
     switch (scope) {
       case "purchase-orders":
-        query += ` WHERE VENDNAME = '${role}'`;
+        query += ` WHERE NAME = '${role}'`;
         break;
       case "receipts":
-        query += ` WHERE VDNAME = '${role}'`;
+        query += ` WHERE NAME = '${role}'`;
         break;
       case "invoices":
-        query += ` WHERE VENDNAME = '${role}'`;
+        query += ` WHERE NAME = '${role}'`;
         break;
       case "transfers":
         query += ` WHERE NAME = '${role}'`;
