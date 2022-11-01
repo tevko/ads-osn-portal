@@ -47,7 +47,7 @@ const buildQuery = (scope, queryParam, role) => {
         query += ` WHERE VENDNAME = '${role}'`;
         break;
       case "transfers":
-        query += ` WHERE VDNAME = '${role}'`;
+        query += ` WHERE NAME = '${role}'`;
         break;
       case "vmi-inventory":
         query += ` WHERE [VENDOR NAME] = '${role}'`;
