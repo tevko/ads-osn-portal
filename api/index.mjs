@@ -46,6 +46,11 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+  // healthcheck endpoint
+  app.get("/healthcheck", async (req, res) => {
+    return res.status(200).json({ success: "true" });
+  });
+
 app.use(jwtCheck);
 
 app.use(cors({ credentials: true, origin: true }));
