@@ -143,8 +143,4 @@ export default (app) => {
     const user = await getUser(req.headers.authorization, req.params.email);
     return res.status(200).json(user);
   });
-  // healthcheck endpoint
-  app.get("/healthcheck", async (req, res) => {
-    return res.status(200).json({ success: "true" });
-  });
 };
