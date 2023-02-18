@@ -79,7 +79,7 @@ export default function AppShell({ user, logout }) {
   };
   return (
     <ThemeProvider theme={themeOptions}>
-      <Container maxWidth="lg">
+      <Container maxWidth={false} sx={{ maxWidth: "100%" }}>
         <Header
           routeTo={routeTo}
           getPageTitle={getPageTitle}
