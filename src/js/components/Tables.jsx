@@ -14,9 +14,9 @@ export default function Tables({
       <Typography variant="h5" style={{ color: "#FFF" }}>
         {title}
       </Typography>
-      <div style={{ height: 600, width: "100%" }}>
+      <div style={{ minHeight: 600, width: "100%", height: "80vh" }}>
         <DataGrid
-          autoheight
+          autoheight={false}
           getRowId={getRowId}
           rows={rows}
           columns={columns}

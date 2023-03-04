@@ -3,7 +3,7 @@ import { ResponsiveBar } from "@nivo/bar";
 
 export default function Graph({ data }) {
   return (
-    <div className="graph" style={{ width: "100%", height: "600px" }}>
+    <div className="graph" style={{ width: "100%", minHeight: "600px", height: "80vh" }}>
       <ResponsiveBar
         data={data}
         keys={["total"]}
