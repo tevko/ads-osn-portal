@@ -71,6 +71,12 @@ export default function Transfers() {
           flex: 1,
           minWidth: 150,
         },
+        {
+          field: "PONUMBER",
+          headerName: "PO Number",
+          flex: 1,
+          minWidth: 150,
+        },
       ]}
       rows={data.map((obj) => ({ ...obj, id: obj.ITEMNO + obj.DOCNUM }))}
     />
