@@ -18,6 +18,12 @@ export default function Transfers() {
           minWidth: 150,
         },
         {
+          field: "TRANSDATE",
+          headerName: "Transfer Date",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "VENDOR",
           headerName: "Vendor Code",
           flex: 1,
