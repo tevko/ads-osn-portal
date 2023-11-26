@@ -26,7 +26,25 @@ const config = {
   },
 };
 
+const config2 = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PWD,
+  database: "ZZZTST",
+  server: "MZF-SQL2",
+  parseJSON: true,
+  pool: {
+    max: 10,
+    min: 0,
+    idleTimeoutMillis: 30000,
+  },
+  options: {
+    encrypt: false, // true for azure
+    trustServerCertificate: true,
+  },
+};
+
 const appPool = new sql.ConnectionPool(config);
+const appPool2 = new sql.ConnectionPool(config2);
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -69,6 +87,12 @@ appPool
     app.listen(PORT, () => {
       console.log(`Server listening at http://localhost:${PORT}`);
     });
+  })
+  .then(() => {
+    appPool2.connect().then((pool2) => {
+      app.locals.db2 = pool2;
+      console.log("Test DB Also connected")
+    })
   })
   .catch((err) => {
     console.log(`Error connecting to SQL Server: ${err}`);
