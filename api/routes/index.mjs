@@ -18,6 +18,14 @@ export default (app) => {
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
+  app.get("/production-schedule", async (req, res) => {
+    const data = await getData({
+      scope: "production-schedule",
+      queryParam: req.query,
+      pool: app.locals.db,
+      auth: req.headers.authorization,
+    })
+  });
   app.get("/receipts", async (req, res) => {
     const data = await getData({
       scope: "receipts",
