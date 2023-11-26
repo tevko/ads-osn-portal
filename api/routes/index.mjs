@@ -24,7 +24,8 @@ export default (app) => {
       queryParam: req.query,
       pool: app.locals.db2,
       auth: req.headers.authorization,
-    })
+    });
+    return res.status(data.error ? 500 : 200).json(data);
   });
   app.get("/receipts", async (req, res) => {
     const data = await getData({
