@@ -67,6 +67,9 @@ const buildQuery = (scope, queryParam, role) => {
 export const getData = async ({ scope, queryParam, pool, auth }) => {
   try {
     const { role } = await getRoleFromJwt(auth);
+    if (role === "prod_schedule_viewer" && scope !== "production-schedule") {
+      return { error: "Unauthorized" }
+    } 
     const result = await pool.query(buildQuery(scope, queryParam, role[0]));
     return result.recordset;
   } catch (error) {

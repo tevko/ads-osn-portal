@@ -26,6 +26,49 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
     handleClose();
   };
 
+  const productionScheduleViewerNav = (
+    <MenuItem
+      onClick={() => {
+        navigateAndClose("/production-schedule");
+      }}
+    >
+      Production Schedule
+    </MenuItem>
+  );
+
+  const fullNav = (
+    <>
+      <MenuItem
+        onClick={() => {
+          navigateAndClose("/purchase-orders");
+        }}
+      >
+        Purchase Orders
+      </MenuItem>
+      <MenuItem onClick={() => navigateAndClose("/receipts")}>
+        Receipts
+      </MenuItem>
+      <MenuItem onClick={() => navigateAndClose("/transfers")}>
+        Transfers
+      </MenuItem>
+      <MenuItem onClick={() => navigateAndClose("/invoices")}>
+        Invoices
+      </MenuItem>
+      <MenuItem onClick={() => navigateAndClose("/vmi-inventory")}>
+        VMI Inventory
+      </MenuItem>
+      {role === "Admin" ? (
+        <MenuItem onClick={() => navigateAndClose("/admin")}>
+          Admin
+        </MenuItem>
+      ) : (
+        <MenuItem onClick={() => navigateAndClose("/manage")}>
+          Manage
+        </MenuItem>
+      )}
+    </>
+  )
+
   return (
     <div className="header">
       <Box
@@ -80,34 +123,7 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
           }}
         >
           <MenuItem onClick={() => navigateAndClose("/")}>Home</MenuItem>
-          <MenuItem
-            onClick={() => {
-              navigateAndClose("/purchase-orders");
-            }}
-          >
-            Purchase Orders
-          </MenuItem>
-          <MenuItem onClick={() => navigateAndClose("/receipts")}>
-            Receipts
-          </MenuItem>
-          <MenuItem onClick={() => navigateAndClose("/transfers")}>
-            Transfers
-          </MenuItem>
-          <MenuItem onClick={() => navigateAndClose("/invoices")}>
-            Invoices
-          </MenuItem>
-          <MenuItem onClick={() => navigateAndClose("/vmi-inventory")}>
-            VMI Inventory
-          </MenuItem>
-          {role === "Admin" ? (
-            <MenuItem onClick={() => navigateAndClose("/admin")}>
-              Admin
-            </MenuItem>
-          ) : (
-            <MenuItem onClick={() => navigateAndClose("/manage")}>
-              Manage
-            </MenuItem>
-          )}
+          {role === "prod_schedule_viewer" ? productionScheduleViewerNav : fullNav}
         </Menu>
       </Box>
     </div>

@@ -224,6 +224,7 @@ export default function Admin(props) {
           onChange={(e, { value }) => setSelectedUserType(value)}
           options={[
             { label: "Admin", value: "Admin" },
+            { label: "Production Schedule Viewer", value: "prod_schedule_viewer" },
             ...(userTypes?.data || []).map((userType) => ({
               label: userType.VENDNAME,
               value: userType.VENDNAME,
