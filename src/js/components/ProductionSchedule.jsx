@@ -14,8 +14,26 @@ export default function ProductionSchedule() {
       title="Production Schedule"
       columns={[
         {
+          field: "FormattedDate",
+          headerName: "Date",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "SIDE1",
-          headerName: "Side",
+          headerName: "Side 1",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "SIDE3",
+          headerName: "Side 2",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "SIDE3",
+          headerName: "Side 3",
           flex: 1,
           minWidth: 150,
         },
@@ -26,8 +44,32 @@ export default function ProductionSchedule() {
           minWidth: 150,
         },
         {
+          field: "DESC2",
+          headerName: "Description",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "DESC3",
+          headerName: "Description",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "QTY1",
-          headerName: "Quantity",
+          headerName: "Quantity 1",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "QTY2",
+          headerName: "Quantity 2",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "QTY3",
+          headerName: "Quantity 3",
           flex: 1,
           minWidth: 150,
         },
@@ -38,8 +80,14 @@ export default function ProductionSchedule() {
           minWidth: 150,
         },
         {
-          field: "LINENUM",
-          headerName: "Item Number",
+          field: "COMMENT2",
+          headerName: "Comment",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "COMMENT3",
+          headerName: "Comment",
           flex: 1,
           minWidth: 150,
         },
