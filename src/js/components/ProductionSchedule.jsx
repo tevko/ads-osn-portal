@@ -20,6 +20,12 @@ export default function ProductionSchedule() {
           minWidth: 150,
         },
         {
+          field: "SHIFT3",
+          headerName: "Shift 3",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "SIDE3",
           headerName: "Side 3",
           flex: 1,
@@ -44,6 +50,12 @@ export default function ProductionSchedule() {
           minWidth: 150,
         },
         {
+          field: "SHIFT2",
+          headerName: "Shift 2",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "SIDE2",
           headerName: "Side 2",
           flex: 1,
@@ -64,6 +76,12 @@ export default function ProductionSchedule() {
         {
           field: "COMMENT2",
           headerName: "Comment",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "SHIFT1",
+          headerName: "Shift 1",
           flex: 1,
           minWidth: 150,
         },
