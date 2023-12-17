@@ -29,6 +29,17 @@ export default function Tables({
           rowsPerPageOptions={[10, 15, 20]}
           pagination
           scroll
+          sx={{
+            '& .highlight-1': {
+              backgroundColor: 'rgba(157, 255, 118, 0.49)',
+            },
+            '& .highlight-2': {
+              backgroundColor: 'rgba(118, 139, 255, 0.49)',
+            },
+            '& .highlight-3': {
+              backgroundColor: 'rgba(255, 139, 118, 0.49)',
+            },
+          }}
         />
       </div>
     </>
