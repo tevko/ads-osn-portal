@@ -18,7 +18,7 @@ export default function ProductionSchedule() {
         setValues(d.filter(o => {
           const currDatePlusSeven = new Date();
           currDatePlusSeven.setDate(currDatePlusSeven.getDate() + 7);
-          const objDate = new Date(d.DATE);
+          const objDate = new Date(o.DATE);
           return objDate <= currDatePlusSeven && objDate >= new Date();
         }))
       } else {
