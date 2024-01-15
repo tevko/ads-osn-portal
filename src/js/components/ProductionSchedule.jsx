@@ -12,17 +12,18 @@ export default function ProductionSchedule() {
   const addHighlightClass = (params, str) => params && params.value !== null && params.value !== undefined && params.value.toString().trim() && str;
   
   useEffect(() => {
-    // if (data && !loading)
-    const d = data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 }))
-    if (filter) {
-      setValues(d.filter(o => {
-        const currDatePlusSeven = new Date();
-        currDatePlusSeven.setDate(currDatePlusSeven.getDate() + 7);
-        const objDate = new Date(d.DATE);
-        return objDate <= currDatePlusSeven && objDate >= new Date();
-      }))
-    } else {
-      setValues(d);
+    if (data && !loading) {
+      const d = data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 }))
+      if (filter) {
+        setValues(d.filter(o => {
+          const currDatePlusSeven = new Date();
+          currDatePlusSeven.setDate(currDatePlusSeven.getDate() + 7);
+          const objDate = new Date(d.DATE);
+          return objDate <= currDatePlusSeven && objDate >= new Date();
+        }))
+      } else {
+        setValues(d);
+      }
     }
   }, [filter]);
 
