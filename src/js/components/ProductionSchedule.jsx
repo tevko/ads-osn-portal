@@ -8,12 +8,11 @@ export default function ProductionSchedule() {
   );
   const [filter, toggleFilter] = useState(false);
   const [values, setValues] = useState([]);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
+  
   const addHighlightClass = (params, str) => params && params.value !== null && params.value !== undefined && params.value.toString().trim() && str;
-
+  
   useEffect(() => {
+    // if (data && !loading)
     const d = data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 }))
     if (filter) {
       setValues(d.filter(o => {
@@ -30,6 +29,9 @@ export default function ProductionSchedule() {
   useEffect(() => {
     if (data && !loading) setValues(data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 })))
   }, [loading, data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
