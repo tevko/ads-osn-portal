@@ -46,6 +46,8 @@ export default function ProductionSchedule() {
             headerName: "Date",
             flex: 1,
             minWidth: 150,
+            //type: "date"
+            //https://mui.com/x/react-data-grid/column-definition/#column-types
           },
           {
             field: "SIDE3",
