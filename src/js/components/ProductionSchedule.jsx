@@ -13,14 +13,15 @@ export default function ProductionSchedule() {
   
   useEffect(() => {
     if (data && !loading) {
-      const d = data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 }))
+      const d = data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 }));
+      const td = new Date();
       if (filter) {
         setValues(d.filter(o => {
           const currDatePlusSeven = new Date();
           currDatePlusSeven.setDate(currDatePlusSeven.getDate() + 7);
           const objDate = new Date(o.DATE);
-          return objDate <= currDatePlusSeven && objDate >= new Date();
-        }))
+          return objDate <= currDatePlusSeven && (objDate >= td || (objDate.getDay() === td.getDay() && objDate.getMonth() === td.getMonth() && objDate.getFullYear() === td.getFullYear()));
+        }));
       } else {
         setValues(d);
       }
