@@ -7,7 +7,7 @@ export default function ProductionSchedule() {
     `${window.API_BASE_URL}/production-schedule`
   );
   const [filter, toggleFilter] = useState(false);
-  const [values, setValues] = useState(data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 })));
+  const [values, setValues] = useState([]);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -25,7 +25,11 @@ export default function ProductionSchedule() {
     } else {
       setValues(d);
     }
-  }, [filter])
+  }, [filter]);
+
+  useEffect(() => {
+    if (data && !loading) setValues(data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 })))
+  }, [loading, data]);
 
   return (
     <>
@@ -171,5 +175,3 @@ export default function ProductionSchedule() {
     </>
   );
 }
-
-// switch shift / side order - side first then shift
