@@ -45,13 +45,15 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
       >
         Purchase Orders
       </MenuItem>
-      <MenuItem
-        onClick={() => {
-          navigateAndClose("/production-schedule");
-        }}
-      >
-        Production Schedule
-      </MenuItem>
+      {role === "Admin" && (
+        <MenuItem
+          onClick={() => {
+            navigateAndClose("/production-schedule");
+          }}
+        >
+          Production Schedule
+        </MenuItem>
+      )}
       <MenuItem onClick={() => navigateAndClose("/receipts")}>
         Receipts
       </MenuItem>
