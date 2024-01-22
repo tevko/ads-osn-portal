@@ -24,6 +24,12 @@ export default function Receipts() {
           minWidth: 150,
         },
         {
+          field: "RCPUNIT",
+          headerName: "UOM",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "RCPNUMBER",
           headerName: "Receipt Number",
           flex: 1,

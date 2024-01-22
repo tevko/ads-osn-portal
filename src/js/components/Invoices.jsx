@@ -24,6 +24,12 @@ export default function Invoices() {
           minWidth: 150,
         },
         {
+          field: "UNIT",
+          headerName: "UOM",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "PONUMBER",
           headerName: "PO Number",
           flex: 1,

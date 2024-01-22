@@ -24,6 +24,12 @@ export default function Transfers() {
           minWidth: 150,
         },
         {
+          field: "UNIT",
+          headerName: "UOM",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
           field: "VENDOR",
           headerName: "Vendor Code",
           flex: 1,
