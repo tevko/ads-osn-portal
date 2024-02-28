@@ -85,6 +85,13 @@ export default function ProductionSchedule() {
             cellClassName: (params) => addHighlightClass(params, 'highlight-1'),
           },
           {
+            field: "LBS3",
+            headerName: "Weight",
+            flex: 1,
+            minWidth: 150,
+            cellClassName: (params) => addHighlightClass(params, 'highlight-1'),
+          },
+          {
             field: "COMMENT3",
             headerName: "Comment",
             flex: 1,
@@ -127,6 +134,13 @@ export default function ProductionSchedule() {
             cellClassName: (params) => addHighlightClass(params, 'highlight-2'),
           },
           {
+            field: "LBS2",
+            headerName: "Weight",
+            flex: 1,
+            minWidth: 150,
+            cellClassName: (params) => addHighlightClass(params, 'highlight-2'),
+          },
+          {
             field: "COMMENT2",
             headerName: "Comment",
             flex: 1,
@@ -164,6 +178,13 @@ export default function ProductionSchedule() {
           {
             field: "QTY1",
             headerName: "Quantity",
+            flex: 1,
+            minWidth: 150,
+            cellClassName: (params) => addHighlightClass(params, 'highlight-3'),
+          },
+          {
+            field: "LBS1",
+            headerName: "Weight",
             flex: 1,
             minWidth: 150,
             cellClassName: (params) => addHighlightClass(params, 'highlight-3'),
