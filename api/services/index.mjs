@@ -28,7 +28,7 @@ const getTableName = (scope) => {
     case "vmi-inventory":
       return "[PSSCOM].[dbo].[View_PORTAL_5_QTYINVMI]";
     case "production-schedule":
-      return "[ZZZTST].[dbo].[FRCST_MAIN]";
+      return "[PSSCOM].[dbo].[FRCST_MAIN]";
     default:
       return null;
   }
