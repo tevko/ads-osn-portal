@@ -42,7 +42,7 @@ export default function ProductionSchedule() {
         title="Production Schedule"
         columns={[
           {
-            field: "DATE",
+            field: "FormattedDate",
             headerName: "Date",
             flex: 1,
             minWidth: 150,
