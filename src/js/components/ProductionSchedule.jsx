@@ -19,7 +19,7 @@ export default function ProductionSchedule() {
         setValues(d.filter(o => {
           const currDatePlusSeven = new Date();
           currDatePlusSeven.setDate(currDatePlusSeven.getDate() + 7);
-          const objDate = new Date(o.DATE);
+          const objDate = new Date(o.FormattedDate);
           return objDate <= currDatePlusSeven && (objDate >= td || (objDate.getDay() === td.getDay() && objDate.getMonth() === td.getMonth() && objDate.getFullYear() === td.getFullYear()));
         }));
       } else {
