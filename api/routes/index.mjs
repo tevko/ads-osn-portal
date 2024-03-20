@@ -22,7 +22,7 @@ export default (app) => {
     const data = await getData({
       scope: "production-schedule",
       queryParam: req.query,
-      pool: app.locals.db2,
+      pool: app.locals.db,
       auth: req.headers.authorization,
     });
     return res.status(data.error ? 500 : 200).json(data);
