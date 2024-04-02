@@ -32,7 +32,8 @@ export default function ProductionSchedule() {
   }, [filter]);
 
   useEffect(() => {
-    if (data && !loading && allergenData && !allergenLoading) {
+    //  && allergenData && !allergenLoading
+    if (data && !loading) {
       console.log(allergenData);
       setValues(data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 })))
     }
