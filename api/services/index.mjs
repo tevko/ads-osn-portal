@@ -12,7 +12,9 @@ const getTableName = (scope) => {
     case "receipts":
       return "[PSSCOM].[dbo].[View_PORTAL__2_PORECEIPTS]";
     case "invoices":
-      return "[PSSCOM].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]";
+      return "[PSSCOM].[dbo].[View_PORTAL_View_4_POTRANS_INVOICE_STATUS]" ;
+    case "allergens":
+      return "[PSSCOM].[dbo].[view_ALLERGENS]";
     case "transfers":
       return "[PSSCOM].[dbo].[View_PORTAL__3_POTRANSFERS_NEW]";
     case "user-types":

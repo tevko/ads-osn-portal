@@ -6,6 +6,9 @@ export default function ProductionSchedule() {
   const { data, error, loading } = useFetch(
     `${window.API_BASE_URL}/production-schedule`
   );
+  const { data: allergenData, error: allergenError, loading: allergenLoading } = useFetch(
+    `${window.API_BASE_URL}/allergens`
+  );
   const [filter, toggleFilter] = useState(false);
   const [values, setValues] = useState([]);
   
@@ -29,7 +32,10 @@ export default function ProductionSchedule() {
   }, [filter]);
 
   useEffect(() => {
-    if (data && !loading) setValues(data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 })))
+    if (data && !loading && allergenData && !allergenLoading) {
+      console.log(allergenData);
+      setValues(data.map((obj) => ({ ...obj, id: obj.LINENUM + obj.DESC1 })))
+    }
   }, [loading, data]);
 
   if (loading) return <p>Loading...</p>;
