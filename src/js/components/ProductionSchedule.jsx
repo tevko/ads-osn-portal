@@ -105,7 +105,7 @@ export default function ProductionSchedule() {
             flex: 1,
             minWidth: 150,
             cellClassName: (params) => addHighlightClass(params, 'highlight-1'),
-            renderCell: (params) => params.data.isAllergen ? (
+            renderCell: (params) => params.row.isAllergen ? (
               <Tooltip title="THIS ITEM IS AN ALLERGEN" >
                <span className="table-cell-trucate">ALLERGEN</span>
                </Tooltip>
