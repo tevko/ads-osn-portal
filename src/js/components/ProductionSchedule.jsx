@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Chip from '@mui/material/Chip';
+import Tooltip from '@mui/material/Tooltip';
 import useFetch from "../hooks/useFetch";
 import Tables from "./Tables";
 
@@ -103,6 +105,11 @@ export default function ProductionSchedule() {
             flex: 1,
             minWidth: 150,
             cellClassName: (params) => addHighlightClass(params, 'highlight-1'),
+            renderCell: (params) =>  (
+              <Tooltip title="ALLERGEN" >
+               <span className="table-cell-trucate">THIS ITEM IS AN ALLERGEN</span>
+               </Tooltip>
+             ),
           },
           {
             field: "SIDE2",
