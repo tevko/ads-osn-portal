@@ -204,6 +204,7 @@ export default function ProductionSchedule() {
           },
         ]}
         rows={values}
+        getRowClassName={(params) => `${params.row.isAllergen ? "isAllergen" : ""}`}
       />
     </>
   );

@@ -39,6 +39,9 @@ export default function Tables({
             '& .highlight-3': {
               backgroundColor: 'rgba(255, 139, 118, 0.49)',
             },
+            '& .isAllergen': {
+              backgroundColor: 'orange',
+            },
           }}
         />
       </div>
