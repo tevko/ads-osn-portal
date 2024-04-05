@@ -109,7 +109,7 @@ export default function ProductionSchedule() {
               <Tooltip title="THIS ITEM IS AN ALLERGEN" >
                <span className="table-cell-trucate">ALLERGEN</span>
                </Tooltip>
-             ) : params.data.COMMENT3,
+             ) : params.row.COMMENT3,
           },
           {
             field: "SIDE2",
