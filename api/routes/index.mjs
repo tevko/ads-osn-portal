@@ -72,6 +72,15 @@ export default (app) => {
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
+  app.get("/po-search", async (req, res) => {
+    const data = await getData({
+      scope: "po-search",
+      queryParam: req.query,
+      pool: app.locals.db,
+      auth: req.headers.authorization,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
+  });
   app.get("/users", async (req, res) => {
     const users = await getAllUsers(req.headers.authorization);
     return res.status(200).json(users);
