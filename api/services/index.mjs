@@ -38,9 +38,25 @@ const getTableName = (scope) => {
   }
 };
 
+const POSearchQuery = (role, po) => role !== "Admin" ? `
+SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
+FROM [PSSCOM].[dbo].[POPORH1] h
+INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
+INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
+WHERE h.VDNAME = '${role}'
+AND h.PONUMBER = ${po};
+` : `
+SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
+FROM [PSSCOM].[dbo].[POPORH1] h
+INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
+INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
+WHERE h.PONUMBER = ${po};
+`;
+
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam, role) => {
   let query = `SELECT * FROM ${getTableName(scope)}`;
+  if (scope === "po-search") query = POSearchQuery(role, queryParam.ponumber);
   if (role !== "Admin" && scope !== "user-types") {
     switch (scope) {
       case "purchase-orders":
@@ -54,9 +70,6 @@ const buildQuery = (scope, queryParam, role) => {
         break;
       case "transfers":
         query += ` WHERE NAME = '${role}'`;
-        break;
-      case "po-search":
-        query += ` WHERE VDNAME = '${role}' AND PONUMBER = ${queryParam.ponumber}`;
         break;
       case "vmi-inventory":
         query += ` WHERE [VENDOR NAME] = '${role}'`;
