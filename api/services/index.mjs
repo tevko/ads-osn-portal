@@ -29,8 +29,6 @@ const getTableName = (scope) => {
       return "[PSSCOM].[dbo].[View_PORTAL_DASHBOARD_ADMIN_INVOICESTATUS]";
     case "vmi-inventory":
       return "[PSSCOM].[dbo].[View_PORTAL_5_QTYINVMI]";
-    case "po-search":
-      return "[PSSCOM].[dbo].[POPORH1]";
     case "production-schedule":
       return "[PSSCOM].[dbo].[FRCST_MAIN]";
     default:
