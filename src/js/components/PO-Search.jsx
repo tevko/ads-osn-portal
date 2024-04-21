@@ -19,7 +19,10 @@ export default function POSearch() {
   };
 
   return (
-    <>
+    <div className="admin_page">
+      <Typography variant="h4" className="new_user_heading" color="#fff">
+        Search for Purchase Order
+      </Typography>
       <Input
         type="text"
         placeholder="Enter PO Number"
@@ -35,6 +38,6 @@ export default function POSearch() {
           Purchase Order Not Found
         </Typography>
       )}
-    </>
+    </div>
   );
 }
