@@ -15,7 +15,6 @@ export default function POSearch() {
     async function fetchData() {
       try {
         setLoading(true);
-        setHasSearched(true);
         // fetch with authorization header
         const result = await fetch(`${window.API_BASE_URL}/po-search?ponumber=${input}`, {
           credentials: "include",
@@ -35,6 +34,7 @@ export default function POSearch() {
   }, [input]);
 
   const handleSearch = () => {
+    setHasSearched(true);
     setInput(searchValue);
   };
 
