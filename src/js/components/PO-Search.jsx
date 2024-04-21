@@ -42,14 +42,14 @@ export default function POSearch() {
       <Typography variant="h4" className="new_user_heading" color="#fff">
         Search for Purchase Order
       </Typography>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", mt: 3, mb: 3 }}>
         <Input
           type="text"
           placeholder="Enter PO Number"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <Button variant="contained" onClick={handleSearch} disabled={loading}>Search</Button>
+        <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
       </Box>
       {!loading && !error && (
         <Tables title="Purchase Order:" rows={data} />
