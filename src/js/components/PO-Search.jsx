@@ -5,7 +5,7 @@ import Tables from "./Tables";
 
 export default function POSearch() {
   const [input, setInput] = useState("");
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState({ loading: true });
 
   useEffect(() => {
     if (input.length) {
@@ -33,7 +33,7 @@ export default function POSearch() {
       {!results.loading && !results.error && (
         <Tables title="Purchase Order:" rows={results.data} />
       )}
-      {!results.loading && (results.error || results.data.length === 0) (
+      {!results.loading && (results.error || results.data?.length === 0) (
         <Typography variant="h5" style={{ color: "#FFF" }}>
           Purchase Order Not Found
         </Typography>
