@@ -16,6 +16,7 @@ import Admin from "./components/Admin";
 import Manage from "./components/Manage";
 import VMIInventory from "./components/VMIInventory";
 import ProductionSchedule from "./components/ProductionSchedule";
+import POSearch from "./components/PO-Search";
 
 const routes = {
   "/purchase-orders": (props) => <PurchaseOrders {...props} />,
@@ -27,6 +28,7 @@ const routes = {
   "/manage": (props) => <Manage {...props} />,
   "/vmi-inventory": (props) => <VMIInventory {...props} />,
   "/production-schedule": (props) => <ProductionSchedule {...props} />,
+  "/po-search": (props) => <POSearch {...props} />,
 };
 
 const PageTitles = {
@@ -39,6 +41,7 @@ const PageTitles = {
   "/manage": "Manage",
   "/vmi-inventory": "VMI Inventory",
   "/production-schedule": "Production Schedule",
+  "/po-search": "Search Purchase Orders"
 };
 
 const themeOptions = createTheme({
