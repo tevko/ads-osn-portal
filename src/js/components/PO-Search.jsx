@@ -9,11 +9,13 @@ export default function POSearch() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
+        setHasSearched(true);
         // fetch with authorization header
         const result = await fetch(`${window.API_BASE_URL}/po-search?ponumber=${input}`, {
           credentials: "include",
@@ -136,7 +138,7 @@ export default function POSearch() {
           ]}
         />
       )}
-      {!loading && (error || data?.length === 0) && (
+      {!loading && (error || data?.length === 0) && hasSearched && (
         <Typography variant="h5" style={{ color: "#FFF" }}>
           Purchase Order Not Found
         </Typography>
