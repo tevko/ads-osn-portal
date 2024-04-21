@@ -20,7 +20,6 @@ export default function POSearch() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
           },
-          ...options,
         });
         const json = await result.json();
         setData(json);
