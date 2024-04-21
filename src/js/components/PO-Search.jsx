@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { Button, Typography, Input } from "@mui/material";
+import { Button, Typography, Input, Box } from "@mui/material";
 import useFetch from "../hooks/useFetch";
 import Tables from "./Tables";
 
 export default function POSearch() {
   const [input, setInput] = useState("");
-  const [results, setResults] = useState({ loading: true });
+  const [searchValue, setSearchValue] = useState("");
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (input.length) {
-      const { data, error, loading } = useFetch(`${window.API_BASE_URL}/po-search?ponumber=${input}`);
-      setResults({ data, error, loading });
+    async function fetchData() {
+      try {
+        setLoading(true);
+        // fetch with authorization header
+        const result = await fetch(`${window.API_BASE_URL}/po-search?ponumber=${input}`, {
+          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+          },
+          ...options,
+        });
+        const json = await result.json();
+        setData(json);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
     }
+    fetchData();
   }, [input]);
 
   const handleSearch = () => {
-    setInput(input);
+    setInput(searchValue);
   };
 
   return (
@@ -23,17 +42,19 @@ export default function POSearch() {
       <Typography variant="h4" className="new_user_heading" color="#fff">
         Search for Purchase Order
       </Typography>
-      <Input
-        type="text"
-        placeholder="Enter PO Number"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <Button variant="contained" onClick={handleSearch} disabled={results.loading}>Search</Button>
-      {!results.loading && !results.error && (
-        <Tables title="Purchase Order:" rows={results.data} />
+      <Box sx={{ display: "flex" }}>
+        <Input
+          type="text"
+          placeholder="Enter PO Number"
+          value={input}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <Button variant="contained" onClick={handleSearch} disabled={loading}>Search</Button>
+      </Box>
+      {!loading && !error && (
+        <Tables title="Purchase Order:" rows={data} />
       )}
-      {!results.loading && (results.error || results.data?.length === 0) (
+      {!loading && (error || data?.length === 0) (
         <Typography variant="h5" style={{ color: "#FFF" }}>
           Purchase Order Not Found
         </Typography>
