@@ -54,7 +54,7 @@ export default function POSearch() {
       {!loading && !error && (
         <Tables title="Purchase Order:" rows={data} />
       )}
-      {!loading && (error || data?.length === 0) (
+      {!loading && (error || data?.length === 0) && (
         <Typography variant="h5" style={{ color: "#FFF" }}>
           Purchase Order Not Found
         </Typography>
