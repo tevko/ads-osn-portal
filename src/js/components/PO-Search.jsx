@@ -46,7 +46,7 @@ export default function POSearch() {
         <Input
           type="text"
           placeholder="Enter PO Number"
-          value={input}
+          value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <Button variant="contained" onClick={handleSearch} disabled={loading}>Search</Button>
