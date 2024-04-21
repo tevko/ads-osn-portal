@@ -50,7 +50,7 @@ export default function POSearch() {
         />
         <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
       </Box>
-      {!loading && !error && data.length > 0 && (
+      {!loading && !error && data?.length > 0 && (
         <Tables
           title="Purchase Order:"
           rows={data.map(o => ({ ...o, id: o.PONUMBER }))}
