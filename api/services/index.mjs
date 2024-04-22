@@ -36,16 +36,34 @@ const getTableName = (scope) => {
   }
 };
 
-const POSearchQuery = (role, po) => role !== "Admin" ? `SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
-FROM [PSSCOM].[dbo].[POPORH1] h
-INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
-INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
-WHERE h.VDNAME = '${role}'
-AND h.PONUMBER = '${po}';` : `SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
-FROM [PSSCOM].[dbo].[POPORH1] h
-INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
-INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
-WHERE h.PONUMBER = '${po}';`;
+function validateRolePO(role, po) {
+  // Regular expressions for validation
+  const roleRegex = /^[a-zA-Z0-9 .&,\-_]*$/; // Allow common company name symbols
+  const poRegex = /^PO[a-zA-Z0-9]+$/; // Only alphanumeric after "PO"
+
+  // Validate role
+  if (!roleRegex.test(role)) {
+    return false;
+  }
+
+  // Validate PO number
+  return poRegex.test(po);
+}
+
+const POSearchQuery = (role, po) => {
+  if (validateRolePO(role, po)) {
+    return role !== "Admin" ? `SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
+  FROM [PSSCOM].[dbo].[POPORH1] h
+  INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
+  INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
+  WHERE h.VDNAME = '${role}'
+  AND h.PONUMBER = '${po}';` : `SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
+  FROM [PSSCOM].[dbo].[POPORH1] h
+  INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
+  INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
+  WHERE h.PONUMBER = '${po}';`
+  }
+};
 
 //builds a query for SQL given a scope and a query param
 const buildQuery = (scope, queryParam, role) => {
