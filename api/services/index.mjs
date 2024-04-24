@@ -52,7 +52,7 @@ function validateRolePO(role, po) {
 
 const POSearchQuery = (role, po) => {
   if (validateRolePO(role, po)) {
-    return role !== "Admin" ? `SELECT * FROM [PSSCOM].[dbo].[View_PORTAL_PO_SEARCH] WHERE PONUMBER = '${po}'` : `SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
+    return role === "Admin" ? `SELECT * FROM [PSSCOM].[dbo].[View_PORTAL_PO_SEARCH] WHERE PONUMBER = '${po}'` : `SELECT h.PONUMBER, h.DATE, l.ITEMNO, l.ITEMDESC, l.LOCATION, l.ORDERUNIT, l.OQORDERED, l.OQRECEIVED, l.OQCANCELED, l.OQOUTSTAND, l.UNITCOST, l.EXTENDED, c.RCPNUMBER
   FROM [PSSCOM].[dbo].[POPORH1] h
   INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
   INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
