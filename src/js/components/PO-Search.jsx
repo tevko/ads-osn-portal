@@ -88,7 +88,7 @@ export default function POSearch() {
               minWidth: 150,
             },
             {
-              field: "ORDERUNIT",
+              field: "UNIT",
               headerName: "Order Unit",
               flex: 1,
               minWidth: 150,
