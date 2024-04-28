@@ -66,6 +66,9 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
       <MenuItem onClick={() => navigateAndClose("/vmi-inventory")}>
         VMI Inventory
       </MenuItem>
+      <MenuItem onClick={() => navigateAndClose("/po-search")}>
+        PO Search
+      </MenuItem>
       {role === "Admin" ? (
         <MenuItem onClick={() => navigateAndClose("/admin")}>
           Admin
