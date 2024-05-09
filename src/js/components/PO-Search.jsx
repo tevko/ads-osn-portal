@@ -44,7 +44,7 @@ export default function POSearch() {
           },
         });
         const pos = await r.json();
-        setPOs(pos.map(p => p.PONUMBER.trim()));
+        setPos(pos.map(p => p.PONUMBER.trim()));
       } catch (err) {
         setError(err);
       } finally {
