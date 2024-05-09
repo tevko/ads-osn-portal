@@ -65,19 +65,13 @@ export default function POSearch() {
         Search for Purchase Order
       </Typography>
       <Box sx={{ display: "flex", mt: 3, mb: 3 }}>
-        <Input
-          type="text"
-          placeholder="Enter PO Number"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
         <Autocomplete
           disablePortal
           id="combo-box-demo"
           options={pos}
           sx={{ width: 300 }}
           onChange={(e) => setSearchValue(e.target.value)}
-          renderInput={(params) => <TextField {...params} label="Movie" />}
+          renderInput={(params) => <TextField {...params} label="Search PO Number" />}
         />
         <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
       </Box>
