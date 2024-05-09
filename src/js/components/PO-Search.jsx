@@ -31,7 +31,7 @@ export default function POSearch() {
         setLoading(false);
       }
     }
-    fetchData();
+    if (input) fetchData();
   }, [input]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function POSearch() {
           },
         });
         const pos = await r.json();
-        setPOs(pos);
+        setPOs(pos.map(p => p.PONUMBER.trim()));
       } catch (err) {
         setError(err);
       } finally {
