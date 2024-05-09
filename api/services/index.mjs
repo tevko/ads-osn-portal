@@ -46,8 +46,11 @@ function validateRolePO(role, po) {
     return false;
   }
 
-  // Validate PO number
-  return poRegex.test(po);
+  if (po) {
+    // Validate PO number
+    return poRegex.test(po);
+  }
+  return true;
 }
 
 const POSearchQuery = (role, po) => {
@@ -56,7 +59,13 @@ const POSearchQuery = (role, po) => {
   FROM [PSSCOM].[dbo].[POPORH1] h
   INNER JOIN [PSSCOM].[dbo].[POPORL] l ON h.PORHSEQ = l.PORHSEQ
   INNER JOIN [PSSCOM].[dbo].[PORCPH1] c ON h.PONUMBER = c.PONUMBER
-  WHERE h.PONUMBER = '${po}';`
+  WHERE h.PONUMBER = '${po}' AND h.VDNAME = '${role}';`
+  }
+};
+
+const POSQuery = (role) => {
+  if (validateRolePO(role, po)) {
+    return role === "Admin" ? `SELECT PONUMBER FROM [PSSCOM].[dbo].[View_PORTAL_PO_SEARCH]` : `SELECT PONUMBER FROM [PSSCOM].[dbo].[View_PORTAL_PO_SEARCH] WHERE VENDOR = '${role}'`
   }
 };
 
@@ -64,6 +73,7 @@ const POSearchQuery = (role, po) => {
 const buildQuery = (scope, queryParam, role) => {
   let query = `SELECT * FROM ${getTableName(scope)}`;
   if (scope === "po-search") query = POSearchQuery(role, queryParam.ponumber);
+  if (scope === "pos") query = POSQuery(role);
   if (role !== "Admin" && scope !== "user-types") {
     switch (scope) {
       case "purchase-orders":

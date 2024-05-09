@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Typography, Input, Box } from "@mui/material";
+import { Button, Typography, Input, Box, Autocomplete } from "@mui/material";
 import useFetch from "../hooks/useFetch";
 import Tables from "./Tables";
 
@@ -7,6 +7,7 @@ export default function POSearch() {
   const [input, setInput] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [data, setData] = useState(null);
+  const [pos, setPos] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -33,6 +34,26 @@ export default function POSearch() {
     fetchData();
   }, [input]);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const r = await fetch(`${window.API_BASE_URL}/pos`, {
+          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
+          },
+        });
+        const pos = await r.json();
+        setPOs(pos);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
   const handleSearch = () => {
     setHasSearched(true);
     setInput(searchValue);
@@ -49,6 +70,14 @@ export default function POSearch() {
           placeholder="Enter PO Number"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={pos}
+          sx={{ width: 300 }}
+          onChange={(e) => setSearchValue(e.target.value)}
+          renderInput={(params) => <TextField {...params} label="Movie" />}
         />
         <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
       </Box>
