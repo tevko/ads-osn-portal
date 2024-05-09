@@ -70,7 +70,7 @@ export default function POSearch() {
           id="combo-box-demo"
           options={pos}
           sx={{ width: 300 }}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.innerText)}
           renderInput={(params) => <TextField {...params} label="Search PO Number" />}
         />
         <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
