@@ -11,27 +11,20 @@ export default function POSearch() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const { data: poData } = useFetch(`${window.API_BASE_URL}/purchase-orders`);
+  const { data: receiptData } = useFetch(`${window.API_BASE_URL}/receipts`);
+  const { data: transferData } = useFetch(`${window.API_BASE_URL}/transfers`);
+  const { data: invoiceData } = useFetch(`${window.API_BASE_URL}/invoices`);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        // fetch with authorization header
-        const result = await fetch(`${window.API_BASE_URL}/po-search?ponumber=${input}`, {
-          credentials: "include",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("_A_C_T_")}`,
-          },
-        });
-        const json = await result.json();
-        setData(json);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
+    if (input) {
+      setData({
+        po: poData.filter(p => p.PONUMBER === input),
+        rp: receiptData.filter(p => p.PONUMBER === input),
+        tr: transferData.filter(p => p.PONUMBER === input),
+        in: invoiceData.filter(p => p.PONUMBER === input)
+      });
     }
-    if (input) fetchData();
   }, [input]);
 
   useEffect(() => {
@@ -165,7 +158,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
+            rows={data.po.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
           />
           <Tables
             title="Receipts"
@@ -267,7 +260,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
+            rows={data.rp.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
           />
           <Tables
             title="Stock Transferred to Pulley"
@@ -351,7 +344,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.map((obj) => ({ ...obj, id: obj.ITEMNO + obj.DOCNUM }))}
+            rows={data.tr.map((obj) => ({ ...obj, id: obj.ITEMNO + obj.DOCNUM }))}
           />
           <Tables
             title="Invoices"
@@ -465,7 +458,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
+            rows={data.in.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
           />
         </>
       )}
