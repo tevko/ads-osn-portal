@@ -76,192 +76,398 @@ export default function POSearch() {
         <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
       </Box>
       {!loading && !error && data?.length > 0 && (
-        <Tables
-          title="Purchase Order:"
-          rows={data.map(o => ({ ...o, id: o.PONUMBER }))}
-          columns={[
-            {
-              field: "PONUMBER",
-              headerName: "PO Number",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "RCPTDATE",
-              headerName: "Date",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "ITEMNO",
-              headerName: "Item Number",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "ITEMDESC",
-              headerName: "Item Description",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "LOCATION",
-              headerName: "Location",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "UNIT",
-              headerName: "Order Unit",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "EXTRCPT",
-              headerName: "EXTRCPT",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "LOTNUM",
-              headerName: "LOTNUM",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "LOTQTY",
-              headerName: "LOTQTY",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "RCPUNIT",
-              headerName: "RCPUNIT",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "VENDOR",
-              headerName: "VENDOR",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "TRANSDATE",
-              headerName: "TRANSDATE",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "INVOICED",
-              headerName: "INVOICED",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "QTY TRANSFERRED",
-              headerName: "QTY TRANSFERRED",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "TRANSFER TO",
-              headerName: "TRANSFER TO",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "TRANSFER FROM",
-              headerName: "TRANSFER FROM",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "PYMTAMNT",
-              headerName: "PYMTAMNT",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "DOCNBR",
-              headerName: "DOCNBR",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "INVEXT",
-              headerName: "INVEXT",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "TOTALTRANSCOST",
-              headerName: "TOTALTRANSCOST",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "INVNUMBER",
-              headerName: "INVNUMBER",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "QTYTRANS",
-              headerName: "QTYTRANS",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "TRANSFERNO",
-              headerName: "TRANSFERNO",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "QTYORD",
-              headerName: "Quantity Ordered",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "QTYREC",
-              headerName: "Quantity Received",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "QTYCXL",
-              headerName: "Quantity Cancelled",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "QTY OS",
-              headerName: "Quantity Outstanding",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "UNITCOST",
-              headerName: "Unit Cost",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "EXTENDED",
-              headerName: "Extended",
-              flex: 1,
-              minWidth: 150,
-            },
-            {
-              field: "RCPNUMBER",
-              headerName: "RCP Number",
-              flex: 1,
-              minWidth: 150,
-            },
-          ]}
-        />
+        <>
+          <Tables
+            title="Purchase Orders"
+            columns={[
+              {
+                field: "VENDOR",
+                headerName: "Vendor Code",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "NAME",
+                headerName: "Vendor Name",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "PONUMBER",
+                headerName: "PO Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "DATE",
+                headerName: "Date",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "ITEMNO",
+                headerName: "Item Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "ITEMDESC",
+                headerName: "Item Description",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "LOCATION",
+                headerName: "Location",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNIT",
+                headerName: "Order Unit",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTYORD",
+                headerName: "Quantity Ordered",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTYREC",
+                headerName: "Quantity Received",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTYCXL",
+                headerName: "Quantity Canceled",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTY OS",
+                headerName: "Quantity Outstanding",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNITCOST",
+                headerName: "Unit Cost",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "EXTENDED",
+                headerName: "Extended",
+                flex: 1,
+                minWidth: 150,
+              },
+            ]}
+            rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
+          />
+          <Tables
+            title="Receipts"
+            columns={[
+              {
+                field: "LOCATION",
+                headerName: "Location",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "PONUMBER",
+                headerName: "PO Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "RCPUNIT",
+                headerName: "UOM",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "RCPNUMBER",
+                headerName: "Receipt Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "DATE",
+                headerName: "Date",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "VENDOR",
+                headerName: "Vendor Code",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "NAME",
+                headerName: "Vendor Name",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "ITEM",
+                headerName: "Item Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "DESCRIPTION",
+                headerName: "Item Description",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTYORD",
+                headerName: "Quantity Ordered",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTREC",
+                headerName: "Quantity Received",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTY OS",
+                headerName: "Quantity Outstanding",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNITCOST",
+                headerName: "Unit Cost",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "EXTENDED",
+                headerName: "Extended",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "LOTNUM",
+                headerName: "Lot Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "LOTQTY",
+                headerName: "Lot Quantity",
+                flex: 1,
+                minWidth: 150,
+              },
+            ]}
+            rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
+          />
+          <Tables
+            title="Stock Transferred to Pulley"
+            columns={[
+              {
+                field: "DOCNUM",
+                headerName: "Document Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "TRANSDATE",
+                headerName: "Transfer Date",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNIT",
+                headerName: "UOM",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "VENDOR",
+                headerName: "Vendor Code",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "NAME",
+                headerName: "Vendor Name",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "ITEM",
+                headerName: "Item Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "DESCRIPTION",
+                headerName: "Item Description",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "TRANSFER FROM",
+                headerName: "From Location",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "TRANSFER TO",
+                headerName: "To Location",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTY TRANSFERRED",
+                headerName: "Quantity",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "LOTNUM",
+                headerName: "Lot Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "TOTAL COST",
+                headerName: "Total Cost",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "PONUMBER",
+                headerName: "PO Number",
+                flex: 1,
+                minWidth: 150,
+              },
+            ]}
+            rows={data.map((obj) => ({ ...obj, id: obj.ITEMNO + obj.DOCNUM }))}
+          />
+          <Tables
+            title="Invoices"
+            columns={[
+              {
+                field: "VENDOR",
+                headerName: "Vendor Code",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "NAME",
+                headerName: "Vendor Name",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNIT",
+                headerName: "UOM",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "PONUMBER",
+                headerName: "PO Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "PODATE",
+                headerName: "PO Date",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "ITEMNO",
+                headerName: "Item Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "ITEMDESC",
+                headerName: "Item Description",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTYORD",
+                headerName: "Quantity Ordered",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNIT",
+                headerName: "Order Unit",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "UNITCOST",
+                headerName: "Unit Cost",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "EXTENDED",
+                headerName: "Extended",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "LOTNUM",
+                headerName: "Lot Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "QTYTRANS",
+                headerName: "Quantity Transferred",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "TOTALTRANSCOST",
+                headerName: "Total Transfer Cost",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "INVNUMBER",
+                headerName: "Invoice Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "INVEXT",
+                headerName: "Receipt Extended",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "DOCNBR",
+                headerName: "Document Number",
+                flex: 1,
+                minWidth: 150,
+              },
+              {
+                field: "PYMTAMNT",
+                headerName: "Payment Amount",
+                flex: 1,
+                minWidth: 150,
+              },
+            ]}
+            rows={data.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
+          />
+        </>
       )}
       {!loading && (error || data?.length === 0) && hasSearched && (
         <Typography variant="h5" style={{ color: "#FFF" }}>
