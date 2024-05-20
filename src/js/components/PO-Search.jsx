@@ -9,7 +9,7 @@ export default function POSearch() {
   const [data, setData] = useState(null);
   const [pos, setPos] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [hasSearched, setHasSearched] = useState(false);
   const { data: poData } = useFetch(`${window.API_BASE_URL}/purchase-orders`);
   const { data: receiptData } = useFetch(`${window.API_BASE_URL}/receipts`);
@@ -18,12 +18,14 @@ export default function POSearch() {
 
   useEffect(() => {
     if (input) {
+      setLoading(true);
       setData({
         po: poData.filter(p => p.PONUMBER === input),
         rp: receiptData.filter(p => p.PONUMBER === input),
         tr: transferData.filter(p => p.PONUMBER === input),
         in: invoiceData.filter(p => p.PONUMBER === input)
       });
+      setLoading(false);
     }
   }, [input]);
 
@@ -68,7 +70,7 @@ export default function POSearch() {
         />
         <Button variant="contained" onClick={handleSearch} disabled={loading} sx={{ ml: 3}}>Search</Button>
       </Box>
-      {!loading && !error && data?.length > 0 && (
+      {!loading && (
         <>
           <Tables
             title="Purchase Orders"
