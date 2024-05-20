@@ -17,7 +17,7 @@ export default function POSearch() {
   const { data: invoiceData } = useFetch(`${window.API_BASE_URL}/invoices`);
 
   useEffect(() => {
-    if (input) {
+    if (input.length) {
       setLoading(true);
       setData({
         po: poData.filter(p => p.PONUMBER === input),
