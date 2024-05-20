@@ -6,7 +6,7 @@ import Tables from "./Tables";
 export default function POSearch() {
   const [input, setInput] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({po: [], rp: [], tr: [], in: []});
   const [pos, setPos] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
