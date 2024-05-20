@@ -20,10 +20,10 @@ export default function POSearch() {
     if (input.length) {
       setLoading(true);
       setData({
-        po: poData.filter(p => p.PONUMBER === input),
-        rp: receiptData.filter(p => p.PONUMBER === input),
-        tr: transferData.filter(p => p.PONUMBER === input),
-        in: invoiceData.filter(p => p.PONUMBER === input)
+        po: poData.filter(p => p.PONUMBER.trim() === input),
+        rp: receiptData.filter(p => p.PONUMBER.trim() === input),
+        tr: transferData.filter(p => p.PONUMBER.trim() === input),
+        in: invoiceData.filter(p => p.PONUMBER.trim() === input)
       });
       setLoading(false);
     }
