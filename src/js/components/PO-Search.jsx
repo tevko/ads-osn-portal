@@ -39,7 +39,9 @@ export default function POSearch() {
           },
         });
         const pos = await r.json();
-        setPos(pos.map(p => p.PONUMBER.trim()));
+        const s = new Set();
+        pos.forEach(p => s.add(p.PONUMBER.trim()));
+        setPos(Array.from(s));
       } catch (err) {
         setError(err);
       } finally {
@@ -160,7 +162,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.po.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
+            rows={data.po.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER + obj.PORLREV }))}
           />
           <Tables
             title="Receipts"
@@ -262,7 +264,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.rp.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER }))}
+            rows={data.rp.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.RCPNUMBER + obj.QTREC }))}
           />
           <Tables
             title="Stock Transferred to Pulley"
@@ -460,7 +462,7 @@ export default function POSearch() {
                 minWidth: 150,
               },
             ]}
-            rows={data.in.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC }))}
+            rows={data.in.map((obj) => ({ ...obj, id: obj.PONUMBER + obj.ITEMDESC + obj.QTYTRANS }))}
           />
         </>
       )}

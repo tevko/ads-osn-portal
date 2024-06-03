@@ -65,7 +65,7 @@ const POSearchQuery = (role, po) => {
 
 const POSQuery = (role) => {
   if (validateRolePO(role)) {
-    return role === "Admin" ? `SELECT PONUMBER FROM [PSSCOM].[dbo].[View_PORTAL_PO_SEARCH]` : `SELECT PONUMBER FROM [PSSCOM].[dbo].[View_PORTAL_PO_SEARCH] WHERE VENDOR = '${role}'`
+    return role === "Admin" ? `SELECT PONUMBER FROM [PSSCOM].[dbo].[View_PORTAL_1_POVIEW]` : `SELECT PONUMBER FROM [PSSCOM].[dbo].[View_PORTAL_1_POVIEW] WHERE VENDOR = '${role}'`
   }
 };
 
