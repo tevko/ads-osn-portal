@@ -14,38 +14,14 @@ export default function TotalInventory() {
       title="Total Inventory"
       columns={[
         {
-          field: "VENDNO",
-          headerName: "Vendor Number",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "VENDOR NAME",
-          headerName: "Vendor Name",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "ITEMNO",
-          headerName: "Item Number",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "DESCRIPTION",
+          field: "DESC",
           headerName: "Description",
           flex: 1,
           minWidth: 150,
         },
         {
-          field: "LOTNUMBER",
-          headerName: "Lot Number",
-          flex: 1,
-          minWidth: 150,
-        },
-        {
-          field: "STOCKDATE",
-          headerName: "Stock Date",
+          field: "ITEMNUM",
+          headerName: "Item Number",
           flex: 1,
           minWidth: 150,
         },
@@ -56,8 +32,32 @@ export default function TotalInventory() {
           minWidth: 150,
         },
         {
-          field: "QUANTITY",
-          headerName: "Quantity",
+          field: "LOTNUM",
+          headerName: "Lot Number",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "QTYAVAIL",
+          headerName: "Quantity Available",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "STOCKDATE",
+          headerName: "Stock Date",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "VENDNAME",
+          headerName: "Vendor Name",
+          flex: 1,
+          minWidth: 150,
+        },
+        {
+          field: "VENDORID",
+          headerName: "Vendor ID",
           flex: 1,
           minWidth: 150,
         },
