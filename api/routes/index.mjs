@@ -72,6 +72,15 @@ export default (app) => {
     });
     return res.status(data.error ? 500 : 200).json(data);
   });
+  app.get("/total-inventory", async (req, res) => {
+    const data = await getData({
+      scope: "total-inventory",
+      queryParam: req.query,
+      pool: app.locals.db,
+      auth: req.headers.authorization,
+    });
+    return res.status(data.error ? 500 : 200).json(data);
+  });
   app.get("/po-search", async (req, res) => {
     const data = await getData({
       scope: "po-search",

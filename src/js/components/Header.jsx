@@ -69,17 +69,16 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
       <MenuItem onClick={() => navigateAndClose("/po-search")}>
         PO Search
       </MenuItem>
+      <MenuItem onClick={() => navigateAndClose("/total-inventory")}>
+        Total Inventory
+      </MenuItem>
       {role === "Admin" ? (
-        <MenuItem onClick={() => navigateAndClose("/admin")}>
-          Admin
-        </MenuItem>
+        <MenuItem onClick={() => navigateAndClose("/admin")}>Admin</MenuItem>
       ) : (
-        <MenuItem onClick={() => navigateAndClose("/manage")}>
-          Manage
-        </MenuItem>
+        <MenuItem onClick={() => navigateAndClose("/manage")}>Manage</MenuItem>
       )}
     </>
-  )
+  );
 
   return (
     <div className="header">
@@ -135,7 +134,9 @@ export default function Header({ routeTo, getPageTitle, logout, user }) {
           }}
         >
           <MenuItem onClick={() => navigateAndClose("/")}>Home</MenuItem>
-          {role === "prod_schedule_viewer" ? productionScheduleViewerNav : fullNav}
+          {role === "prod_schedule_viewer"
+            ? productionScheduleViewerNav
+            : fullNav}
         </Menu>
       </Box>
     </div>

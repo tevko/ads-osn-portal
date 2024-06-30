@@ -31,6 +31,8 @@ const getTableName = (scope) => {
       return "[PSSCOM].[dbo].[View_PORTAL_5_QTYINVMI]";
     case "production-schedule":
       return "[PSSCOM].[dbo].[FRCST_MAIN]";
+    case "total-inventory":
+      return "[PSSCOM].[dbo].[View_PORTAL_6_TOTALINVENTORY]";
     default:
       return null;
   }
@@ -78,6 +80,9 @@ const buildQuery = (scope, queryParam, role) => {
     switch (scope) {
       case "purchase-orders":
         query += ` WHERE NAME = '${role}'`;
+        break;
+      case "total-inventory":
+        query += ` WHERE VENDNAME = '${role}'`;
         break;
       case "receipts":
         query += ` WHERE NAME = '${role}'`;
