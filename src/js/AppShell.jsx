@@ -17,7 +17,7 @@ import Manage from "./components/Manage";
 import VMIInventory from "./components/VMIInventory";
 import ProductionSchedule from "./components/ProductionSchedule";
 import POSearch from "./components/PO-Search";
-import TotalInventory from "../components/TotalInventory";
+import TotalInventory from "./components/TotalInventory";
 
 const routes = {
   "/purchase-orders": (props) => <PurchaseOrders {...props} />,
