@@ -50,7 +50,7 @@ export default function ProductionSchedule() {
         title="Production Schedule"
         columns={[
           {
-            field: "FormattedDate",
+            field: "DATE",
             headerName: "Date",
             flex: 1,
             minWidth: 150,
@@ -74,6 +74,13 @@ export default function ProductionSchedule() {
           {
             field: "ITEM3",
             headerName: "Item",
+            flex: 1,
+            minWidth: 150,
+            cellClassName: (params) => addHighlightClass(params, 'highlight-1'),
+          },
+          {
+            field: "UOM3",
+            headerName: "Unit of Measure",
             flex: 1,
             minWidth: 150,
             cellClassName: (params) => addHighlightClass(params, 'highlight-1'),
@@ -133,6 +140,13 @@ export default function ProductionSchedule() {
             cellClassName: (params) => addHighlightClass(params, 'highlight-2'),
           },
           {
+            field: "UOM2",
+            headerName: "Unit of Measure",
+            flex: 1,
+            minWidth: 150,
+            cellClassName: (params) => addHighlightClass(params, 'highlight-2'),
+          },
+          {
             field: "DESC2",
             headerName: "Description",
             flex: 1,
@@ -177,6 +191,13 @@ export default function ProductionSchedule() {
           {
             field: "ITEM1",
             headerName: "Item",
+            flex: 1,
+            minWidth: 150,
+            cellClassName: (params) => addHighlightClass(params, 'highlight-3'),
+          },
+          {
+            field: "UOM1",
+            headerName: "Unit of Measure",
             flex: 1,
             minWidth: 150,
             cellClassName: (params) => addHighlightClass(params, 'highlight-3'),
